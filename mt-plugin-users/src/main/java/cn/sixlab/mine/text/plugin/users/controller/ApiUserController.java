@@ -7,7 +7,7 @@
  * For more information, please see
  * https://sixlab.cn/
  *
- * @time: 2017/10/8 21:12
+ * @time: 2017/10/9 17:00
  * @author: Patrick <root@sixlab.cn>
  */
 package cn.sixlab.mine.text.plugin.users.controller;
@@ -20,12 +20,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UserLoginController {
+@RequestMapping("/api/users")
+public class ApiUserController {
     
     @Autowired
     private MtUserDao userDao;
     
-    @RequestMapping("/loadUserByUsername")
+    @RequestMapping(value = {"/my", "/pub/my"})
     public ModelJson loadUserByUsername(String username) {
         ModelJson json = new ModelJson();
         

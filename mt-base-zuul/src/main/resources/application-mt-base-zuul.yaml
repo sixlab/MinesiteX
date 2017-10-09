@@ -15,6 +15,14 @@ zuul:
     mt-users:
       path: /users/**
       serviceId: mt-plugin-users
+    mt-login:
+      path: /login
+      serviceId: mt-plugin-users
+      stripPrefix: false
+    mt-users-api:
+      path: /api/users/**
+      serviceId: mt-plugin-users
+      stripPrefix: false
 security:
   basic:
     enabled: true

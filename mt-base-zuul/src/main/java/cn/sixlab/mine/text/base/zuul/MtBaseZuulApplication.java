@@ -1,14 +1,16 @@
 package cn.sixlab.mine.text.base.zuul;
 
-import cn.sixlab.mine.text.base.zuul.filter.LoginFilter;
+import cn.sixlab.mine.text.base.zuul.filter.ApiAuthFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+@EnableCaching
 @EnableZuulProxy
 @EnableDiscoveryClient
 @SpringBootApplication
@@ -25,7 +27,7 @@ public class MtBaseZuulApplication {
     }
     
     @Bean
-    public LoginFilter loginFilter() {
-        return new LoginFilter();
+    public ApiAuthFilter apiAuthFilter() {
+        return new ApiAuthFilter();
     }
 }

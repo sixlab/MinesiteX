@@ -31,46 +31,70 @@ public class ModelJson extends LinkedHashMap<String, Object> {
         return code;
     }
     
-    public void setCode(int code) {
+    public ModelJson setCode(int code) {
         put("code", code);
         this.code = code;
+    
+        return this;
     }
     
     public boolean isSuccess() {
         return success;
     }
     
-    public void setSuccess(boolean success) {
+    public ModelJson setSuccess(boolean success) {
         put("success", success);
         this.success = success;
+    
+        return this;
     }
     
     public String getFlag() {
         return flag;
     }
     
-    public void setFlag(String flag) {
+    public ModelJson setFlag(String flag) {
         put("flag", flag);
         this.flag = flag;
+    
+        return this;
     }
     
     public String getMessage() {
         return message;
     }
     
-    public void setMessage(String message) {
+    public ModelJson setMessage(String message) {
         put("message", message);
         this.message = message;
+    
+        return this;
     }
     
-    public void setErrorMessage(String message) {
+    public ModelJson setErrorMessage(String message) {
         setSuccess(false);
         setMessage(message);
+    
+        return this;
     }
     
-    public void setErrorMessage(String message, int code) {
+    public ModelJson setErrorMessage(String message, int code) {
         setSuccess(false);
         setMessage(message);
         setCode(code);
+        
+        return this;
     }
+    //
+    //@Override
+    //public String toString() {
+    //    ObjectMapper objectMapper = new ObjectMapper();
+    //    String msg = "{}";
+    //    try {
+    //        msg = objectMapper.writeValueAsString(this);
+    //    } catch (JsonProcessingException e) {
+    //        e.printStackTrace();
+    //    }
+    //    return msg;
+    //}
 }
