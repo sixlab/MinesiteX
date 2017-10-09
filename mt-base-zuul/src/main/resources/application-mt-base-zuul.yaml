@@ -1,0 +1,20 @@
+server:
+  port: 8700
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8600/eureka/
+zuul:
+  routes:
+    mt-archives:
+      path: /archives/**
+      serviceId: mt-plugin-archives
+    mt-pages:
+      path: /pages/**
+      serviceId: mt-plugin-pages
+    mt-users:
+      path: /users/**
+      serviceId: mt-plugin-users
+security:
+  basic:
+    enabled: true

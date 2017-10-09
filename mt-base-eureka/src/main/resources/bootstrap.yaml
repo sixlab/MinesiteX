@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: mt-base-eureka
+  profiles:
+    active: mt-base-eureka
+  cloud:
+    config:
+      uri: http://localhost:8500/
+      name: mt-base-eureka
+      profile: prod
