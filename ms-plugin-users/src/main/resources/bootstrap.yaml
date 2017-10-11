@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: ms-plugin-users
+  profiles:
+    active: ms-plugin-users
+  cloud:
+    config:
+      uri: http://localhost:8500/
+      name: ms-plugin-users
+      profile: prod

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: ms-base-zuul
+  profiles:
+    active: ms-base-zuul
+  cloud:
+    config:
+      uri: http://localhost:8500/
+      name: ms-base-zuul
+      profile: prod
+zuul:
+  sensitive-headers:

@@ -1,7 +1,0 @@
-server:
-  port: 8500
-spring:
-  profiles:
-    active: native,mt-base-config
-  application:
-    name: mt-base-config

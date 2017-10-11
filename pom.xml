@@ -4,21 +4,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.sixlab.mine.text</groupId>
-    <artifactId>mine-text</artifactId>
+    <groupId>cn.sixlab.mine.site</groupId>
+    <artifactId>mine-site</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>mt-core</module>
-        <module>mt-core-dao</module>
+        <module>ms-core</module>
+        <module>ms-core-dao</module>
 
-        <module>mt-base-zuul</module>
-        <module>mt-base-eureka</module>
-        <module>mt-base-config</module>
+        <module>ms-base-zuul</module>
+        <module>ms-base-eureka</module>
+        <module>ms-base-config</module>
 
-        <module>mt-plugin-pages</module>
-        <module>mt-plugin-archives</module>
+        <module>ms-plugin-pages</module>
+        <module>ms-plugin-archives</module>
+        <module>ms-plugin-users</module>
     </modules>
 
     <build>
