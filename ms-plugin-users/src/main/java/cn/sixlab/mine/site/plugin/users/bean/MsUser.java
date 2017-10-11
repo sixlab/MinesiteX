@@ -12,68 +12,24 @@
  */
 package cn.sixlab.mine.site.plugin.users.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.Date;
-
-@Entity
 public class MsUser {
-    
-    @Id
-    @GeneratedValue
-    private Integer id;
+
     private String username;
     private String password;
-    private String token;
-    private String flag;
-    private Date regTime;
-    
-    public Integer getId() {
-        return id;
-    }
-    
-    public void setId(Integer id) {
-        this.id = id;
-    }
-    
+
     public String getUsername() {
         return username;
     }
-    
+
     public void setUsername(String username) {
         this.username = username;
     }
-    
+
     public String getPassword() {
         return password;
     }
-    
+
     public void setPassword(String password) {
         this.password = password;
-    }
-    
-    public String getToken() {
-        return token;
-    }
-    
-    public void setToken(String token) {
-        this.token = token;
-    }
-    
-    public String getFlag() {
-        return flag;
-    }
-    
-    public void setFlag(String flag) {
-        this.flag = flag;
-    }
-    
-    public Date getRegTime() {
-        return regTime;
-    }
-    
-    public void setRegTime(Date regTime) {
-        this.regTime = regTime;
     }
 }

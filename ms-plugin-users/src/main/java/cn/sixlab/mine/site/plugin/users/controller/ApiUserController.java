@@ -14,23 +14,17 @@ package cn.sixlab.mine.site.plugin.users.controller;
 
 import cn.sixlab.mine.site.core.ModelJson;
 import cn.sixlab.mine.site.plugin.users.bean.MsUser;
-import cn.sixlab.mine.site.plugin.users.dao.MsUserDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/users")
 public class ApiUserController {
-    
-    @Autowired
-    private MsUserDao userDao;
-    
+
     @RequestMapping(value = {"/my", "/pub/my"})
     public ModelJson loadUserByUsername(String username) {
         ModelJson json = new ModelJson();
-        
-        MsUser msUser = userDao.findByUsername(username);
+        MsUser msUser = null;
         json.put("user", msUser);
         
         return json;

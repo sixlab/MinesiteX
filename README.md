@@ -7,12 +7,31 @@ GitHub：https://github.com/PatrickRoot/Minesite
 
 # Minesite
 基于 Spring Cloud 微服务框架开发的插件式网站。
+
+### Minesite 需求
 开发这个项目的主要目的是为了满足自己的以下几个需求：
 - 个人网站，暂不考虑集群（应该是可扩充的，Minesite 稳定之后，会考虑集群的可能性）
-- 个人网站，不需要复杂的用户管理（应该是可扩充的，Minesite 稳定之后，会考虑复杂的用户管理）
+- 个人网站，不需要复杂的用户管理，一个账号即可（应该是可扩充的，Minesite 稳定之后，会考虑复杂的用户管理）
 - 一个简易的博客，可以发布、更新、查看文章，简单的文章流量统计等
 - 页面管理，可以添加、修改、删除页面
 - 方便添加一些额外的新功能，不影响原有系统及功能的使用
+ 
+### Minesite 模块
+  各模块如下：
+- ms-core 是基本模块，一般 eureka client 都需要依赖这个模块
+- ms-base-config 是 Spring Cloud Config，需要第一个启动
+- ms-base-eureka 是 Spring Cloud Eureka Server 注册中心，需要第二个启动
+- 每个 Plugin 就是一个 eureka client，实现各自的任务，Eureka Server 启动完成后再启动
+- ms-base-zuul 是一个含有 Zuul 的 eureka client，包含 Zuul 路由和登录处理，所有 Plugin 启动完后最后启动
+
+![拓扑图](https://raw.githubusercontent.com/PatrickRoot/Minesite/master/doc/server.png)
+
+### Minesite 原则
+- 为方便部署，ms-base-config 暂时使用本地配置文件
+- 每个 Plugin 自行处理数据
+- 一个 Plugin 可能需要调用其他 Plugin 的服务
+- 需求比较简单，尽量不用数据库，实在需要用到数据库的，Plugin 内部解决好了
+- Plugin 微服务提供的接口尽量满足 RESTful
 
 # 技术栈
 - Spring Cloud Eureka
