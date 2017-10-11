@@ -11,7 +11,6 @@
 
     <modules>
         <module>ms-core</module>
-        <module>ms-core-dao</module>
 
         <module>ms-base-zuul</module>
         <module>ms-base-eureka</module>
