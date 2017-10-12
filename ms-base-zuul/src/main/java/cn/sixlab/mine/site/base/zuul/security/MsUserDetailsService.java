@@ -12,7 +12,7 @@
 // */
 //package cn.sixlab.mine.site.base.zuul;
 //
-//import cn.sixlab.mine.site.core.ModelJson;
+//import cn.sixlab.mine.site.core.bean.ModelJson;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.authority.SimpleGrantedAuthority;

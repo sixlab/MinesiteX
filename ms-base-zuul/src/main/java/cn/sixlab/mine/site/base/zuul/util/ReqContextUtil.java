@@ -13,7 +13,7 @@
 //package cn.sixlab.mine.site.base.zuul.util;
 //
 //
-//import cn.sixlab.mine.site.core.ModelJson;
+//import cn.sixlab.mine.site.core.bean.ModelJson;
 //import cn.sixlab.mine.site.core.ResponseUtil;
 //import com.fasterxml.jackson.core.JsonProcessingException;
 //import com.fasterxml.jackson.databind.ObjectMapper;

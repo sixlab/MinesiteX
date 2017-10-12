@@ -10,7 +10,7 @@
  * @time: 2017/10/8 21:20
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.mine.site.core;
+package cn.sixlab.mine.site.core.bean;
 
 import java.util.LinkedHashMap;
 

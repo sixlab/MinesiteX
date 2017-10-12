@@ -13,7 +13,7 @@
 //package cn.sixlab.mine.site.base.zuul.security;
 //
 //import cn.sixlab.mine.site.base.zuul.util.ReqContextUtil;
-//import cn.sixlab.mine.site.core.ModelJson;
+//import cn.sixlab.mine.site.core.bean.ModelJson;
 //import com.netflix.zuul.ZuulFilter;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;

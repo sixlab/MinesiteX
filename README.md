@@ -19,9 +19,10 @@ GitHub：https://github.com/PatrickRoot/Minesite
 ### Minesite 模块
   各模块如下：
 - ms-core 是基本模块，一般 eureka client 都需要依赖这个模块
+- ms-lib-XXX 是一些公用的被依赖的模块
 - ms-base-config 是 Spring Cloud Config 配置中心，需要第一个启动
 - ms-base-eureka 是 Spring Cloud Eureka Server 注册中心，需要第二个启动
-- 每个 Plugin 就是一个 eureka client，实现各自的任务，Eureka Server 启动完成后再启动
+- ms-plugin-XXX 是一个 eureka client，作为一个实现自己任务的 Plugin，Eureka Server 启动完成后再启动
 - ms-base-zuul 也是一个 eureka client，包含 Zuul 路由和登录校验，所有 Plugin 启动完后最后启动
 
 ![拓扑图](/doc/server.png?raw=true)
