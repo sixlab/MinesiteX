@@ -22,8 +22,8 @@ GitHub：https://github.com/PatrickRoot/Minesite
 - ms-lib-XXX 是一些公用的被依赖的模块
 - ms-base-config 是 Spring Cloud Config 配置中心，需要第一个启动
 - ms-base-eureka 是 Spring Cloud Eureka Server 注册中心，需要第二个启动
-- ms-plugin-XXX 是一个 eureka client，作为一个实现自己任务的 Plugin，Eureka Server 启动完成后再启动
-- ms-base-zuul 也是一个 eureka client，包含 Zuul 路由和登录校验，所有 Plugin 启动完后最后启动
+- ms-plugin-XXX[-ui] 是 eureka client，作为一个实现自己任务的 Plugin，Eureka Server 启动完成后再启动
+- ms-base-zuul 也是 eureka client，主要包含 Zuul 路由和登录校验，所有 Plugin 启动完后最后启动
 
 ![拓扑图](/doc/server.png?raw=true)
 
@@ -31,8 +31,8 @@ GitHub：https://github.com/PatrickRoot/Minesite
 - 为方便部署，ms-base-config 暂时使用本地配置文件
 - 每个 Plugin 自行处理数据
 - 一个 Plugin 可能需要调用其他 Plugin 的服务
+- ms-plugin-XXX-ui 主要是负责返回页面的，ms-plugin-XXX 主要提供 RESTful接口
 - 需求比较简单，尽量不用数据库，实在需要用到数据库的，Plugin 内部解决好了
-- Plugin 微服务提供的接口尽量满足 RESTful
 
 # 技术栈
 - Spring Cloud Eureka
@@ -43,7 +43,8 @@ GitHub：https://github.com/PatrickRoot/Minesite
 - Spring Boot Security
 - ~~Spring Boot Data JPA~~
 - ~~MySQL~~
-- ~~Thymeleaf~~
+- ~~MySQL~~
+- Thymeleaf
 
 # 版本规划
 
