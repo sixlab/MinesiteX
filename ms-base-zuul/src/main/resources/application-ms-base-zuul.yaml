@@ -12,17 +12,18 @@ zuul:
     ms-pages:
       path: /pages/**
       serviceId: ms-plugin-pages
-    ms-users:
-      path: /users/**
-      serviceId: ms-plugin-users
-    ms-login:
-      path: /login
-      serviceId: ms-plugin-users
-      stripPrefix: false
-    ms-users-api:
-      path: /api/users/**
-      serviceId: ms-plugin-users
-      stripPrefix: false
+
+#    ms-users:
+#      path: /users/**
+#      serviceId: ms-plugin-users
+#    ms-login:
+#      path: /login
+#      serviceId: ms-plugin-users
+#      stripPrefix: false
+#    ms-users-api:
+#      path: /api/users/**
+#      serviceId: ms-plugin-users
+#      stripPrefix: false
 security:
   basic:
     enabled: true

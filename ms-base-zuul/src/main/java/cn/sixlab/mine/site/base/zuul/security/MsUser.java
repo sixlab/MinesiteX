@@ -10,7 +10,7 @@
  * @time: 2017/10/8 21:15
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.mine.site.plugin.users.bean;
+package cn.sixlab.mine.site.base.zuul.security;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -30,5 +30,10 @@ public class MsUser {
 
     public String getPassword() {
         return password;
+    }
+    
+    @Override
+    public String toString() {
+        return username+":"+password;
     }
 }

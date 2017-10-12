@@ -10,7 +10,7 @@
  * @time: 2017/6/20
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.mine.site.base.zuul;
+package cn.sixlab.mine.site.base.zuul.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +21,6 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -29,8 +28,11 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableGlobalMethodSecurity(prePostEnabled = true)//允许进入页面方法前检验
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
+    //@Autowired
+    //MsUserDetailsService detailsService;
+    
     @Autowired
-    MsUserDetailsService detailsService;
+    private MsUser msUser;
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -38,14 +40,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**/pub/**").permitAll()
                 .antMatchers("/api/**").permitAll()
                 .antMatchers("/*").permitAll()
+                .antMatchers("/archives/**").permitAll()
+                .antMatchers("/archives/admin/**").authenticated()
+                .antMatchers("/pages/**").permitAll()
+                .antMatchers("/pages/admin/**").authenticated()
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
-                .and().httpBasic()
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
                 .and().sessionManagement().maximumSessions(1).expiredUrl("/expired")
                 .and()
-                .and().exceptionHandling().accessDeniedPage("/accessDenied");
-    
+                .and().exceptionHandling().accessDeniedPage("/accessDenied")
+        ;
+        
         //http.csrf().ignoringAntMatchers("/api/**");
         http.csrf().disable();
         
@@ -54,13 +60,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**", "/img/**", "/js/**", "/main.js"
-                , "/logo.png", "/trd/**", "/**/favicon.ico");
-        //web.ignoring().antMatchers("/res/**", "/**/favicon.ico");
+        web.ignoring()
+                .antMatchers("/css/**")
+                .antMatchers("/trd/**")
+                .antMatchers("/js/**", "/main.js")
+                .antMatchers("/img/**", "/logo.png", "/**/favicon.ico")
+        ;
     }
     
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(detailsService).passwordEncoder(new BCryptPasswordEncoder());
+        //auth.userDetailsService(detailsService).passwordEncoder(new BCryptPasswordEncoder());
+        auth.inMemoryAuthentication().withUser(msUser.getUsername()).password(msUser.getPassword()).roles("USER");
     }
 }

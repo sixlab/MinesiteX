@@ -18,7 +18,7 @@
 
         <module>ms-plugin-pages</module>
         <module>ms-plugin-archives</module>
-        <module>ms-plugin-users</module>
+        <!--<module>ms-plugin-users</module>-->
     </modules>
 
     <build>
