@@ -12,9 +12,9 @@
  */
 package cn.sixlab.mine.site.plugin.archives.repository;
 
-import cn.sixlab.mine.site.plugin.archives.bean.MsArchive;
+import cn.sixlab.mine.site.plugin.archives.bean.MsTag;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface ArchiveRepository extends MongoRepository<MsArchive, String>{
-    MsArchive findByUrl(String url);
+public interface TagRepository extends MongoRepository<MsTag, String>{
+
 }

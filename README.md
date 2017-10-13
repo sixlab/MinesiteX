@@ -43,8 +43,8 @@ GitHub：https://github.com/PatrickRoot/Minesite
 - Spring Boot Security
 - ~~Spring Boot Data JPA~~
 - ~~MySQL~~
-- ~~MySQL~~
 - Thymeleaf
+- MongoDB
 
 # 版本规划
 

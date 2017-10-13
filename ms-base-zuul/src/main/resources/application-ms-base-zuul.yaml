@@ -6,12 +6,14 @@ eureka:
       defaultZone: http://localhost:8600/eureka/
 zuul:
   routes:
-    ms-archives:
-      path: /archives/**
+    ms-archives-api:
+      path: /api/archives/**
       serviceId: ms-plugin-archives
+      stripPrefix: false
     ms-pages:
       path: /pages/**
       serviceId: ms-plugin-pages
+      stripPrefix: false
 
 #    ms-users:
 #      path: /users/**
@@ -29,3 +31,6 @@ security:
     enabled: true
 logging:
   level: debug
+spring:
+  thymeleaf:
+    cache: false

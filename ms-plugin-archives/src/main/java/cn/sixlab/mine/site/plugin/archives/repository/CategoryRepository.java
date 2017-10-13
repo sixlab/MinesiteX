@@ -7,14 +7,14 @@
  * For more information, please see
  * https://sixlab.cn/
  *
- * @time: 2017/10/12 23:04
+ * @time: 2017/10/13 15:01
  * @author: Patrick <root@sixlab.cn>
  */
 package cn.sixlab.mine.site.plugin.archives.repository;
 
-import cn.sixlab.mine.site.plugin.archives.bean.MsArchive;
+import cn.sixlab.mine.site.plugin.archives.bean.MsCategory;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface ArchiveRepository extends MongoRepository<MsArchive, String>{
-    MsArchive findByUrl(String url);
+public interface CategoryRepository extends MongoRepository<MsCategory, String> {
+    MsCategory findByCategory(String category);
 }

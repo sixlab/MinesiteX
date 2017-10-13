@@ -21,12 +21,12 @@ public class MsPluginArchivesApplicationTests {
     @Test
     public void contextLoads() {
         MsArchive archive1 = new MsArchive();
-        archive1.setId(1L);
+        archive1.setUrl("abc");
         archive1.setTitle("看视频1");
         archive1.setPublishTime(LocalDateTime.now());
         repository.save(archive1);
 
-        MsArchive archive = repository.findByTitle("看视频1");
+        MsArchive archive = repository.findByUrl("abc");
         System.out.println(JsonUtl.toJson(archive));
     }
 
