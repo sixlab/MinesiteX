@@ -1,5 +1,6 @@
 package cn.sixlab.mine.site.base.zuul;
 
+import cn.sixlab.mine.site.base.zuul.security.AuthFilter;
 import cn.sixlab.mine.site.base.zuul.security.MsUser;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,8 +33,8 @@ public class MsBaseZuulApplication {
         return new RestTemplate();
     }
     
-    //@Bean
-    //public ApiAuthFilter apiAuthFilter() {
-    //    return new ApiAuthFilter();
-    //}
+    @Bean
+    public AuthFilter authFilter() {
+        return new AuthFilter();
+    }
 }

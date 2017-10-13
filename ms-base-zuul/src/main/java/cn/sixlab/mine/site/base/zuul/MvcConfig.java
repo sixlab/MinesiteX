@@ -12,13 +12,11 @@
  */
 package cn.sixlab.mine.site.base.zuul;
 
-import cn.sixlab.mine.site.base.zuul.security.ApiAuthInterceptor;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -34,15 +32,15 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/login").setViewName("login");
     }
     
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        
-        registry.addInterceptor(getApiInterceptor())
-                .addPathPatterns("/api/**")
-                .excludePathPatterns("/api/**/pub/**");
-        
-        super.addInterceptors(registry);
-    }
+    //@Override
+    //public void addInterceptors(InterceptorRegistry registry) {
+    //
+    //    registry.addInterceptor(getApiInterceptor())
+    //            .addPathPatterns("/api/**")
+    //            .excludePathPatterns("/api/**/pub/**");
+    //
+    //    super.addInterceptors(registry);
+    //}
     
     @Bean
     public EmbeddedServletContainerCustomizer containerCustomizer() {
@@ -53,8 +51,8 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
         };
     }
     
-    @Bean
-    public ApiAuthInterceptor getApiInterceptor() {
-        return new ApiAuthInterceptor();
-    }
+    //@Bean
+    //public ApiAuthInterceptor getApiInterceptor() {
+    //    return new ApiAuthInterceptor();
+    //}
 }

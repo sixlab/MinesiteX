@@ -13,19 +13,14 @@
 //package cn.sixlab.mine.site.base.zuul.util;
 //
 //
-//import cn.sixlab.mine.site.core.bean.ModelJson;
-//import cn.sixlab.mine.site.core.ResponseUtil;
-//import com.fasterxml.jackson.core.JsonProcessingException;
-//import com.fasterxml.jackson.databind.ObjectMapper;
+//import cn.sixlab.mine.site.lib.core.ResponseUtil;
+//import cn.sixlab.mine.site.lib.core.bean.ModelJson;
 //import com.netflix.zuul.context.RequestContext;
 //
 //import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpServletResponse;
 //
 //public class ReqContextUtil {
-//
-//    public static String SKIP_FLAG = "SKIP_FLAG";
-//    private static boolean aContinue;
 //
 //    public static HttpServletRequest getRequest() {
 //        return RequestContext.getCurrentContext().getRequest();
@@ -37,30 +32,23 @@
 //
 //    public static boolean isSkip() {
 //        RequestContext ctx = RequestContext.getCurrentContext();
-//        return ctx.getBoolean(SKIP_FLAG);
+//        return ctx.getBoolean(ZuulConstants.FILTER_SKIP);
 //    }
 //
 //    public static boolean isContinue() {
 //        RequestContext ctx = RequestContext.getCurrentContext();
-//        return !ctx.getBoolean(SKIP_FLAG);
+//        return !ctx.getBoolean(ZuulConstants.FILTER_SKIP);
 //    }
 //
-//    public static void setError(ModelJson json) {
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        String msg = "{}";
-//        try {
-//            msg = objectMapper.writeValueAsString(json);
-//        } catch (JsonProcessingException e) {
-//            e.printStackTrace();
-//        }
-//
+//    public static void setError(int code, String msg) {
+//        ModelJson json = new ModelJson().setErrorMessage(msg, code);
 //        RequestContext ctx = RequestContext.getCurrentContext();
 //
 //        ResponseUtil.setJsonType(ctx.getResponse());
 //
 //        ctx.setSendZuulResponse(false);// 过滤该请求，不对其进行路由
 //        ctx.setResponseStatusCode(200);// 返回错误码
-//        ctx.setResponseBody(msg);// 返回错误内容
-//        ctx.set(SKIP_FLAG, true);
+//        ctx.setResponseBody(json.toString());// 返回错误内容
+//        ctx.set(ZuulConstants.FILTER_SKIP, true);
 //    }
 //}

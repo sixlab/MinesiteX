@@ -45,7 +45,7 @@ GitHub：https://github.com/PatrickRoot/Minesite
 - Spring Cloud Zuul
 - Spring Cloud Feign
 - Spring Cloud Ribbon
-- Spring Boot Security
+- ~~Spring Boot Security~~
 - ~~Spring Boot Data JPA~~
 - ~~MySQL~~
 - Thymeleaf

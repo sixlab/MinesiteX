@@ -26,11 +26,12 @@ zuul:
 #      path: /api/users/**
 #      serviceId: ms-plugin-users
 #      stripPrefix: false
-security:
-  basic:
-    enabled: true
 logging:
   level: debug
 spring:
   thymeleaf:
     cache: false
+  mvc:
+    static-path-pattern: /static/**
+#  resources:
+#    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/
