@@ -10,7 +10,9 @@
  * @time: 2017/10/8 21:20
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.mine.site.core.bean;
+package cn.sixlab.mine.site.lib.core.bean;
+
+import cn.sixlab.mine.site.lib.core.JsonUtl;
 
 import java.util.LinkedHashMap;
 
@@ -85,16 +87,11 @@ public class ModelJson extends LinkedHashMap<String, Object> {
         
         return this;
     }
-    //
-    //@Override
-    //public String toString() {
-    //    ObjectMapper objectMapper = new ObjectMapper();
-    //    String msg = "{}";
-    //    try {
-    //        msg = objectMapper.writeValueAsString(this);
-    //    } catch (JsonProcessingException e) {
-    //        e.printStackTrace();
-    //    }
-    //    return msg;
-    //}
+    
+    @Override
+    public String toString() {
+        String msg = "{}";
+        msg = JsonUtl.toJson(this);
+        return msg;
+    }
 }

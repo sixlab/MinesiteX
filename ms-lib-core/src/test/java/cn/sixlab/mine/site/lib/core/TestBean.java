@@ -10,7 +10,7 @@
  * @time: 2017/10/12 16:53
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.mine.site.core;
+package cn.sixlab.mine.site.lib.core;
 
 public class TestBean {
     private String username;

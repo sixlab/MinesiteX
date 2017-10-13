@@ -12,7 +12,7 @@
  */
 package cn.sixlab.mine.site.base.zuul.security;
 
-import cn.sixlab.mine.site.core.bean.ModelJson;
+import cn.sixlab.mine.site.lib.core.bean.ModelJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.servlet.HandlerInterceptor;

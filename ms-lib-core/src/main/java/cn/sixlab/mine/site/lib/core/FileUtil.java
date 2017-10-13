@@ -10,7 +10,7 @@
  * @time: 2017/10/12 13:42
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.mine.site.core;
+package cn.sixlab.mine.site.lib.core;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -59,7 +59,7 @@ public class FileUtil {
             for (int i = 0; i < size; i++) {
                 Object o = newList.get(i);
                 String toJson = JsonUtl.toJson(o);
-                if ("".equals(toJson)) {
+                if (null==toJson) {
                     continue;
                 } else {
                     sb.append(toJson);

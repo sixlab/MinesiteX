@@ -10,7 +10,7 @@
  * @time: 2017/10/9 18:02
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.mine.site.core;
+package cn.sixlab.mine.site.lib.core;
 
 import javax.servlet.http.HttpServletResponse;
 

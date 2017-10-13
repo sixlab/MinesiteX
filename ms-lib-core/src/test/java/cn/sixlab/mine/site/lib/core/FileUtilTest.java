@@ -10,7 +10,7 @@
  * @time: 2017/10/12 13:42
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.mine.site.core;
+package cn.sixlab.mine.site.lib.core;
 
 import org.junit.Test;
 

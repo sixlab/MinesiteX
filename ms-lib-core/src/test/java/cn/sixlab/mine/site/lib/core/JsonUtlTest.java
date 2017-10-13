@@ -1,4 +1,4 @@
-package cn.sixlab.mine.site.core;
+package cn.sixlab.mine.site.lib.core;
 
 import org.junit.Assert;
 import org.junit.Test;

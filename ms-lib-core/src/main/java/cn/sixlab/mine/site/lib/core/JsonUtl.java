@@ -10,7 +10,7 @@
  * @time: 2017
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.mine.site.core;
+package cn.sixlab.mine.site.lib.core;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,14 +24,12 @@ public class JsonUtl {
     }
     
     public static String toJson(Object object) {
-        
         try {
             return objectMapper.writeValueAsString(object);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        return "";
+        return null;
     }
     
     public static <T> T toBean(String content, Class<T> clz) {

@@ -1,6 +1,6 @@
 package cn.sixlab.mine.site.plugin.archives;
 
-import cn.sixlab.mine.site.core.JsonUtl;
+import cn.sixlab.mine.site.lib.core.JsonUtl;
 import cn.sixlab.mine.site.plugin.archives.bean.MsArchive;
 import cn.sixlab.mine.site.plugin.archives.repository.ArchiveRepository;
 import org.junit.Test;

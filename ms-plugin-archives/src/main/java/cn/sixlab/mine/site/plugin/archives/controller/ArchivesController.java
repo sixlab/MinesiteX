@@ -12,7 +12,7 @@
  */
 package cn.sixlab.mine.site.plugin.archives.controller;
 
-import cn.sixlab.mine.site.core.bean.ModelJson;
+import cn.sixlab.mine.site.lib.core.bean.ModelJson;
 import cn.sixlab.mine.site.plugin.archives.bean.MsArchive;
 import cn.sixlab.mine.site.plugin.archives.service.ArchiveService;
 import org.apache.commons.lang.StringUtils;
