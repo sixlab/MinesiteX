@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: ms-plugin-articles
+  profiles:
+    active: ms-plugin-articles
+  cloud:
+    config:
+      uri: http://localhost:8500/
+      name: ms-plugin-articles
+      profile: prod

@@ -50,7 +50,7 @@
         <module>ms-base-config</module>
 
         <module>ms-plugin-pages</module>
-        <module>ms-plugin-archives</module>
+        <module>ms-plugin-articles</module>
         <module>ms-plugin-comments</module>
     </modules>
 </project>

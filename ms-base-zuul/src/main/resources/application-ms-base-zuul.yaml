@@ -6,9 +6,9 @@ eureka:
       defaultZone: http://localhost:8600/eureka/
 zuul:
   routes:
-    ms-archives-api:
-      path: /api/archives/**
-      serviceId: ms-plugin-archives
+    ms-articles-api:
+      path: /api/articles/**
+      serviceId: ms-plugin-articles
       stripPrefix: false
     ms-pages:
       path: /pages/**
