@@ -21,6 +21,7 @@ public class MsArticle {
     @Id
     private String id;
     private String url;
+    private String articleType;
     private String title;
     private String content;
     private String articleStatus;
@@ -30,91 +31,99 @@ public class MsArticle {
     private int commentCount;
     private String[] tags;
     private String category;
-    
+
     public String getId() {
         return id;
     }
-    
+
     public void setId(String id) {
         this.id = id;
     }
-    
+
     public String getUrl() {
         return url;
     }
-    
+
     public void setUrl(String url) {
         this.url = url;
     }
-    
+
+    public String getArticleType() {
+        return articleType;
+    }
+
+    public void setArticleType(String articleType) {
+        this.articleType = articleType;
+    }
+
     public String getTitle() {
         return title;
     }
-    
+
     public void setTitle(String title) {
         this.title = title;
     }
-    
+
     public String getContent() {
         return content;
     }
-    
+
     public void setContent(String content) {
         this.content = content;
     }
-    
+
     public String getArticleStatus() {
         return articleStatus;
     }
-    
+
     public void setArticleStatus(String articleStatus) {
         this.articleStatus = articleStatus;
     }
-    
+
     public LocalDateTime getPublishTime() {
         return publishTime;
     }
-    
+
     public void setPublishTime(LocalDateTime publishTime) {
         this.publishTime = publishTime;
     }
-    
+
     public LocalDateTime getUpdateTime() {
         return updateTime;
     }
-    
+
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
-    
+
     public int getViewCount() {
         return viewCount;
     }
-    
+
     public void setViewCount(int viewCount) {
         this.viewCount = viewCount;
     }
-    
+
     public int getCommentCount() {
         return commentCount;
     }
-    
+
     public void setCommentCount(int commentCount) {
         this.commentCount = commentCount;
     }
-    
+
     public String[] getTags() {
         return tags;
     }
-    
+
     public void setTags(String[] tags) {
         this.tags = tags;
     }
-    
+
     public String getCategory() {
         return category;
     }
-    
+
     public void setCategory(String category) {
         this.category = category;
     }
