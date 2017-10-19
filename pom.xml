@@ -9,8 +9,8 @@
     <version>0.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Minesite</name>
-    <description>Minesite</description>
+    <name>Minesite-X</name>
+    <description>Minesite-X</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
