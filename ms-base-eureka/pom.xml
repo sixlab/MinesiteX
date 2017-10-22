@@ -3,19 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>Minesite-X</artifactId>
-        <groupId>cn.sixlab.mine.site</groupId>
+        <artifactId>MinesiteX</artifactId>
+        <groupId>cn.sixlab.minesitex</groupId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.sixlab.mine.site.base</groupId>
+    <groupId>cn.sixlab.minesitex.base</groupId>
     <artifactId>ms-base-eureka</artifactId>
     <version>${parent.version}</version>
     <packaging>jar</packaging>
 
     <name>ms-base-eureka</name>
-    <description>Eureka server for Minesite</description>
+    <description>Eureka server for MinesiteX</description>
 
     <dependencies>
         <dependency>
@@ -39,7 +39,7 @@
         </dependency>
 
         <dependency>
-            <groupId>cn.sixlab.mine.site.lib</groupId>
+            <groupId>cn.sixlab.minesitex.lib</groupId>
             <artifactId>ms-lib-core</artifactId>
         </dependency>
     </dependencies>

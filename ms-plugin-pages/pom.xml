@@ -10,12 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.sixlab.minesitex.plugin</groupId>
-    <artifactId>ms-plugin-comments</artifactId>
+    <artifactId>ms-plugin-pages</artifactId>
     <version>${parent.version}</version>
     <packaging>jar</packaging>
 
-    <name>ms-plugin-comments</name>
-    <description>Comment plugin for MinesiteX</description>
+    <name>ms-plugin-pages</name>
+    <description>Page plugin for MinesiteX</description>
 
     <dependencies>
         <dependency>

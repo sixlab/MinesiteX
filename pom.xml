@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.sixlab.mine.site</groupId>
-    <artifactId>Minesite-X</artifactId>
+    <groupId>cn.sixlab.minesitex</groupId>
+    <artifactId>MinesiteX</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Minesite-X</name>
-    <description>Minesite-X</description>
+    <name>MinesiteX</name>
+    <description>MinesiteX</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -35,7 +35,7 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>cn.sixlab.mine.site.lib</groupId>
+                <groupId>cn.sixlab.minesitex.lib</groupId>
                 <artifactId>ms-lib-core</artifactId>
                 <version>${version}</version>
             </dependency>
@@ -50,7 +50,6 @@
         <module>ms-base-config</module>
 
         <module>ms-plugin-pages</module>
-        <module>ms-plugin-articles</module>
         <module>ms-plugin-comments</module>
     </modules>
 </project>
