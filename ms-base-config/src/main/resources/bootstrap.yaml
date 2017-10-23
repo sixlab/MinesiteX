@@ -1,7 +1,0 @@
-server:
-  port: 8500
-spring:
-  profiles:
-    active: native,ms-base-config
-  application:
-    name: ms-base-config

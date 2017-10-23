@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: msx-plugin-pages
+  profiles:
+    active: msx-plugin-pages
+  cloud:
+    config:
+      uri: http://localhost:8500/
+      name: msx-plugin-pages
+      profile: prod

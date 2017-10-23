@@ -36,20 +36,20 @@
             </dependency>
             <dependency>
                 <groupId>cn.sixlab.minesitex.lib</groupId>
-                <artifactId>ms-lib-core</artifactId>
+                <artifactId>msx-lib-core</artifactId>
                 <version>${version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <modules>
-        <module>ms-lib-core</module>
+        <module>msx-lib-core</module>
 
-        <module>ms-base-zuul</module>
-        <module>ms-base-eureka</module>
-        <module>ms-base-config</module>
+        <module>msx-base-zuul</module>
+        <module>msx-base-eureka</module>
+        <module>msx-base-config</module>
 
-        <module>ms-plugin-pages</module>
-        <module>ms-plugin-comments</module>
+        <module>msx-plugin-pages</module>
+        <module>msx-plugin-comments</module>
     </modules>
 </project>

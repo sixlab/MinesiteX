@@ -24,21 +24,21 @@ GitHub：https://github.com/PatrickRoot/MinesiteX
   各模块如下：
 
 - MinesiteX 是 parent 模块，管理依赖和所有模块
-- ms-lib-XXX 是一些公用模块
-    - ms-lib-core 是基本模块，含一些基本的 bean 和 util 类，一般 eureka client 都需要依赖这个模块
-- ms-base-config 是 Spring Cloud Config 配置中心，需要第一个启动
-- ms-base-eureka 是 Spring Cloud Eureka Server 注册中心，需要第二个启动
-- ms-plugin-XXX[-ui] 是 eureka client，作为一个实现自己任务的 Plugin，Eureka Server 启动完成后再启动
-- ms-base-zuul 也是 eureka client，主要包含 Zuul 路由和登录校验，所有 Plugin 启动完后最后启动
+- msx-lib-XXX 是一些公用模块
+    - msx-lib-core 是基本模块，含一些基本的 bean 和 util 类，一般 eureka client 都需要依赖这个模块
+- msx-base-config 是 Spring Cloud Config 配置中心，需要第一个启动
+- msx-base-eureka 是 Spring Cloud Eureka Server 注册中心，需要第二个启动
+- msx-plugin-XXX[-ui] 是 eureka client，作为一个实现自己任务的 Plugin，Eureka Server 启动完成后再启动
+- msx-base-zuul 也是 eureka client，主要包含 Zuul 路由和登录校验，所有 Plugin 启动完后最后启动
 
 ![拓扑图](/doc/server.png?raw=true)
 
 ### MinesiteX 原则
 
-- 为方便部署，ms-base-config 暂时使用本地配置文件
+- 为方便部署，msx-base-config 暂时使用本地配置文件
 - 每个 Plugin 自行处理数据
 - 一个 Plugin 可能需要调用其他 Plugin 的服务
-- ms-plugin-XXX-ui 主要是负责返回页面的，ms-plugin-XXX 主要提供 RESTful接口
+- msx-plugin-XXX-ui 主要是负责返回页面的，msx-plugin-XXX 主要提供 RESTful接口
 - 需求比较简单，尽量不用数据库，实在需要用到数据库的，Plugin 内部解决好了
 
 # 技术栈
