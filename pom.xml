@@ -34,22 +34,23 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
-                <groupId>cn.sixlab.minesitex.lib</groupId>
-                <artifactId>msx-lib-core</artifactId>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-lib-base</artifactId>
                 <version>${version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
     <modules>
-        <module>msx-lib-core</module>
-
         <module>msx-base-zuul</module>
         <module>msx-base-eureka</module>
         <module>msx-base-config</module>
 
-        <module>msx-plugin-pages</module>
-        <module>msx-plugin-comments</module>
+        <module>msx-libs</module>
+        <module>msx-data</module>
+        <module>msx-entity</module>
+        <module>msx-plugins</module>
     </modules>
 </project>

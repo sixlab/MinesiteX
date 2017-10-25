@@ -65,8 +65,8 @@
         </dependency>
 
         <dependency>
-            <groupId>cn.sixlab.minesitex.lib</groupId>
-            <artifactId>msx-lib-core</artifactId>
+            <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-lib-base</artifactId>
         </dependency>
     </dependencies>
 

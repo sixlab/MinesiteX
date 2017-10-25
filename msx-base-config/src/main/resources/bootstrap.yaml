@@ -1,7 +1,0 @@
-server:
-  port: 8500
-spring:
-  profiles:
-    active: native,msx-base-config
-  application:
-    name: msx-base-config

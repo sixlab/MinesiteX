@@ -1,0 +1,36 @@
+user:
+  username: admin
+  password: $2a$10$HZsESWKjm1zkJChuVK99/ehJkGUomfIgNS8QyzLvHlKisPVDCdXv2
+server:
+  port: 8700
+zuul:
+  routes:
+    msx-articles-api:
+      path: /api/articles/**
+      serviceId: msx-plugin-articles
+      stripPrefix: false
+    msx-pages:
+      path: /pages/**
+      serviceId: msx-plugin-pages
+      stripPrefix: false
+
+#    msx-users:
+#      path: /users/**
+#      serviceId: msx-plugin-users
+#    msx-login:
+#      path: /login
+#      serviceId: msx-plugin-users
+#      stripPrefix: false
+#    msx-users-api:
+#      path: /api/users/**
+#      serviceId: msx-plugin-users
+#      stripPrefix: false
+logging:
+  level: debug
+spring:
+  thymeleaf:
+    cache: false
+  mvc:
+    static-path-pattern: /static/**
+#  resources:
+#    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/

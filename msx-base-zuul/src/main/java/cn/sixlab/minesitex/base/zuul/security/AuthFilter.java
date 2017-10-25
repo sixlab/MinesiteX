@@ -13,8 +13,8 @@
 package cn.sixlab.minesitex.base.zuul.security;
 
 import cn.sixlab.minesitex.base.zuul.util.ZuulConstants;
-import cn.sixlab.minesitex.lib.core.bean.ModelJson;
-import cn.sixlab.minesitex.lib.core.constants.Err;
+import cn.sixlab.minesitex.lib.base.contants.Err;
+import cn.sixlab.minesitex.lib.base.model.ModelJson;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.apache.commons.lang.StringUtils;
