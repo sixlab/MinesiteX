@@ -10,12 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.sixlab.minesitex</groupId>
-    <artifactId>msx-lib-base</artifactId>
+    <artifactId>msx-lib-redis</artifactId>
     <version>${parent.version}</version>
     <packaging>jar</packaging>
 
-    <name>msx-lib-base</name>
-    <description>Base lib for MinesiteX</description>
+    <name>msx-lib-redis</name>
+    <description>Redis operation for MinesiteX</description>
 
     <dependencies>
         <dependency>
@@ -23,11 +23,21 @@
             <artifactId>spring-cloud-starter-eureka</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-lib-base</artifactId>
         </dependency>
     </dependencies>
 

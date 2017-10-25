@@ -40,7 +40,7 @@ GitHub：[https://github.com/PatrickRoot/MinesiteX][github-minesitex]
 - Eureka client 微服务模块，在 Eureka Server 后，Zuul 前启动：
     - msx-data 下实现不同的数据操作，不含业务
     - msx-plugins 下实现不同的业务，作为插件
-- msx-base-zuul 也是 eureka client，主要包含 Zuul 路由和登录校验，所有微服务模块启动完后最后启动
+- msx-base-zuul 是包含 Zuul 的 eureka client，主要包含 Zuul 路由和登录校验，所有微服务模块启动完后最后启动
 
 ![拓扑图](/doc/server.png?raw=true)
 

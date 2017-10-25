@@ -1,8 +1,8 @@
-user:
-  username: admin
-  password: $2a$10$HZsESWKjm1zkJChuVK99/ehJkGUomfIgNS8QyzLvHlKisPVDCdXv2
 server:
   port: 8700
+logging:
+  level: debug
+
 zuul:
   routes:
     msx-articles-api:
@@ -25,8 +25,6 @@ zuul:
 #      path: /api/users/**
 #      serviceId: msx-plugin-users
 #      stripPrefix: false
-logging:
-  level: debug
 spring:
   thymeleaf:
     cache: false
@@ -34,3 +32,8 @@ spring:
     static-path-pattern: /static/**
 #  resources:
 #    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/
+
+
+user:
+  username: admin
+  password: $2a$10$HZsESWKjm1zkJChuVK99/ehJkGUomfIgNS8QyzLvHlKisPVDCdXv2

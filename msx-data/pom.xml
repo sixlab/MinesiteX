@@ -17,5 +17,8 @@
     <name>msx-data</name>
     <description>Data manipulation micro-service for MinesiteX</description>
 
+    <modules>
+        <module>msx-data-mysql</module>
+    </modules>
 
 </project>

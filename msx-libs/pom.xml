@@ -19,6 +19,7 @@
 
     <modules>
         <module>msx-lib-base</module>
+        <module>msx-lib-redis</module>
     </modules>
 
 </project>
