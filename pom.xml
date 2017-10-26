@@ -36,6 +36,21 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- msx-beans -->
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-bean-movie</artifactId>
+                <version>${minesitex.version}</version>
+            </dependency>
+
+            <!-- msx-data -->
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-data-movie</artifactId>
+                <version>${minesitex.version}</version>
+            </dependency>
+
+            <!-- msx-libs -->
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
                 <artifactId>msx-lib-base</artifactId>
@@ -56,7 +71,7 @@
 
         <module>msx-libs</module>
         <module>msx-data</module>
-        <module>msx-entity</module>
+        <module>msx-beans</module>
         <module>msx-plugins</module>
     </modules>
 </project>

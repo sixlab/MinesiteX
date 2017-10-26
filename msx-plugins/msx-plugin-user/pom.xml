@@ -3,29 +3,38 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>msx-libs</artifactId>
+        <artifactId>msx-plugins</artifactId>
         <groupId>cn.sixlab.minesitex</groupId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.sixlab.minesitex</groupId>
-    <artifactId>msx-lib-redis</artifactId>
+    <artifactId>msx-plugin-user</artifactId>
     <version>${parent.version}</version>
     <packaging>jar</packaging>
 
-    <name>msx-lib-redis</name>
-    <description>Redis operation for MinesiteX</description>
+    <name>msx-plugin-user</name>
+    <description>User plugin for Minesitex</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>
-            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>joda-time</groupId>
+                    <artifactId>joda-time</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
@@ -33,18 +42,27 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
         <dependency>
             <groupId>cn.sixlab.minesitex</groupId>
             <artifactId>msx-lib-base</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-lib-redis</artifactId>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

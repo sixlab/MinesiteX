@@ -1,0 +1,12 @@
+package cn.sixlab.minesitex;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MsxPluginMovieApplication {
+    
+    public static void main(String[] args) {
+        SpringApplication.run(MsxPluginMovieApplication.class, args);
+    }
+}

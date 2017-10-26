@@ -7,8 +7,8 @@ import org.springframework.cloud.config.server.EnableConfigServer;
 @EnableConfigServer
 @SpringBootApplication
 public class MsBaseConfigApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(MsBaseConfigApplication.class, args);
-	}
+    
+    public static void main(String[] args) {
+        SpringApplication.run(MsBaseConfigApplication.class, args);
+    }
 }

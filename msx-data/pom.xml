@@ -15,10 +15,10 @@
     <packaging>pom</packaging>
 
     <name>msx-data</name>
-    <description>Data manipulation micro-service for MinesiteX</description>
+    <description>Data manipulation lib for MinesiteX</description>
 
     <modules>
-        <module>msx-data-mysql</module>
+        <module>msx-data-movie</module>
     </modules>
 
 </project>

@@ -10,16 +10,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.sixlab.minesitex</groupId>
-    <artifactId>msx-plugins</artifactId>
+    <artifactId>msx-beans</artifactId>
     <version>${parent.version}</version>
     <packaging>pom</packaging>
 
-    <name>msx-plugins</name>
-    <description>Plugins micro-service for MinesiteX</description>
+    <name>msx-beans</name>
+    <description>Entities and vo classes for MinesiteX</description>
 
     <modules>
-        <module>msx-plugin-movie</module>
-        <module>msx-plugin-user</module>
+        <module>msx-bean-movie</module>
     </modules>
-    
+
 </project>

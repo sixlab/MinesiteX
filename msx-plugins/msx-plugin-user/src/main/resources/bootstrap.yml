@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: msx-plugin-user
+  profiles:
+    active: msx-plugin-user
+  cloud:
+    config:
+      uri: http://localhost:8500/
+      name: application-msx-plugin-user,application-common-redis,application-common-mysql,application-common-eureka
+      profile: prod

@@ -33,16 +33,16 @@ GitHub：[https://github.com/PatrickRoot/MinesiteX][github-minesitex]
 
 - MinesiteX 是 parent 模块，管理依赖和所有模块
 - msx-libs 下是一些公用模块：
-    - msx-lib-base 是基本模块，含一些基本的 Model 和 util 类，一般 eureka client 都需要依赖这个模块
-- msx-entity 下是实体类
+    - msx-lib-base 是基本库，含一些基本的 Model 和 util 类，一般 eureka client 都需要依赖这个模块，依赖时需要提供 [spring-cloud-starter-eureka] 模块依赖。
+    - msx-lib-redis 是操作 Redis 的库，需要操作 Redis 的模块需要依赖这个模块，依赖 msx-lib-base 模块。
+- msx-beans 下是实体类
+- msx-data 下是数据访问库，操作关系数据库、非关系数据库等。
 - msx-base-config 是 Spring Cloud Config 配置中心，需要第一个启动
 - msx-base-eureka 是 Spring Cloud Eureka Server 注册中心，需要第二个启动
-- Eureka client 微服务模块，在 Eureka Server 后，Zuul 前启动：
-    - msx-data 下实现不同的数据操作，不含业务
-    - msx-plugins 下实现不同的业务，作为插件
+- msx-plugins 下是 Eureka client 微服务模块，在 Eureka Server 后，Zuul 前启动。
 - msx-base-zuul 是包含 Zuul 的 eureka client，主要包含 Zuul 路由和登录校验，所有微服务模块启动完后最后启动
 
-![拓扑图](/doc/server.png?raw=true)
+![拓扑图](doc/server.png?raw=true)
 
 ### MinesiteX 原则
 
@@ -79,3 +79,4 @@ GitHub：[https://github.com/PatrickRoot/MinesiteX][github-minesitex]
 
 [github-minesite]: https://github.com/PatrickRoot/Minesite
 [gitee-minesite]: https://gitee.com/PatrickRoot/Minesite
+
