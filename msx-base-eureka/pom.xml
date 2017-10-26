@@ -11,7 +11,7 @@
 
     <groupId>cn.sixlab.minesitex.base</groupId>
     <artifactId>msx-base-eureka</artifactId>
-    <version>${parent.version}</version>
+    <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>msx-base-eureka</name>

@@ -11,7 +11,7 @@
 
     <groupId>cn.sixlab.minesitex</groupId>
     <artifactId>msx-plugin-movie</artifactId>
-    <version>${parent.version}</version>
+    <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>msx-plugin-movie</name>
