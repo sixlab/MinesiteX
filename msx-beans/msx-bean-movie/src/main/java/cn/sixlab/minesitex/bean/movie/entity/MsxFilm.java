@@ -15,10 +15,11 @@ package cn.sixlab.minesitex.bean.movie.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class MsxFilm {
+public class MsxFilm implements Serializable{
     
     @Id
     @GeneratedValue

@@ -19,6 +19,7 @@
 
     <modules>
         <module>msx-bean-movie</module>
+        <module>msx-bean-user</module>
     </modules>
 
 </project>

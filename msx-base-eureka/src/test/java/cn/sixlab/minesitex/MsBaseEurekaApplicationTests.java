@@ -1,4 +1,4 @@
-package cn.sixlab.minesitex.base.eureka;
+package cn.sixlab.minesitex;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

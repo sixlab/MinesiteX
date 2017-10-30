@@ -59,12 +59,13 @@ GitHub：[https://github.com/PatrickRoot/MinesiteX][github-minesitex]
 - Spring Cloud Feign
 - Spring Cloud Ribbon
 - Spring Boot Security
-- Spring Data MongoDb
 - Spring Data JPA
-- Thymeleaf
-- MongoDB
 - MySQL
+- Spring Data Redis
 - Redis
+- Thymeleaf
+- ~~Spring Data MongoDb~~服务器性能撑不住了，先不用了
+- ~~MongoDB~~服务器性能撑不住了，先不用了
 
 # 版本规划
 

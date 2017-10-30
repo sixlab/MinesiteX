@@ -1,4 +1,4 @@
-package cn.sixlab.minesitex.base.config;
+package cn.sixlab.minesitex;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
