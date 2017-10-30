@@ -10,12 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.sixlab.minesitex</groupId>
-    <artifactId>msx-data-movie</artifactId>
+    <artifactId>msx-data-user</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>msx-data-movie</name>
-    <description>Plugin movie's dao for MinesiteX</description>
+    <name>msx-data-user</name>
+    <description>Plugin user's dao for MinesiteX</description>
 
     <dependencies>
         <dependency>
@@ -48,7 +48,7 @@
 
         <dependency>
             <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-bean-movie</artifactId>
+            <artifactId>msx-bean-user</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -19,6 +19,7 @@
 
     <modules>
         <module>msx-data-movie</module>
+        <module>msx-data-user</module>
     </modules>
 
 </project>
