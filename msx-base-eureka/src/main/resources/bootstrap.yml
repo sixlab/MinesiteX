@@ -6,5 +6,5 @@ spring:
   cloud:
     config:
       uri: http://localhost:8500/
-      name: application-common-eureka,application-msx-base-eureka
+      name: application-msx-base-eureka
       profile: prod

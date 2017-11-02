@@ -26,7 +26,7 @@ GitHub：[https://github.com/PatrickRoot/MinesiteX][github-minesitex]
 - 个人网站，不需要复杂的用户管理，简单管理即可（应该是可扩充的，MinesiteX 稳定之后，会考虑复杂的用户管理）
 - 页面管理，可以添加、修改、删除页面
 - 方便添加一些额外的新功能，不影响原有系统及功能的使用
- 
+
 ### MinesiteX 模块
 
   各模块如下：
@@ -69,7 +69,7 @@ GitHub：[https://github.com/PatrickRoot/MinesiteX][github-minesitex]
 
 # 版本规划
 
-- [X] V0.1.0 完成基本的初始化
+- [x] V0.1.0 完成基本的初始化
 - [ ] V0.2.0 完成登录功能及其页面
 - [ ] V0.3.0 完成页面的管理
 - [ ] V1.0.0 基本功能完成

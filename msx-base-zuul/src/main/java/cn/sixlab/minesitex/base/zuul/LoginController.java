@@ -18,9 +18,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController {
     
-    @RequestMapping(value = {"","/","/index"})
+    @RequestMapping(value = {"", "/", "/index"})
     public String index() {
         String result = "r index";
+        return result;
+    }
+    
+    @RequestMapping("/in/test")
+    public String index1() {
+        String result = "in test";
+        return result;
+    }
+    
+    @RequestMapping("/in/pub/test")
+    public String index2() {
+        String result = "pub test";
         return result;
     }
 }

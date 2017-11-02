@@ -14,7 +14,9 @@ package cn.sixlab.minesitex.data.user;
 
 import cn.sixlab.minesitex.bean.user.entity.MsxUser;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
 
 public interface UserRepo extends JpaRepository<MsxUser, Integer>{
-
+    
+    MsxUser findByUsername(@Param("username") String username);
 }

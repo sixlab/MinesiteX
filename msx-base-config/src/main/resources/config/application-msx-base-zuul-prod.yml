@@ -4,12 +4,12 @@ server:
 zuul:
   routes:
     msx-articles-api:
-      path: /api/articles/**
-      serviceId: msx-plugin-articles
+      path: /api/user/**
+      serviceId: msx-plugin-user
       stripPrefix: false
     msx-pages:
-      path: /pages/**
-      serviceId: msx-plugin-pages
+      path: /movie/**
+      serviceId: msx-plugin-movie
       stripPrefix: false
 
 #    msx-users:
@@ -32,6 +32,8 @@ spring:
 #    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/
 
 
-user:
-  username: admin
-  password: $2a$10$HZsESWKjm1zkJChuVK99/ehJkGUomfIgNS8QyzLvHlKisPVDCdXv2
+jwt:
+  header: Authorization
+  secret: MinesiteX
+  expiration: 604800
+  tokenHead: "MinesiteX "

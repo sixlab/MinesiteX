@@ -12,6 +12,7 @@
  */
 package cn.sixlab.minesitex.plugin.movie.controller;
 
+import cn.sixlab.minesitex.api.user.IUserService;
 import cn.sixlab.minesitex.bean.movie.entity.MsxFilm;
 import cn.sixlab.minesitex.lib.base.BaseController;
 import cn.sixlab.minesitex.lib.base.model.ModelJson;
@@ -19,7 +20,6 @@ import cn.sixlab.minesitex.plugin.movie.service.FilmService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,6 +33,9 @@ public class FilmController extends BaseController {
     
     @Autowired
     private FilmService service;
+    
+    @Autowired
+    IUserService userService;
     
     /**
      * 添加一部新观看的电影
@@ -78,11 +81,11 @@ public class FilmController extends BaseController {
     @RequestMapping(value = "/film/{id}", method = RequestMethod.GET)
     public ModelJson fetchFilm(@PathVariable Integer id) {
         logger.debug("获取电影>>>", id);
-        ModelJson json = new ModelJson();
+        ModelJson<MsxFilm> json = new ModelJson<>();
     
         MsxFilm film = service.fetchFilm(id);
+        json.setData(film);
         
-        json.put("film", film);
         return json;
     }
     
@@ -95,18 +98,12 @@ public class FilmController extends BaseController {
     @RequestMapping(value = "/film", method = RequestMethod.GET)
     public ModelJson search(String keyword) {
         logger.debug("搜索电影>>>", keyword);
-        ModelJson json = new ModelJson();
+        ModelJson<List<MsxFilm>> json = new ModelJson<>();
         
         List<MsxFilm> movieList = service.searchFilm(keyword);
     
-        int num = 0;
-        if (!CollectionUtils.isEmpty(movieList)) {
-            num = movieList.size();
-        }
-        json.put("movies", movieList);
-        json.put("num", num);
+        json.setData(movieList);
     
-        logger.debug("搜索电影数量>>>", num);
         return json;
     }
     

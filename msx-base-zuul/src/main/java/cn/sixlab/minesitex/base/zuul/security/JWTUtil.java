@@ -7,7 +7,7 @@
  * For more information, please see
  * https://sixlab.cn/
  *
- * @time: 2017/10/8 21:15
+ * @time: 2017/11/2 10:57
  * @author: Patrick <root@sixlab.cn>
  */
 package cn.sixlab.minesitex.base.zuul.security;
@@ -16,24 +16,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MsUser {
-
-    @Value("${user.username}")
-    private String username;
-
-    @Value("${user.password}")
-    private String password;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
+public class JWTUtil {
     
-    @Override
-    public String toString() {
-        return username+":"+password;
-    }
+    @Value("${jwt.header}")
+    private String jwtHeader;
+    @Value("${jwt.secret}")
+    private String jwtSecret;
+    @Value("${jwt.expiration}")
+    private int jwtExpiration;
+    @Value("${jwt.tokenHead}")
+    private String jwtTokenHead;
+    
 }

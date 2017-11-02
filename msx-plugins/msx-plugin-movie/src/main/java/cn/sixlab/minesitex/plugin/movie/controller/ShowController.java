@@ -12,6 +12,7 @@
  */
 package cn.sixlab.minesitex.plugin.movie.controller;
 
+import cn.sixlab.minesitex.bean.movie.entity.MsxFilm;
 import cn.sixlab.minesitex.bean.movie.entity.MsxShow;
 import cn.sixlab.minesitex.lib.base.BaseController;
 import cn.sixlab.minesitex.lib.base.model.ModelJson;
@@ -42,19 +43,12 @@ public class ShowController extends BaseController{
     @RequestMapping(value = "/show", method = RequestMethod.GET)
     public ModelJson search(String keyword,String showStatus) {
         logger.debug("搜索电视剧>>>"+keyword);
-        
-        ModelJson json = new ModelJson();
+        ModelJson<List<MsxShow>> json = new ModelJson<>();
         
         List<MsxShow> showList = service.search(keyword, showStatus);
         
-        int num = 0;
-        if (!CollectionUtils.isEmpty(showList)) {
-            num = showList.size();
-        }
-        json.put("num", num);
-        json.put("shows", showList);
+        json.setData(showList);
     
-        logger.debug("搜索电视剧数量>>>" + num);
         return json;
     }
     
@@ -83,10 +77,10 @@ public class ShowController extends BaseController{
     @RequestMapping(value = "/show/{id}", method = RequestMethod.PUT)
     public ModelJson fetchShow(@PathVariable Integer id) {
         logger.debug("获取剧集>>>", id);
-        ModelJson json = new ModelJson();
+        ModelJson<MsxShow> json = new ModelJson<>();
         
         MsxShow show = service.fetchShow(id);
-        json.put("show", show);
+        json.setData(show);
         
         return json;
     }

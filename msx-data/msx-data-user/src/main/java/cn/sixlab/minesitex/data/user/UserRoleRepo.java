@@ -14,7 +14,11 @@ package cn.sixlab.minesitex.data.user;
 
 import cn.sixlab.minesitex.bean.user.entity.MsxUserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 public interface UserRoleRepo extends JpaRepository<MsxUserRole, Integer>{
-
+    
+    List<MsxUserRole> findByUserId(@Param("userId") Integer userId);
 }

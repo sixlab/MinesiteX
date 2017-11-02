@@ -27,13 +27,13 @@ import java.util.List;
 @Service
 public class ShowService {
     private static Logger logger = LoggerFactory.getLogger(ShowService.class);
-    
+
     @Autowired
     private ShowRepo showRepo;
-    
+
     public List<MsxShow> search(String keyword, String status) {
         List<MsxShow> showList = null;
-        
+
         if (StringUtils.isEmpty(keyword) && StringUtils.isEmpty(status)) {
             showList = showRepo.findAll();
         } else if(StringUtils.isEmpty(keyword)){
@@ -43,44 +43,44 @@ public class ShowService {
         }else{
             showList = showRepo.findByStatus(keyword, status);
         }
-    
+
         return showList;
     }
-    
+
     public void addShow(MsxShow show) {
         show.setViewStatus(CONST.SHOW_V_STATUS_ING);
         show.setBeginDate(new Date());
         showRepo.save(show);
-        
+
         //hisService.beginShow(show);
     }
-    
+
     public void updateSeason(Integer id, Integer season) {
         MsxShow show = showRepo.findOne(id);
         show.setShowEpisode(1);
         show.setShowSeason(season);
         show.setUpdateDate(new Date());
         showRepo.save(show);
-        
+
         //hisService.addSeason(show);
     }
-    
+
     public void updateEpisode(Integer id, Integer episode) {
         MsxShow show = showRepo.findOne(id);
         show.setShowEpisode(episode);
         show.setUpdateDate(new Date());
         showRepo.save(show);
-        
+
         //hisService.addEpisode(toolsShow);
     }
-    
+
     public void updateViewStatus(Integer id, String viewStatus) {
         MsxShow show = showRepo.findOne(id);
         show.setViewStatus(viewStatus);
         show.setUpdateDate(new Date());
         showRepo.save(show);
     }
-    
+
     public MsxShow fetchShow(Integer id) {
         return showRepo.findOne(id);
     }

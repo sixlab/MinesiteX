@@ -14,38 +14,20 @@ package cn.sixlab.minesitex.lib.base.model;
 
 import cn.sixlab.minesitex.lib.base.util.JsonUtl;
 
-import java.util.LinkedHashMap;
+import java.io.Serializable;
 
-public class ModelJson extends LinkedHashMap<String, Object> {
+public class ModelJson <T> implements Serializable{
     private boolean success = true;
     private String flag = "";
     private String message = "";
     private int code = 0;
-    
-    public ModelJson() {
-        setSuccess(true);
-        setMessage("");
-        setFlag("");
-        setCode(0);
-    }
-    
-    public int getCode() {
-        return code;
-    }
-    
-    public ModelJson setCode(int code) {
-        put("code", code);
-        this.code = code;
-    
-        return this;
-    }
+    private T data = null;
     
     public boolean isSuccess() {
         return success;
     }
     
-    public ModelJson setSuccess(boolean success) {
-        put("success", success);
+    public ModelJson<T> setSuccess(boolean success) {
         this.success = success;
     
         return this;
@@ -55,8 +37,7 @@ public class ModelJson extends LinkedHashMap<String, Object> {
         return flag;
     }
     
-    public ModelJson setFlag(String flag) {
-        put("flag", flag);
+    public ModelJson<T> setFlag(String flag) {
         this.flag = flag;
     
         return this;
@@ -66,25 +47,29 @@ public class ModelJson extends LinkedHashMap<String, Object> {
         return message;
     }
     
-    public ModelJson setMessage(String message) {
-        put("message", message);
+    public ModelJson<T> setMessage(String message) {
         this.message = message;
     
         return this;
     }
     
-    public ModelJson setErrorMessage(String message) {
-        setSuccess(false);
-        setMessage(message);
+    public int getCode() {
+        return code;
+    }
     
+    public ModelJson<T> setCode(int code) {
+        this.code = code;
+        
         return this;
     }
     
-    public ModelJson setErrorMessage(String message, int code) {
-        setSuccess(false);
-        setMessage(message);
-        setCode(code);
-        
+    public T getData() {
+        return data;
+    }
+    
+    public ModelJson<T> setData(T data) {
+        this.data = data;
+    
         return this;
     }
     

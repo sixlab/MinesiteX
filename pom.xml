@@ -23,7 +23,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-cloud.version>Dalston.SR4</spring-cloud.version>
-        <minesitex.version>${version}</minesitex.version>
+        <minesitex.version>${project.version}</minesitex.version>
     </properties>
 
     <dependencyManagement>
@@ -35,6 +35,18 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>0.9.0</version>
+            </dependency>
+
+            <!-- msx-api -->
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-api-user</artifactId>
+                <version>${minesitex.version}</version>
+            </dependency>
 
             <!-- msx-beans -->
             <dependency>
@@ -42,11 +54,21 @@
                 <artifactId>msx-bean-movie</artifactId>
                 <version>${minesitex.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-bean-user</artifactId>
+                <version>${minesitex.version}</version>
+            </dependency>
 
             <!-- msx-data -->
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
                 <artifactId>msx-data-movie</artifactId>
+                <version>${minesitex.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-data-user</artifactId>
                 <version>${minesitex.version}</version>
             </dependency>
 
@@ -65,13 +87,14 @@
     </dependencyManagement>
 
     <modules>
-        <module>msx-base-zuul</module>
-        <module>msx-base-eureka</module>
         <module>msx-base-config</module>
+        <module>msx-base-eureka</module>
+        <module>msx-base-zuul</module>
 
-        <module>msx-libs</module>
-        <module>msx-data</module>
         <module>msx-beans</module>
+        <module>msx-data</module>
+        <module>msx-libs</module>
         <module>msx-plugins</module>
+        <module>msx-api</module>
     </modules>
 </project>

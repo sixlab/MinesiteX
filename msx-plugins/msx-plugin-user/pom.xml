@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -46,6 +46,31 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-api-user</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-bean-user</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-data-user</artifactId>
         </dependency>
 
         <dependency>

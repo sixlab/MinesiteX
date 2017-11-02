@@ -10,3 +10,6 @@ spring:
       server:
         native:
           search-locations: classpath:/config/, file:./config/
+security:
+  basic:
+    enabled: false

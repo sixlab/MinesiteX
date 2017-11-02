@@ -32,7 +32,6 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 public class RedisConfig extends CachingConfigurerSupport {
     @Bean
     public KeyGenerator keyGenerator() {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n-------------------\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         return (target, method, params) -> {
             StringBuilder sb = new StringBuilder();
             sb.append(target.getClass().getName());

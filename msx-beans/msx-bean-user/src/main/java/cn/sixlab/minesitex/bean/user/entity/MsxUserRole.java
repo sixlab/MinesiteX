@@ -24,6 +24,7 @@ public class MsxUserRole implements Serializable{
     @GeneratedValue
     private Integer id;
     private Integer userId;
+    private String role;
     private String roleName;
     
     public Integer getId() {
@@ -40,6 +41,14 @@ public class MsxUserRole implements Serializable{
     
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+    
+    public String getRole() {
+        return role;
+    }
+    
+    public void setRole(String role) {
+        this.role = role;
     }
     
     public String getRoleName() {

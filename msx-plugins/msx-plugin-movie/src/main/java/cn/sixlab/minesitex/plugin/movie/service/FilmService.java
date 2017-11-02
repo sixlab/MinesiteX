@@ -25,36 +25,36 @@ import java.util.List;
 @Service
 public class FilmService {
     private static Logger logger = LoggerFactory.getLogger(ShowService.class);
-    
+
     @Autowired
     private FilmRepo filmRepo;
-    
+
     public void addFilm(MsxFilm film) {
         filmRepo.save(film);
-    
+
         //hisService.sawFilm(film);
     }
-    
+
     public void updateFilm(MsxFilm film) {
         filmRepo.save(film);
     }
-    
+
     public void viewFilm(Integer id, String name) {
         //hisService.sawFilm(id, name, new Date());
     }
-    
+
     public List<MsxFilm> searchFilm(String keyword) {
         List<MsxFilm> filmList;
-        
+
         if (StringUtils.isEmpty(keyword)) {
             filmList = filmRepo.findAll();
         }else{
             filmList = filmRepo.queryByKeyword(keyword);
         }
-    
+
         return filmList;
     }
-    
+
     public MsxFilm fetchFilm(Integer id) {
         return filmRepo.findOne(id);
     }

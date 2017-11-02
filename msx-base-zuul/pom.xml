@@ -20,6 +20,10 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-eureka</artifactId>
             <exclusions>
                 <exclusion>
@@ -33,16 +37,16 @@
             <artifactId>spring-cloud-starter-zuul</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-feign</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-ribbon</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -59,15 +63,42 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
         </dependency>
 
         <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+        </dependency>
+
+        <!-- msx-api -->
+        <dependency>
+            <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-api-user</artifactId>
+        </dependency>
+
+        <!-- msx-bean -->
+        <dependency>
+            <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-bean-user</artifactId>
+        </dependency>
+
+        <!-- msx-lib -->
+        <dependency>
             <groupId>cn.sixlab.minesitex</groupId>
             <artifactId>msx-lib-base</artifactId>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>cn.sixlab.minesitex</groupId>-->
+            <!--<artifactId>msx-lib-redis</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
