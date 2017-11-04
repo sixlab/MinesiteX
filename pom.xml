@@ -35,10 +35,22 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!-- 其他第三方依赖 -->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt</artifactId>
                 <version>0.9.0</version>
+            </dependency>
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>1.6.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>3.8.1</version>
             </dependency>
 
             <!-- msx-api -->
@@ -59,6 +71,11 @@
                 <artifactId>msx-bean-user</artifactId>
                 <version>${minesitex.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-bean-wx</artifactId>
+                <version>${minesitex.version}</version>
+            </dependency>
 
             <!-- msx-data -->
             <dependency>
@@ -69,6 +86,11 @@
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
                 <artifactId>msx-data-user</artifactId>
+                <version>${minesitex.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-data-wx</artifactId>
                 <version>${minesitex.version}</version>
             </dependency>
 

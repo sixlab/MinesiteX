@@ -25,14 +25,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/user")
 public class UserController extends BaseController{
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
     
     @Autowired
     private UserService service;
     
-    @GetMapping("/user/username/{username}")
+    @GetMapping("/username/{username}")
     public ModelJson<UserAndRoleVo> loadUserByUsername(@PathVariable("username") String username) {
         ModelJson<UserAndRoleVo> json = new ModelJson<>();
         
@@ -42,7 +42,7 @@ public class UserController extends BaseController{
         return json;
     }
     
-    @GetMapping("/user/id/{userId}")
+    @GetMapping("/id/{userId}")
     public ModelJson<UserAndRoleVo> loadUserById(@PathVariable("userId") Integer userId) {
         ModelJson<UserAndRoleVo> json = new ModelJson<>();
     

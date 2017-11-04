@@ -20,6 +20,7 @@
     <modules>
         <module>msx-data-movie</module>
         <module>msx-data-user</module>
+        <module>msx-data-wx</module>
     </modules>
 
 </project>

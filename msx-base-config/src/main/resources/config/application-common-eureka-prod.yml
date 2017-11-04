@@ -2,8 +2,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8600/eureka/
-logging:
-  level: debug
 feign:
   compression:
     request:

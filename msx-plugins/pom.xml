@@ -20,6 +20,7 @@
     <modules>
         <module>msx-plugin-movie</module>
         <module>msx-plugin-user</module>
+        <module>msx-plugin-wx</module>
     </modules>
     
 </project>

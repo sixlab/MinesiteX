@@ -26,7 +26,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -43,13 +42,11 @@
         <dependency>
             <groupId>cn.sixlab.minesitex</groupId>
             <artifactId>msx-lib-base</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>cn.sixlab.minesitex</groupId>
             <artifactId>msx-bean-user</artifactId>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 

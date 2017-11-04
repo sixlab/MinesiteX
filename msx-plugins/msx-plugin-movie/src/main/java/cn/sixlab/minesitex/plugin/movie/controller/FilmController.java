@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping("/movie")
 public class FilmController extends BaseController {
     private static Logger logger = LoggerFactory.getLogger(FilmController.class);
     

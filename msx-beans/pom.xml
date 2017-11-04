@@ -20,6 +20,7 @@
     <modules>
         <module>msx-bean-movie</module>
         <module>msx-bean-user</module>
+        <module>msx-bean-wx</module>
     </modules>
 
 </project>

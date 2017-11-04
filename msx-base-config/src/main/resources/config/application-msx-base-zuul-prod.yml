@@ -3,11 +3,16 @@ server:
 
 zuul:
   routes:
-    msx-articles-api:
-      path: /api/user/**
+    msx-wx:
+      path: /wx/**
+      serviceId: msx-plugin-wx
+      stripPrefix: false
+
+    msx-user:
+      path: /user/**
       serviceId: msx-plugin-user
       stripPrefix: false
-    msx-pages:
+    msx-movie:
       path: /movie/**
       serviceId: msx-plugin-movie
       stripPrefix: false

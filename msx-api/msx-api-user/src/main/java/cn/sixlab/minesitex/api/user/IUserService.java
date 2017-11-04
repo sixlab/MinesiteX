@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient("msx-plugin-user")
 public interface IUserService {
     
-    @GetMapping(value = "/api/user/username/{username}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/user/username/{username}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     ModelJson<UserAndRoleVo> loadUserByUsername(@PathVariable("username") String username);
     
-    @GetMapping(value = "/api/user/id/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/user/id/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     ModelJson<UserAndRoleVo> loadUserById(@RequestParam("userId") Integer userId);
 }

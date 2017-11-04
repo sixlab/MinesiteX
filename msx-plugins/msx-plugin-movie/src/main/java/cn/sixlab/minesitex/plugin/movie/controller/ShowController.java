@@ -12,7 +12,6 @@
  */
 package cn.sixlab.minesitex.plugin.movie.controller;
 
-import cn.sixlab.minesitex.bean.movie.entity.MsxFilm;
 import cn.sixlab.minesitex.bean.movie.entity.MsxShow;
 import cn.sixlab.minesitex.lib.base.BaseController;
 import cn.sixlab.minesitex.lib.base.model.ModelJson;
@@ -20,7 +19,6 @@ import cn.sixlab.minesitex.plugin.movie.service.ShowService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping("/movie")
 public class ShowController extends BaseController{
     private static Logger logger = LoggerFactory.getLogger(ShowController.class);
     
