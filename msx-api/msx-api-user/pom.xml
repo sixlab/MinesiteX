@@ -19,11 +19,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-feign</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>cn.sixlab.minesitex</groupId>
             <artifactId>msx-bean-user</artifactId>
         </dependency>

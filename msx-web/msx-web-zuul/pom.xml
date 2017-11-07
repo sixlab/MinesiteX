@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>MinesiteX</artifactId>
+        <artifactId>msx-web</artifactId>
         <groupId>cn.sixlab.minesitex</groupId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
@@ -15,7 +15,7 @@
     <packaging>jar</packaging>
 
     <name>msx-web-zuul</name>
-    <description>Zuul for MinesiteX</description>
+    <description>Zuul's web server for MinesiteX</description>
 
     <dependencies>
         <!-- Cloud 依赖 -->
@@ -34,8 +34,16 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zuul</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -44,6 +52,16 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-ribbon</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- 第三方依赖 -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
         </dependency>
 
         <!-- 开发依赖 -->
@@ -66,8 +84,28 @@
         <!-- 微服务内部依赖 -->
         <dependency>
             <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-api-user</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.sixlab.minesitex</groupId>
             <artifactId>msx-api-user-feign</artifactId>
         </dependency>
+
+        <!-- bean 依赖 -->
+        <dependency>
+            <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-bean-user</artifactId>
+        </dependency>
+
+        <!-- 内部库 依赖 -->
+        <dependency>
+            <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-lib-base</artifactId>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>cn.sixlab.minesitex</groupId>-->
+            <!--<artifactId>msx-lib-redis</artifactId>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>cn.sixlab.minesitex.base</groupId>

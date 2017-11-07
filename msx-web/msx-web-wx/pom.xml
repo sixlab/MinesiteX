@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>msx-plugins</artifactId>
+        <artifactId>msx-web</artifactId>
         <groupId>cn.sixlab.minesitex</groupId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
@@ -15,7 +15,7 @@
     <packaging>jar</packaging>
 
     <name>msx-web-wx</name>
-    <description>Wei-xin plugin for Minesitex</description>
+    <description>Plugin wei-xin's web server for Minesitex</description>
 
     <dependencies>
         <!-- Cloud 依赖 -->

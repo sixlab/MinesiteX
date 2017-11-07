@@ -14,18 +14,10 @@ package cn.sixlab.minesitex.api.user;
 
 import cn.sixlab.minesitex.bean.user.vo.UserAndRoleVo;
 import cn.sixlab.minesitex.lib.base.model.ModelJson;
-import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient("msx-plugin-user")
 public interface IUserService {
     
-    @GetMapping(value = "/user/username/{username}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    ModelJson<UserAndRoleVo> loadUserByUsername(@PathVariable("username") String username);
+    ModelJson<UserAndRoleVo> loadUserByUsername(String username);
     
-    @GetMapping(value = "/user/id/{userId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    ModelJson<UserAndRoleVo> loadUserById(@RequestParam("userId") Integer userId);
+    ModelJson<UserAndRoleVo> loadUserById(Integer userId);
 }

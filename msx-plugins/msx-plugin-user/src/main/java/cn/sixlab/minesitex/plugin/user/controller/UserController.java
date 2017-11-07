@@ -34,21 +34,14 @@ public class UserController extends BaseController{
     
     @GetMapping("/username/{username}")
     public ModelJson<UserAndRoleVo> loadUserByUsername(@PathVariable("username") String username) {
-        ModelJson<UserAndRoleVo> json = new ModelJson<>();
-        
-        UserAndRoleVo vo = service.loadUserByUsername(username);
-        json.setData(vo);
+        ModelJson<UserAndRoleVo> json = service.loadUserByUsername(username);
         
         return json;
     }
     
     @GetMapping("/id/{userId}")
     public ModelJson<UserAndRoleVo> loadUserById(@PathVariable("userId") Integer userId) {
-        ModelJson<UserAndRoleVo> json = new ModelJson<>();
-    
-        UserAndRoleVo vo = service.loadUserById(userId);
-        json.setData(vo);
-    
+        ModelJson<UserAndRoleVo> json = service.loadUserById(userId);
         return json;
     }
     

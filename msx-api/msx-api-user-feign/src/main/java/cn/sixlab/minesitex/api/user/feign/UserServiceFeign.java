@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient("msx-plugin-user")
-public interface UserServiceImpl extends IUserService {
+public interface UserServiceFeign extends IUserService {
     
     @GetMapping(
             value = {"/user/username/{username}"},

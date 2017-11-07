@@ -23,7 +23,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-cloud.version>Dalston.SR4</spring-cloud.version>
-        <minesitex.version>${project.version}</minesitex.version>
+        <msx.version>${project.version}</msx.version>
     </properties>
 
     <dependencyManagement>
@@ -57,69 +57,82 @@
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
                 <artifactId>msx-api-user</artifactId>
-                <version>${minesitex.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.sixlab.minesitex</groupId>
-                <artifactId>msx-api-user-clz</artifactId>
-                <version>${minesitex.version}</version>
+                <version>${msx.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
                 <artifactId>msx-api-user-feign</artifactId>
-                <version>${minesitex.version}</version>
+                <version>${msx.version}</version>
             </dependency>
 
             <!-- msx-beans -->
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
                 <artifactId>msx-bean-movie</artifactId>
-                <version>${minesitex.version}</version>
+                <version>${msx.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
                 <artifactId>msx-bean-user</artifactId>
-                <version>${minesitex.version}</version>
+                <version>${msx.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
                 <artifactId>msx-bean-wx</artifactId>
-                <version>${minesitex.version}</version>
+                <version>${msx.version}</version>
             </dependency>
 
             <!-- msx-data -->
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
                 <artifactId>msx-data-movie</artifactId>
-                <version>${minesitex.version}</version>
+                <version>${msx.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
                 <artifactId>msx-data-user</artifactId>
-                <version>${minesitex.version}</version>
+                <version>${msx.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
                 <artifactId>msx-data-wx</artifactId>
-                <version>${minesitex.version}</version>
+                <version>${msx.version}</version>
             </dependency>
 
             <!-- msx-libs -->
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
                 <artifactId>msx-lib-base</artifactId>
-                <version>${minesitex.version}</version>
+                <version>${msx.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
                 <artifactId>msx-lib-redis</artifactId>
-                <version>${minesitex.version}</version>
+                <version>${msx.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>cn.sixlab.minesitex.base</groupId>
                 <artifactId>msx-base-zuul</artifactId>
-                <version>${minesitex.version}</version>
+                <version>${msx.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-plugin-movie</artifactId>
+                <version>${msx.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-plugin-user</artifactId>
+                <version>${msx.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-plugin-wx</artifactId>
+                <version>${msx.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

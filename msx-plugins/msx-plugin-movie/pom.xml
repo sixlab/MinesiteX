@@ -18,21 +18,6 @@
     <description>Movie plugin for Minesitex</description>
 
     <dependencies>
-        <!-- Cloud 依赖 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>joda-time</groupId>
-                    <artifactId>joda-time</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -76,18 +61,13 @@
             <groupId>cn.sixlab.minesitex</groupId>
             <artifactId>msx-lib-base</artifactId>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>cn.sixlab.minesitex</groupId>-->
-            <!--<artifactId>msx-lib-redis</artifactId>-->
-        <!--</dependency>-->
     </dependencies>
 
     <build>
-        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
