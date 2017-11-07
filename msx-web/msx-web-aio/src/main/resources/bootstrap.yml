@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: msx-plugin-wx
+  profiles:
+    active: msx-plugin-wx
+  cloud:
+    config:
+      uri: http://localhost:8500/
+      name: application-msx-plugin-wx,application-common-lib,application-common-eureka
+      profile: prod

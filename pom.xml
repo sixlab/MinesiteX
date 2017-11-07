@@ -59,6 +59,16 @@
                 <artifactId>msx-api-user</artifactId>
                 <version>${minesitex.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-api-user-clz</artifactId>
+                <version>${minesitex.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-api-user-feign</artifactId>
+                <version>${minesitex.version}</version>
+            </dependency>
 
             <!-- msx-beans -->
             <dependency>
@@ -109,6 +119,8 @@
     </dependencyManagement>
 
     <modules>
+        <module>msx-api</module>
+
         <module>msx-base-config</module>
         <module>msx-base-eureka</module>
         <module>msx-base-zuul</module>
@@ -116,7 +128,8 @@
         <module>msx-beans</module>
         <module>msx-data</module>
         <module>msx-libs</module>
+
         <module>msx-plugins</module>
-        <module>msx-api</module>
+        <module>msx-web</module>
     </modules>
 </project>
