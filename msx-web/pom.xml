@@ -18,6 +18,11 @@
     <description>Web server for MinesiteX</description>
 
     <modules>
+        <module>msx-web-aio</module>
+        <module>msx-web-movie</module>
+        <module>msx-web-user</module>
+        <module>msx-web-wx</module>
+        <module>msx-web-zuul</module>
     </modules>
 
 </project>

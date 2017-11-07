@@ -10,11 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.sixlab.minesitex</groupId>
-    <artifactId>msx-plugin-wx</artifactId>
+    <artifactId>msx-web-wx</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>msx-plugin-wx</name>
+    <name>msx-web-wx</name>
     <description>Wei-xin plugin for Minesitex</description>
 
     <dependencies>

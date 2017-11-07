@@ -18,40 +18,14 @@
     <description>Zuul for MinesiteX</description>
 
     <dependencies>
-        <!-- Cloud 依赖 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>joda-time</groupId>
-                    <artifactId>joda-time</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <!-- Spring 依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zuul</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-feign</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-ribbon</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -86,10 +60,10 @@
             <groupId>cn.sixlab.minesitex</groupId>
             <artifactId>msx-api-user</artifactId>
         </dependency>
-        <dependency>
-            <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-api-user-feign</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>cn.sixlab.minesitex</groupId>-->
+            <!--<artifactId>msx-api-user-feign</artifactId>-->
+        <!--</dependency>-->
 
         <!-- bean 依赖 -->
         <dependency>
@@ -102,17 +76,13 @@
             <groupId>cn.sixlab.minesitex</groupId>
             <artifactId>msx-lib-base</artifactId>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>cn.sixlab.minesitex</groupId>-->
-            <!--<artifactId>msx-lib-redis</artifactId>-->
-        <!--</dependency>-->
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
