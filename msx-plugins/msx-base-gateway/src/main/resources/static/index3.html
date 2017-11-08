@@ -1,22 +1,16 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="renderer" content="webkit" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>HTML5+JS全屏星空特效</title>
 
-    <title>Sixlab·六楼实验室 | 六楼的雨</title>
-
-    <link href="/static/css/index_style.css" rel="stylesheet" type="text/css" />
+    <link href="css/index_style.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 
 </head>
 <body>
 
-<!-- HEADER STAR -->
+<!-----HEADER STAR----->
 
 
 <div class="header" id="demo">
@@ -24,11 +18,16 @@
 
     <div class="topcn" style="font:20px/18px 'microsoft yahei'; color:#0FF;text-align:center;">
         <p>&nbsp;</p>
-        <p style="font-size: 50px;">六楼实验室</p>
+        <p>内容区域</p>
     </div>
 
     <div class="nav">
-        <a class="gv" href="https://blog.sixlab.cn" style="margin-left: 335px;">进入我的博客</a>
+        <a class="gv" href="#">建站服务</a>
+        <a class="gv" href="#">仿站技术</a>
+        <a class="gv" href="#">作品案例</a>
+        <a class="gv" href="#">工 作 站</a>
+        <a class="gv" href="#">资讯中心</a>
+        <a class="gv" href="#">在线帮助</a>
     </div>
 
     <div class="canvaszz"></div>
@@ -36,24 +35,22 @@
 </div>
 
 
-<!-- HEADER END -->
+<!-----HEADER END----->
 
 <!--用来解决视频右键菜单，用于视频上面的遮罩层 START-->
 <div class="videozz"></div>
 <!--用来解决视频右键菜单，用于视频上面的遮罩层 END-->
 
 <!--音乐 START-->
-<!--<audio controls="true" autoplay="autoplay" class="audio">-->
-<!--<source src="css/Music.mp3" type="audio/mp3">-->
-<!--<source src="css/Music.ogg" type="audio/ogg">-->
-<!--<source src="css/Music.aac" type="audio/mp4">-->
-<!--</audio>-->
+<#--<audio controls="true" autoplay="autoplay" class="audio">-->
+    <#--<source src="css/Music.mp3" type="audio/mp3">-->
+    <#--<source src="css/Music.ogg" type="audio/ogg">-->
+    <#--<source src="css/Music.aac" type="audio/mp4">-->
+<#--</audio>-->
 <!--音乐 END-->
 
 
-<script th:inline="javascript">
-    /*<![CDATA[*/
-
+<script>
     //宇宙特效
     "use strict";
     var canvas = document.getElementById('canvas'),
@@ -146,7 +143,7 @@
         ctx.globalCompositeOperation = 'source-over';
         ctx.globalAlpha = 0.5; //尾巴
         ctx.fillStyle = 'hsla(' + hue + ', 64%, 6%, 2)';
-        ctx.fillRect(0, 0, w, h);
+        ctx.fillRect(0, 0, w, h)
 
         ctx.globalCompositeOperation = 'lighter';
         for (var i = 1, l = stars.length; i < l; i++) {
@@ -158,7 +155,6 @@
     }
 
     animation();
-    /*]]>*/
 </script>
 
 </body>
