@@ -10,7 +10,7 @@
  * @time: 2017/11/1 22:06
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.minesitex.base.zuul;
+package cn.sixlab.minesitex.base.gateway;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

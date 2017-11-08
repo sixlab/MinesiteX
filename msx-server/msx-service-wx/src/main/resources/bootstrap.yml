@@ -1,10 +1,10 @@
 spring:
   application:
-    name: msx-plugin-wx
+    name: msx-service-wx
   profiles:
-    active: msx-plugin-wx
+    active: msx-service-wx
   cloud:
     config:
       uri: http://localhost:8500/
-      name: application-msx-plugin-wx,application-common-lib,application-common-eureka
+      name: application-msx-service-wx,application-common-lib,application-common-service
       profile: prod

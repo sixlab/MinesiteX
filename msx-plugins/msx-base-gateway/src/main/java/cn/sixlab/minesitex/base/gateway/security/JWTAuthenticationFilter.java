@@ -10,7 +10,7 @@
  * @time: 2017/11/1 23:18
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.minesitex.base.zuul.security;
+package cn.sixlab.minesitex.base.gateway.security;
 
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.authentication.AuthenticationManager;

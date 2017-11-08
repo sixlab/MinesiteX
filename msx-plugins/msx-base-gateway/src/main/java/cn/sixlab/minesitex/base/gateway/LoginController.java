@@ -10,7 +10,7 @@
  * @time: 2017/10/9 09:22
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.minesitex.base.zuul;
+package cn.sixlab.minesitex.base.gateway;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

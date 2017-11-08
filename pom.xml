@@ -111,9 +111,10 @@
                 <version>${msx.version}</version>
             </dependency>
 
+            <!-- msx-plugins -->
             <dependency>
                 <groupId>cn.sixlab.minesitex.base</groupId>
-                <artifactId>msx-base-zuul</artifactId>
+                <artifactId>msx-base-gateway</artifactId>
                 <version>${msx.version}</version>
             </dependency>
 

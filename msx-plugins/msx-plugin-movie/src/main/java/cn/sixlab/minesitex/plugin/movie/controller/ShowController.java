@@ -12,13 +12,16 @@
  */
 package cn.sixlab.minesitex.plugin.movie.controller;
 
+import cn.sixlab.minesitex.api.user.IUserService;
 import cn.sixlab.minesitex.bean.movie.entity.MsxShow;
+import cn.sixlab.minesitex.bean.user.vo.UserAndRoleVo;
 import cn.sixlab.minesitex.lib.base.BaseController;
 import cn.sixlab.minesitex.lib.base.model.ModelJson;
 import cn.sixlab.minesitex.plugin.movie.service.ShowService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,6 +37,18 @@ public class ShowController extends BaseController{
     @Autowired
     private ShowService service;
     
+    @Autowired
+    private IUserService iUserService;
+    
+    @GetMapping(value = "/show/user")
+    public ModelJson searchTest() {
+        logger.debug("测试 api 调用>>>");
+        
+        ModelJson<UserAndRoleVo> userAndRoleVoModelJson = iUserService.loadUserByUsername("admin");
+        
+        return userAndRoleVoModelJson;
+    }
+    
     /**
      * @param keyword
      * @param showStatus
@@ -43,7 +58,9 @@ public class ShowController extends BaseController{
     public ModelJson search(String keyword,String showStatus) {
         logger.debug("搜索电视剧>>>"+keyword);
         ModelJson<List<MsxShow>> json = new ModelJson<>();
-        
+    
+        ModelJson<UserAndRoleVo> userAndRoleVoModelJson = iUserService.loadUserByUsername("admin");
+    
         List<MsxShow> showList = service.search(keyword, showStatus);
         
         json.setData(showList);

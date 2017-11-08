@@ -18,7 +18,7 @@
     <description>Plugins micro-service for MinesiteX</description>
 
     <modules>
-        <module>msx-base-zuul</module>
+        <module>msx-base-gateway</module>
 
         <module>msx-plugin-movie</module>
         <module>msx-plugin-user</module>

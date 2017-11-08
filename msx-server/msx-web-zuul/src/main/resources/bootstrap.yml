@@ -1,12 +1,12 @@
 spring:
   application:
-    name: msx-base-zuul
+    name: msx-web-zuul
   profiles:
-    active: msx-base-zuul
+    active: msx-web-zuul
   cloud:
     config:
       uri: http://localhost:8500/
-      name: application-msx-base-zuul,application-common-lib,application-common-eureka
+      name: application-msx-web-zuul,application-common-lib,application-common-service
       profile: prod
 zuul:
   sensitive-headers:

@@ -109,7 +109,7 @@
 
         <dependency>
             <groupId>cn.sixlab.minesitex.base</groupId>
-            <artifactId>msx-base-zuul</artifactId>
+            <artifactId>msx-base-gateway</artifactId>
         </dependency>
     </dependencies>
 

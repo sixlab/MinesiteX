@@ -1,10 +1,10 @@
 spring:
   application:
-    name: msx-plugin-user
+    name: msx-service-user
   profiles:
-    active: msx-plugin-user
+    active: msx-service-user
   cloud:
     config:
       uri: http://localhost:8500/
-      name: application-msx-plugin-user,application-common-lib,application-common-eureka
+      name: application-msx-service-user,application-common-lib,application-common-service
       profile: prod

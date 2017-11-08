@@ -1,10 +1,10 @@
 spring:
   application:
-    name: msx-plugin-movie
+    name: msx-service-movie
   profiles:
-    active: msx-plugin-movie
+    active: msx-service-movie
   cloud:
     config:
       uri: http://localhost:8500/
-      name: application-msx-plugin-movie,application-common-lib,application-common-eureka
+      name: application-msx-service-movie,application-common-lib,application-common-service
       profile: prod

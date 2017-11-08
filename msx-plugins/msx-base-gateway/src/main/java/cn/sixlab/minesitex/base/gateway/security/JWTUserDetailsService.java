@@ -10,7 +10,7 @@
  * @time: 2017/6/20
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.minesitex.base.zuul.security;
+package cn.sixlab.minesitex.base.gateway.security;
 
 import cn.sixlab.minesitex.api.user.IUserService;
 import cn.sixlab.minesitex.bean.user.entity.MsxUserRole;

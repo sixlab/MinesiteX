@@ -5,16 +5,16 @@ zuul:
   routes:
     msx-wx:
       path: /wx/**
-      serviceId: msx-plugin-wx
+      serviceId: msx-service-wx
       stripPrefix: false
 
     msx-user:
       path: /user/**
-      serviceId: msx-plugin-user
+      serviceId: msx-service-user
       stripPrefix: false
     msx-movie:
       path: /movie/**
-      serviceId: msx-plugin-movie
+      serviceId: msx-service-movie
       stripPrefix: false
 
 #    msx-users:

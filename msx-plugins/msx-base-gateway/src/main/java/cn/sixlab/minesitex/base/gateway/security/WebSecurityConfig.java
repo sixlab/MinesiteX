@@ -10,7 +10,7 @@
  * @time: 2017/6/20
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.minesitex.base.zuul.security;
+package cn.sixlab.minesitex.base.gateway.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

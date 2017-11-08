@@ -10,11 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.sixlab.minesitex.base</groupId>
-    <artifactId>msx-base-zuul</artifactId>
+    <artifactId>msx-base-gateway</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>msx-base-zuul</name>
+    <name>msx-base-gateway</name>
     <description>Zuul for MinesiteX</description>
 
     <dependencies>

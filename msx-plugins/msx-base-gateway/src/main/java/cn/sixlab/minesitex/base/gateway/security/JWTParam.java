@@ -10,7 +10,7 @@
  * @time: 2017/11/2 10:44
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.minesitex.base.zuul.security;
+package cn.sixlab.minesitex.base.gateway.security;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
