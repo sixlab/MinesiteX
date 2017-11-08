@@ -17,12 +17,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JWTParam {
+    
     @Value("${jwt.header}")
     private String jwtHeader;
+    
     @Value("${jwt.secret}")
     private String jwtSecret;
+    
     @Value("${jwt.expiration}")
     private int jwtExpiration;
+    
     @Value("${jwt.tokenHead}")
     private String jwtTokenHead;
     

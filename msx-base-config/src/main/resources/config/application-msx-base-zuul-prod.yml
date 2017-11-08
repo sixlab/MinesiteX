@@ -40,5 +40,5 @@ spring:
 jwt:
   header: Authorization
   secret: MinesiteX
-  expiration: 604800
-  tokenHead: "MinesiteX "
+  expiration: 604800000
+  tokenHead: "Bearer "

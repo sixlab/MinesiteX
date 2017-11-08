@@ -12,12 +12,14 @@
  */
 package cn.sixlab.minesitex.base.zuul.security;
 
+import cn.sixlab.minesitex.lib.base.model.ModelJson;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -25,8 +27,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 验证用户名密码正确后，生成一个token，并将token返回给客户端
@@ -73,11 +78,30 @@ public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
             FilterChain chain,
             Authentication auth) throws IOException, ServletException {
         
+        String username = ((User) auth.getPrincipal()).getUsername();
+        long expiration = System.currentTimeMillis() + jwtParam.getJwtExpiration();
+    
         String token = Jwts.builder()
-                .setSubject(((org.springframework.security.core.userdetails.User) auth.getPrincipal()).getUsername())
-                .setExpiration(new Date(System.currentTimeMillis() + jwtParam.getJwtExpiration()))
+                .setSubject(username)
+                .setExpiration(new Date(expiration))
                 .signWith(SignatureAlgorithm.HS512, jwtParam.getJwtSecret())
                 .compact();
-        res.addHeader(jwtParam.getJwtHeader(), jwtParam.getJwtTokenHead() + token);
+        
+        token = jwtParam.getJwtTokenHead() + token;
+        
+        res.addHeader(jwtParam.getJwtHeader(), token);
+    
+        ModelJson<Map> json = new ModelJson<>();
+        Map data = new HashMap();
+        data.put("token", token);
+        data.put("expiration", expiration);
+        
+        res.setCharacterEncoding("UTF-8");
+        res.setContentType("application/json");
+        
+        PrintWriter writer = res.getWriter();
+        writer.write(json.setData(data).toString());
+        writer.flush();
+        writer.close();
     }
 }

@@ -1,32 +1,22 @@
+server:
+  port: 8800
+  compression:
+    enabled: true
+    mime-types: application/json,text/xml,application/xml
+    min-response-size: 2048
+
 spring:
   application:
     name: msx-web-aio
   profiles:
     active: msx-web-aio
-server:
-  port: 8800
 
-spring:
   thymeleaf:
     cache: false
   mvc:
     static-path-pattern: /static/**
 #  resources:
 #    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/
-
-jwt:
-  header: Authorization
-  secret: MinesiteX
-  expiration: 604800
-  tokenHead: "MinesiteX "
-
-wx:
-  token: 123
-  key: qwe
-  appId: asd
-  appSecret: zxc
-
-spring:
 
   # spring data redis 配置
   redis:
@@ -68,8 +58,14 @@ spring:
 logging:
   level: debug
 
-server:
-  compression:
-    enabled: true
-    mime-types: application/json,text/xml,application/xml
-    min-response-size: 2048
+jwt:
+  header: Authorization
+  secret: MinesiteX
+  expiration: 604800000
+  tokenHead: "Bearer "
+
+wx:
+  token: 123
+  key: qwe
+  appId: asd
+  appSecret: zxc
