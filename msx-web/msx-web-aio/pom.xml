@@ -32,12 +32,6 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-        <!-- 第三方依赖 -->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-        </dependency>
-
         <!-- 开发依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -53,28 +47,6 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
-        </dependency>
-
-        <!-- 微服务内部依赖 -->
-        <dependency>
-            <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-api-user</artifactId>
-        </dependency>
-
-        <!-- bean 依赖 -->
-        <dependency>
-            <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-bean-user</artifactId>
-        </dependency>
-
-        <!-- 内部库 依赖 -->
-        <dependency>
-            <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-lib-base</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-lib-redis</artifactId>
         </dependency>
 
         <dependency>
@@ -96,6 +68,7 @@
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
