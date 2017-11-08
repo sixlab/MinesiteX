@@ -5,13 +5,13 @@
     <parent>
         <artifactId>msx-server</artifactId>
         <groupId>cn.sixlab.minesitex</groupId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>msx.0.2.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.sixlab.minesitex</groupId>
     <artifactId>msx-service-movie</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>msx.0.2.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>msx-service-movie</name>
