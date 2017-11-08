@@ -3,48 +3,33 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>msx-web</artifactId>
+        <artifactId>msx-server</artifactId>
         <groupId>cn.sixlab.minesitex</groupId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.sixlab.minesitex</groupId>
-    <artifactId>msx-web-wx</artifactId>
+    <artifactId>msx-web-aio</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>msx-web-wx</name>
-    <description>Plugin wei-xin's web server for Minesitex</description>
+    <name>msx-web-aio</name>
+    <description>All-in-one web server for Minesitex</description>
 
     <dependencies>
-        <!-- Cloud 依赖 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>joda-time</groupId>
-                    <artifactId>joda-time</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+        <!-- Spring 依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
         <!-- 开发依赖 -->
@@ -58,26 +43,27 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
         </dependency>
-
         <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
-        <!-- repo 依赖 -->
         <dependency>
-            <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-data-wx</artifactId>
-        </dependency>
-
-        <!-- 内部库 依赖 -->
-        <dependency>
-            <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-lib-base</artifactId>
+            <groupId>cn.sixlab.minesitex.base</groupId>
+            <artifactId>msx-base-zuul</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-lib-redis</artifactId>
+            <artifactId>msx-plugin-movie</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-plugin-user</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-plugin-wx</artifactId>
         </dependency>
     </dependencies>
 

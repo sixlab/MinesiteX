@@ -139,16 +139,10 @@
 
     <modules>
         <module>msx-api</module>
-
-        <module>msx-base-config</module>
-        <module>msx-base-eureka</module>
-        <module>msx-base-zuul</module>
-
         <module>msx-beans</module>
         <module>msx-data</module>
         <module>msx-libs</module>
-
         <module>msx-plugins</module>
-        <module>msx-web</module>
+        <module>msx-server</module>
     </modules>
 </project>
