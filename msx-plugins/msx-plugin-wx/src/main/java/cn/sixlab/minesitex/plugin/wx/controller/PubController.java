@@ -79,7 +79,7 @@ public class PubController extends BaseController{
                     "<FromUserName><![CDATA[sixlab]]></FromUserName>" +
                     "<CreateTime>" + String.valueOf(new Date().getTime() / 1000) + "</CreateTime>" +
                     "<MsgType><![CDATA[text]]></MsgType>" +
-                    "<Content><![CDATA[收到你的消息了，更多功能敬请期待。]]></Content>" +
+                    "<Content><![CDATA[消息已收到，更多功能敬请期待。]]></Content>" +
                     "</xml>";
         }
     
