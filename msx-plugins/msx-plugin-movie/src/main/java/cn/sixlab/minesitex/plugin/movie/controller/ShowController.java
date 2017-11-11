@@ -15,7 +15,6 @@ package cn.sixlab.minesitex.plugin.movie.controller;
 import cn.sixlab.minesitex.api.user.IUserService;
 import cn.sixlab.minesitex.bean.movie.entity.MsxShow;
 import cn.sixlab.minesitex.bean.user.vo.UserAndRoleVo;
-import cn.sixlab.minesitex.lib.base.BaseController;
 import cn.sixlab.minesitex.lib.base.model.ModelJson;
 import cn.sixlab.minesitex.plugin.movie.service.ShowService;
 import org.slf4j.Logger;
@@ -33,7 +32,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/movie")
-public class ShowController extends BaseController{
+public class ShowController{
     private static Logger logger = LoggerFactory.getLogger(ShowController.class);
     
     @Autowired

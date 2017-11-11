@@ -13,7 +13,6 @@
 package cn.sixlab.minesitex.plugin.movie.controller;
 
 import cn.sixlab.minesitex.bean.movie.entity.MsxFilm;
-import cn.sixlab.minesitex.lib.base.BaseController;
 import cn.sixlab.minesitex.lib.base.model.ModelJson;
 import cn.sixlab.minesitex.plugin.movie.service.FilmService;
 import org.slf4j.Logger;
@@ -30,7 +29,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/movie")
-public class FilmController extends BaseController {
+public class FilmController{
     private static Logger logger = LoggerFactory.getLogger(FilmController.class);
     
     @Autowired

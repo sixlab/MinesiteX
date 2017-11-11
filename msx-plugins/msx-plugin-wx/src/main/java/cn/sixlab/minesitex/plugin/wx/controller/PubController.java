@@ -13,7 +13,6 @@
 package cn.sixlab.minesitex.plugin.wx.controller;
 
 import cn.sixlab.minesitex.bean.wx.entity.MsxWxMsg;
-import cn.sixlab.minesitex.lib.base.BaseController;
 import cn.sixlab.minesitex.plugin.wx.service.WxService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +29,7 @@ import java.util.Date;
 
 @RestController
 @RequestMapping("/wx/pub")
-public class PubController extends BaseController{
+public class PubController{
     private static Logger logger = LoggerFactory.getLogger(PubController.class);
     
     @Autowired

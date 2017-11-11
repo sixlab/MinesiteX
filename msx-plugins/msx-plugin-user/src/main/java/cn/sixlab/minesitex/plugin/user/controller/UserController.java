@@ -13,7 +13,6 @@
 package cn.sixlab.minesitex.plugin.user.controller;
 
 import cn.sixlab.minesitex.bean.user.vo.UserAndRoleVo;
-import cn.sixlab.minesitex.lib.base.BaseController;
 import cn.sixlab.minesitex.lib.base.model.ModelJson;
 import cn.sixlab.minesitex.plugin.user.service.UserService;
 import org.slf4j.Logger;
@@ -26,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/user")
-public class UserController extends BaseController{
+public class UserController{
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
     
     @Autowired
