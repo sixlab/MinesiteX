@@ -47,15 +47,16 @@ public class ShowService {
         return showList;
     }
 
-    public void addShow(MsxShow show) {
+    public MsxShow addShow(MsxShow show) {
         show.setViewStatus(CONST.SHOW_V_STATUS_ING);
         show.setBeginDate(new Date());
         showRepo.save(show);
 
         //hisService.beginShow(show);
+        return show;
     }
 
-    public void updateSeason(Integer id, Integer season) {
+    public MsxShow updateSeason(Integer id, Integer season) {
         MsxShow show = showRepo.findOne(id);
         show.setShowEpisode(1);
         show.setShowSeason(season);
@@ -63,22 +64,36 @@ public class ShowService {
         showRepo.save(show);
 
         //hisService.addSeason(show);
+        return showRepo.findOne(id);
     }
 
-    public void updateEpisode(Integer id, Integer episode) {
+    public MsxShow updateEpisode(Integer id, Integer episode) {
         MsxShow show = showRepo.findOne(id);
         show.setShowEpisode(episode);
         show.setUpdateDate(new Date());
         showRepo.save(show);
 
         //hisService.addEpisode(toolsShow);
+        return showRepo.findOne(id);
     }
 
-    public void updateViewStatus(Integer id, String viewStatus) {
+    public MsxShow updateViewStatus(Integer id, String viewStatus) {
         MsxShow show = showRepo.findOne(id);
         show.setViewStatus(viewStatus);
         show.setUpdateDate(new Date());
         showRepo.save(show);
+        
+        return showRepo.findOne(id);
+    }
+    
+    public MsxShow updateSeasonEpisode(Integer id, Integer season, Integer episode) {
+        MsxShow show = showRepo.findOne(id);
+        show.setShowSeason(season);
+        show.setShowEpisode(episode);
+        show.setUpdateDate(new Date());
+        showRepo.save(show);
+        
+        return showRepo.findOne(id);
     }
 
     public MsxShow fetchShow(Integer id) {

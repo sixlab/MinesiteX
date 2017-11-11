@@ -76,10 +76,11 @@ public class ShowController{
     @PostMapping(value = "/show")
     public ModelJson add(MsxShow show) {
         logger.debug("添加剧集>>>");
-        ModelJson json = new ModelJson();
-        
-        service.addShow(show);
-        
+        ModelJson<MsxShow> json = new ModelJson();
+    
+        show = service.addShow(show);
+        json.setData(show);
+    
         return json;
     }
     
@@ -101,6 +102,27 @@ public class ShowController{
     }
     
     /**
+     * 更新进度
+     *
+     * @param id
+     * @param season
+     * @return
+     */
+    @PutMapping(value = "/show/{id}/season/{season}/episode/{episode}")
+    public ModelJson updateSeasonEpisode(@PathVariable Integer id, @PathVariable Integer season,
+            @PathVariable Integer episode) {
+        logger.debug("更新进度 s>>>", id);
+        logger.debug("更新进度 s>>>", season);
+        logger.debug("更新进度 s>>>", episode);
+        ModelJson<MsxShow> json = new ModelJson();
+    
+        MsxShow show = service.updateSeasonEpisode(id, season, episode);
+        json.setData(show);
+        
+        return json;
+    }
+    
+    /**
      * 更新进度至season季第1集
      *
      * @param id
@@ -111,9 +133,10 @@ public class ShowController{
     public ModelJson updateSeason(@PathVariable Integer id, @PathVariable Integer season) {
         logger.debug("更新进度 s>>>", id);
         logger.debug("更新进度 s>>>", season);
-        ModelJson json = new ModelJson();
-        
-        service.updateSeason(id, season);
+        ModelJson<MsxShow> json = new ModelJson();
+    
+        MsxShow show = service.updateSeason(id, season);
+        json.setData(show);
         
         return json;
     }
@@ -129,9 +152,10 @@ public class ShowController{
     public ModelJson updateEpisode(@PathVariable Integer id, @PathVariable Integer episode) {
         logger.debug("更新进度 e>>>", id);
         logger.debug("更新进度 e>>>", episode);
-        ModelJson json = new ModelJson();
-        
-        service.updateEpisode(id, episode);
+        ModelJson<MsxShow> json = new ModelJson();
+    
+        MsxShow show = service.updateEpisode(id, episode);
+        json.setData(show);
         
         return json;
     }
@@ -150,9 +174,10 @@ public class ShowController{
     public ModelJson updateEpisode(@PathVariable Integer id, @PathVariable String status) {
         logger.debug("修改观看状态>>>", id);
         logger.debug("修改观看状态>>>", status);
-        ModelJson json = new ModelJson();
-        
-        service.updateViewStatus(id, status);
+        ModelJson<MsxShow> json = new ModelJson();
+    
+        MsxShow show = service.updateViewStatus(id, status);
+        json.setData(show);
         
         return json;
     }
