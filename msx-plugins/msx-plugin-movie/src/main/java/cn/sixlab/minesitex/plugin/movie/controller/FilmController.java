@@ -19,7 +19,9 @@ import cn.sixlab.minesitex.plugin.movie.service.FilmService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,7 +42,7 @@ public class FilmController extends BaseController {
      * @param film
      * @return
      */
-    @RequestMapping(value = "/film", method = RequestMethod.POST)
+    @PostMapping(value = "/film")
     public ModelJson add(MsxFilm film) {
         logger.debug("添加电影>>>");
         ModelJson json = new ModelJson();
@@ -92,7 +94,7 @@ public class FilmController extends BaseController {
      * @param keyword
      * @return
      */
-    @RequestMapping(value = "/film", method = RequestMethod.GET)
+    @GetMapping(value = "/film")
     public ModelJson search(String keyword) {
         logger.debug("搜索电影>>>", keyword);
         ModelJson<List<MsxFilm>> json = new ModelJson<>();

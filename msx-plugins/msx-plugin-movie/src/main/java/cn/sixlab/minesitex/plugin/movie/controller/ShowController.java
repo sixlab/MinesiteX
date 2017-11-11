@@ -23,6 +23,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,12 +56,10 @@ public class ShowController extends BaseController{
      * @param showStatus
      * @return
      */
-    @RequestMapping(value = "/show", method = RequestMethod.GET)
+    @GetMapping(value = "/show")
     public ModelJson search(String keyword,String showStatus) {
         logger.debug("搜索电视剧>>>"+keyword);
         ModelJson<List<MsxShow>> json = new ModelJson<>();
-    
-        ModelJson<UserAndRoleVo> userAndRoleVoModelJson = iUserService.loadUserByUsername("admin");
     
         List<MsxShow> showList = service.search(keyword, showStatus);
         
@@ -74,7 +74,7 @@ public class ShowController extends BaseController{
      * @param show
      * @return
      */
-    @RequestMapping(value = "/show", method = RequestMethod.POST)
+    @PostMapping(value = "/show")
     public ModelJson add(MsxShow show) {
         logger.debug("添加剧集>>>");
         ModelJson json = new ModelJson();
@@ -90,7 +90,7 @@ public class ShowController extends BaseController{
      * @param id
      * @return
      */
-    @RequestMapping(value = "/show/{id}", method = RequestMethod.PUT)
+    @GetMapping(value = "/show/{id}")
     public ModelJson fetchShow(@PathVariable Integer id) {
         logger.debug("获取剧集>>>", id);
         ModelJson<MsxShow> json = new ModelJson<>();
@@ -108,7 +108,7 @@ public class ShowController extends BaseController{
      * @param season
      * @return
      */
-    @RequestMapping(value = "/show/{id}/season/{season}", method = RequestMethod.PUT)
+    @PutMapping(value = "/show/{id}/season/{season}")
     public ModelJson updateSeason(@PathVariable Integer id, @PathVariable Integer season) {
         logger.debug("更新进度 s>>>", id);
         logger.debug("更新进度 s>>>", season);
@@ -126,7 +126,7 @@ public class ShowController extends BaseController{
      * @param episode
      * @return
      */
-    @RequestMapping(value = "/show/{id}/episode/{episode}", method = RequestMethod.PUT)
+    @PutMapping(value = "/show/{id}/episode/{episode}")
     public ModelJson updateEpisode(@PathVariable Integer id, @PathVariable Integer episode) {
         logger.debug("更新进度 e>>>", id);
         logger.debug("更新进度 e>>>", episode);
