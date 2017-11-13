@@ -13,6 +13,7 @@
 package cn.sixlab.minesitex.plugin.movie.controller;
 
 import cn.sixlab.minesitex.bean.movie.entity.MsxFilm;
+import cn.sixlab.minesitex.lib.base.BaseController;
 import cn.sixlab.minesitex.lib.base.model.ModelJson;
 import cn.sixlab.minesitex.plugin.movie.service.FilmService;
 import org.slf4j.Logger;
@@ -21,15 +22,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/movie")
-public class FilmController{
+public class FilmController extends BaseController{
     private static Logger logger = LoggerFactory.getLogger(FilmController.class);
     
     @Autowired
@@ -58,7 +59,7 @@ public class FilmController{
      * @param film
      * @return
      */
-    @RequestMapping(value = "/film/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/film/{id}")
     public ModelJson update(@PathVariable Integer id, MsxFilm film) {
         logger.debug("更新电影>>>", id);
         
@@ -71,16 +72,33 @@ public class FilmController{
     }
     
     /**
+     * 获取最近电影
+     *
+     * @param num
+     * @return
+     */
+    @GetMapping(value = "/film/recent/{num}")
+    public ModelJson fetchRecentFilm(@PathVariable Integer num) {
+        logger.debug("获取电影>>>", num);
+        ModelJson<List<MsxFilm>> json = new ModelJson<>();
+    
+        List<MsxFilm> filmList = service.fetchRecentFilm(num);
+        json.setData(filmList);
+        
+        return json;
+    }
+    
+    /**
      * 获取某一部电影
      *
      * @param id
      * @return
      */
-    @RequestMapping(value = "/film/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/film/{id}")
     public ModelJson fetchFilm(@PathVariable Integer id) {
         logger.debug("获取电影>>>", id);
         ModelJson<MsxFilm> json = new ModelJson<>();
-    
+        
         MsxFilm film = service.fetchFilm(id);
         json.setData(film);
         
@@ -112,7 +130,7 @@ public class FilmController{
      * @param name
      * @return
      */
-    @RequestMapping(value = "/film/{id}/view/{name}", method = RequestMethod.POST)
+    @PostMapping(value = "/film/{id}/view/{name}")
     public ModelJson viewFilm(@PathVariable Integer id, @PathVariable String name) {
         logger.debug("重看电影>>>", id);
         logger.debug("重看电影>>>", name);

@@ -24,6 +24,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -52,7 +53,10 @@ public class UserService implements IUserService{
         UserAndRoleVo vo = new UserAndRoleVo();
         vo.setUser(user);
     
-        List<MsxUserRole> roleList = roleRepo.findByUserId(user.getId());
+        List<MsxUserRole> roleList = new ArrayList<>();
+        if(null!=user){
+            roleList = roleRepo.findByUserId(user.getId());
+        }
         vo.setRoleList(roleList);
     
         return json.setData(vo);
