@@ -26,7 +26,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -171,7 +170,7 @@ public class ShowController extends BaseController{
      * @return 处理结果
      * @since 0.1.0
      */
-    @RequestMapping(value = "/show/{id}/viewStatus/{status}", method = RequestMethod.PUT)
+    @PutMapping(value = "/show/{id}/viewStatus/{status}")
     public ModelJson updateEpisode(@PathVariable Integer id, @PathVariable String status) {
         logger.debug("修改观看状态>>>", id);
         logger.debug("修改观看状态>>>", status);

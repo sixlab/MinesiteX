@@ -14,6 +14,7 @@ package cn.sixlab.minesitex.plugin.wx.service;
 
 import cn.sixlab.minesitex.bean.wx.entity.MsxWxMsg;
 import cn.sixlab.minesitex.data.wx.WxMsgRepo;
+import cn.sixlab.minesitex.lib.base.model.ModelJson;
 import cn.sixlab.minesitex.lib.base.util.InputStreamUtil;
 import cn.sixlab.minesitex.lib.base.util.JsonUtl;
 import cn.sixlab.minesitex.lib.base.util.Sha1Utils;
@@ -100,9 +101,9 @@ public class WxService {
     
     public MsxWxMsg dealMsg(InputStream is) {
         String message = InputStreamUtil.readString(is);
-    
+        
         MsxWxMsg wxMsg = WxUtil.saveMsg(message, msgRepo);
-
+        
         return wxMsg;
         //template.convertAndSend(MqTopic.WX_SAVE_MSG, me);
     }
@@ -136,7 +137,6 @@ public class WxService {
     /**
      * 给微信用户发送客服消息-文本类型
      *
-     * @param accessToken token
      * @param openId      用户 OpenId
      * @param message     文本消息
      */
@@ -165,5 +165,11 @@ public class WxService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public ModelJson<MsxWxMsg> fetchMsg(Integer id) {
+        MsxWxMsg wxMsg = msgRepo.findOne(id);
+    
+        return new ModelJson<MsxWxMsg>().setData(wxMsg);
     }
 }

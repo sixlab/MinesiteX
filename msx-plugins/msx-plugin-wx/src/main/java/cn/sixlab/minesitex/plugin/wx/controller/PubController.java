@@ -14,6 +14,7 @@ package cn.sixlab.minesitex.plugin.wx.controller;
 
 import cn.sixlab.minesitex.bean.wx.entity.MsxWxMsg;
 import cn.sixlab.minesitex.lib.base.BaseController;
+import cn.sixlab.minesitex.lib.base.util.SecretUtil;
 import cn.sixlab.minesitex.plugin.wx.service.WxService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 
@@ -38,7 +38,7 @@ public class PubController extends BaseController{
     
     @RequestMapping("/push")
     public String push(HttpServletRequest request, HttpServletResponse response,
-            String signature, String timestamp, String nonce, String echostr) throws IOException {
+            String signature, String timestamp, String nonce, String echostr) throws Exception {
         logger.info("微信来消息了。。。");
     
         // 验签失败返回
@@ -57,6 +57,7 @@ public class PubController extends BaseController{
     
         MsxWxMsg wxMsg = wxService.dealMsg(inputStream);
     
+        
     
         String fromUserName = wxMsg.getFromUserName();
         String msgType = wxMsg.getMsgType();
@@ -70,7 +71,7 @@ public class PubController extends BaseController{
                         "<FromUserName><![CDATA[sixlab]]></FromUserName>" +
                         "<CreateTime>" + String.valueOf(new Date().getTime() / 1000) + "</CreateTime>" +
                         "<MsgType><![CDATA[text]]></MsgType>" +
-                        "<Content><![CDATA[感谢您的关注，更多功能敬请期待，现在您可以访问 sixlab.cn 发现更多精彩。]]></Content>" +
+                        "<Content><![CDATA[感谢您的关注，更多功能敬请期待，现在您可以访问 sixlab.cn 发现更多精彩。也可以发消息和我互动哦。]]></Content>" +
                         "</xml>";
             }
         } else {
@@ -79,18 +80,10 @@ public class PubController extends BaseController{
                     "<FromUserName><![CDATA[sixlab]]></FromUserName>" +
                     "<CreateTime>" + String.valueOf(new Date().getTime() / 1000) + "</CreateTime>" +
                     "<MsgType><![CDATA[text]]></MsgType>" +
-                    "<Content><![CDATA[消息已收到，更多功能敬请期待。]]></Content>" +
+                    "<Content><![CDATA[消息已收到，请访问 https://sixlab.cn/wx/pub/msg/"+ SecretUtil.encrypt(wxMsg.getId())+" 查看消息。]]></Content>" +
                     "</xml>";
         }
     
         return msg;
-    }
-    
-    @RequestMapping("/redis")
-    public String push(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        
-        wxService.sendCustomTextMsg("oWRNos0xq0D8oZEQGx_pTPvGhXY","试一下");
-        
-        return "";
     }
 }
