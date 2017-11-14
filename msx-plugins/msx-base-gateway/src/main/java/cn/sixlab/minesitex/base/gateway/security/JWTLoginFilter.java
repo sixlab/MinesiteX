@@ -12,7 +12,9 @@
  */
 package cn.sixlab.minesitex.base.gateway.security;
 
+import cn.sixlab.minesitex.bean.user.entity.MsxUser;
 import cn.sixlab.minesitex.lib.base.model.ModelJson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -60,15 +62,19 @@ public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req,
             HttpServletResponse res) throws AuthenticationException {
-        String username = req.getParameter("username");
-        String password = req.getParameter("password");
-    
-        return authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        username,
-                        password,
-                        new ArrayList<>())
-        );
+        try {
+            MsxUser user = new ObjectMapper()
+                    .readValue(req.getInputStream(), MsxUser.class);
+        
+            return authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            user.getUsername(),
+                            user.getPassword(),
+                            new ArrayList<>())
+            );
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
     
     // 用户成功登录后，这个方法会被调用，我们在这个方法里生成token

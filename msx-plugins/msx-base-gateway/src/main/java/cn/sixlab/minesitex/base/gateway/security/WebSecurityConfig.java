@@ -86,7 +86,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         Filter authenticationFilter = new JWTAuthenticationFilter(authenticationManager()).setJwtParam(jwtParam);
         
         //添加 登录过滤器 和 校验过滤器
-        httpSecurity.addFilter(loginFilter)
+        httpSecurity
+                .addFilter(loginFilter)
                 .addFilter(authenticationFilter);
         
         //httpSecurity.authorizeRequests()

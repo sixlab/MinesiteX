@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,7 +44,7 @@ public class FilmController extends BaseController{
      * @return
      */
     @PostMapping(value = "/film")
-    public ModelJson add(MsxFilm film) {
+    public ModelJson add(@RequestBody MsxFilm film) {
         logger.debug("添加电影>>>");
         ModelJson json = new ModelJson();
     
@@ -60,7 +61,7 @@ public class FilmController extends BaseController{
      * @return
      */
     @PutMapping(value = "/film/{id}")
-    public ModelJson update(@PathVariable Integer id, MsxFilm film) {
+    public ModelJson update(@PathVariable Integer id, @RequestBody MsxFilm film) {
         logger.debug("更新电影>>>", id);
         
         ModelJson json = new ModelJson();

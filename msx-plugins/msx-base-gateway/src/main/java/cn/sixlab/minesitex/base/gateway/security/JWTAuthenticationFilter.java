@@ -13,6 +13,8 @@
 package cn.sixlab.minesitex.base.gateway.security;
 
 import io.jsonwebtoken.Jwts;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,6 +36,7 @@ import java.util.ArrayList;
  * http://blog.csdn.net/sxdtzhaoxinguo/article/details/77965226
  */
 public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
+    private static Logger logger = LoggerFactory.getLogger(JWTAuthenticationFilter.class);
     
     private JWTParam jwtParam;
     
@@ -49,6 +52,46 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
             FilterChain chain) throws IOException, ServletException {
+        //输出参数
+        String result = "\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>参数\n";
+        //try {
+            String method = request.getMethod();
+            result+= method;
+            
+            String inComeUrI = request.getRequestURI();
+            result += inComeUrI;
+            result += " | ";
+            //
+            //Enumeration<String> params = request.getParameterNames();
+            //String emptyStr = "";
+            //String paraStr = "";
+            //
+            //while (params.hasMoreElements()) {
+            //    String name = params.nextElement();
+            //    String[] values = request.getParameterValues(name);
+            //    for (String value : values) {
+            //        if (StringUtils.isEmpty(value)) {
+            //            emptyStr += "\n\t『" + name + "』";
+            //        } else {
+            //            if (value.length() > 50) {
+            //                paraStr += "\n\t『" + name + "』=『length>50，不输出』";
+            //            } else {
+            //
+            //                paraStr += "\n\t『" + name + "』=『" + value + "』";
+            //            }
+            //        }
+            //    }
+            //}
+            //result += ("".equals(paraStr) ? "" : ("\n\n参数值：" + paraStr));
+            //result += ("".equals(emptyStr) ? "" : ("\n\nEmpty值为：" + emptyStr));
+        //} catch (Exception e) {
+        //    result += "输出URL参数错误";
+        //}
+        result += "\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";
+    
+        logger.info(result);
+        
+        //验证
         String token = request.getHeader(jwtParam.getJwtHeader());
         
         if (token == null || !token.startsWith(jwtParam.getJwtTokenHead())) {
