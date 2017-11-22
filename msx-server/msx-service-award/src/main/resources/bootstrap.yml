@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: msx-service-award
+  profiles:
+    active: msx-service-award
+  cloud:
+    config:
+      uri: http://localhost:8500/
+      name: application-msx-service-award,application-common-lib,application-common-service
+      profile: prod

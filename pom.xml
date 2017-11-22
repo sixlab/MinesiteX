@@ -135,6 +135,27 @@
                 <artifactId>msx-plugin-wx</artifactId>
                 <version>${msx.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-bean-award</artifactId>
+                <version>${msx.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-data-award</artifactId>
+                <version>${msx.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-plugin-award</artifactId>
+                <version>${msx.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-service-award</artifactId>
+                <version>${msx.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

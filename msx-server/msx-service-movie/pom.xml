@@ -82,10 +82,6 @@
             <groupId>cn.sixlab.minesitex</groupId>
             <artifactId>msx-lib-base</artifactId>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>cn.sixlab.minesitex</groupId>-->
-        <!--<artifactId>msx-lib-redis</artifactId>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>cn.sixlab.minesitex</groupId>
