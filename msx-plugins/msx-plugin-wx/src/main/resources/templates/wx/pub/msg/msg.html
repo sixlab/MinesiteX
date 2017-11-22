@@ -11,24 +11,25 @@
     <title>Sixlab·六楼实验室 | 六楼的雨</title>
 
     <link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css" rel="stylesheet" />
-    <link href="https://cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css" rel="stylesheet" />
+    <!--<link href="https://cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css" rel="stylesheet" />-->
 
     <script th:inline="javascript">
         var wxMsg = [[${wxMsg}]];
     </script>
 
-    <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
-    <script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
-    <script src="https://cdn.bootcss.com/hogan.js/3.0.2/hogan.min.js"></script>
+    <!--<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>-->
+    <!--<script src="https://cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>-->
+    <!--<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>-->
+    <!--<script src="https://cdn.bootcss.com/hogan.js/3.0.2/hogan.min.js"></script>-->
+    <!--<script src="/static/wx/pub/msg/msg.js"></script>-->
 
-    <script src="/static/wx/pub/msg/msg.js"></script>
 </head>
 <body>
 
     <header class="demos-header" style="text-align: center;">
         <h1 class="demos-title">你的消息</h1>
     </header>
+
 
     <div class="weui-cells">
 
@@ -106,21 +107,21 @@
 
     <div class="weui-cells__tips" th:if="${wxMsg.msgType=='image'}">我又不是人工智能，看不懂图啊。给，你的图。</div>
     <div th:if="${wxMsg.msgType=='image'}">
-        <img th:src="${wxMsg.url}"/>
+        <img th:src="${wxMsg.url}" style="width: 100%;"/>
     </div>
 
     <div class="weui-cells__tips" th:if="${wxMsg.msgType=='voice'}">微信识别的，我也不知道准不准确。</div>
 
     <div class="weui-cells__tips" th:if="${wxMsg.msgType=='video' || wxMsg.msgType=='shortvideo'}">我又不是人工智能，看不懂视频啊。给你个缩略图</div>
     <div th:if="${wxMsg.msgType=='video' || wxMsg.msgType=='shortvideo'}">
-        <img th:src="${wxMsg.url}" />
+        <img th:src="${wxMsg.url}" style="width: 100%;"/>
     </div>
 
     <div class="weui-cells__tips" th:if="${wxMsg.msgType=='location'}">给我坐标干嘛？不怕我半夜去敲门么？</div>
 
     <div class="weui-cells__tips" th:if="${wxMsg.msgType=='link'}">给我链接让我看么？我又看不懂，给你的链接</div>
     <div th:if="${wxMsg.msgType=='link'}">
-        <a th:href="${wxMsg.url}"></a>
+        <a class="weui-btn weui-btn_primary" th:href="${wxMsg.url}">点击查看</a>
     </div>
 </body>
 </html>
