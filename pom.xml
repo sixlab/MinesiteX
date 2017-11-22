@@ -145,5 +145,6 @@
         <module>msx-libs</module>
         <module>msx-plugins</module>
         <module>msx-server</module>
+        <module>msx-tools</module>
     </modules>
 </project>
