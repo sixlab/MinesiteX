@@ -24,6 +24,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.cors.CorsUtils;
 
 import javax.servlet.Filter;
 
@@ -61,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //http.csrf().ignoringAntMatchers("/api/**");
         
         // 禁用缓存
-        httpSecurity.headers().cacheControl();
+        httpSecurity.headers().cacheControl().disable();
         
         // 基于token，所以不需要session
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -69,6 +70,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.authorizeRequests()
                 
                 //.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                
+                //对于跨域的 Preflight 不做拦截
+                .requestMatchers(MyCorsUtils::isPreFlightRequest).permitAll()
                 
                 // 允许对于网站静态资源的无授权访问
                 .antMatchers(
