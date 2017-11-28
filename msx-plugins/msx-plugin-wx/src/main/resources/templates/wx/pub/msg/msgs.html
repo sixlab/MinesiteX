@@ -34,8 +34,8 @@
         <div class="weui-panel weui-panel_access" th:each="wxMsg,wxMsgStat : ${msgList}">
             <!--<div class="weui-panel__hd" th:text="${(wxMsgStat.index+1)+'.'}">1. </div>-->
             <div class="weui-panel__bd">
-                <div class="weui-media-box weui-media-box_text" th:switch="${wxMsg.msgType}">
-                    <h4 class="weui-media-box__title">
+                <div class="weui-media-box weui-media-box_text">
+                    <h4 class="weui-media-box__title" th:switch="${wxMsg.msgType}">
                         <span th:text="${(wxMsgStat.index+1)+'. '}">1. </span>
 
                         <span th:case="'text'">文本</span>
@@ -47,7 +47,7 @@
                         <span th:case="'link'">链接</span>
                     </h4>
 
-                    <p class="weui-media-box__desc">
+                    <p class="weui-media-box__desc" th:switch="${wxMsg.msgType}">
                         <span th:case="'text'" th:text="${wxMsg.content}">[文本]</span>
                         <span th:case="'image'">[图片]</span>
                         <span th:case="'voice'" th:text="${'识别结果:'+wxMsg.content}">[语音]</span>
