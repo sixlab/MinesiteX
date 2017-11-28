@@ -62,7 +62,7 @@
             <p>内容</p>
         </div>
         <div class="weui-cell__ft">
-            <span th:utext="${wxMsg.content}">示例内容</span>
+            <span th:text="${wxMsg.content}">示例内容</span>
         </div>
     </div>
 
@@ -71,7 +71,7 @@
             <p>语音识别结果</p>
         </div>
         <div class="weui-cell__ft">
-            <span th:utext="${wxMsg.content}">示例内容</span>
+            <span th:text="${wxMsg.content}">示例内容</span>
         </div>
     </div>
 
@@ -80,7 +80,7 @@
             <p>坐标</p>
         </div>
         <div class="weui-cell__ft">
-            <span th:utext="${wxMsg.locationY+ '.' +wxMsg.locationX}">示例坐标</span>
+            <span th:text="${wxMsg.locationY+ ',' +wxMsg.locationX}">示例坐标</span>
         </div>
     </div>
 
@@ -89,7 +89,7 @@
             <p>链接标题</p>
         </div>
         <div class="weui-cell__ft">
-            <span th:utext="${wxMsg.title}"></span>
+            <span th:text="${wxMsg.title}"></span>
         </div>
     </div>
 
@@ -98,7 +98,7 @@
             <p>链接描述</p>
         </div>
         <div class="weui-cell__ft">
-            <span th:utext="${wxMsg.content}"></span>
+            <span th:text="${wxMsg.content}"></span>
         </div>
     </div>
 

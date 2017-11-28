@@ -30,24 +30,63 @@
         <h1 class="demos-title">历史消息</h1>
     </header>
 
-    <div class="weui-cells">
-        <a class="weui-cell weui-cell_access" th:each="wxMsg,wxMsgStat : ${msgList}" th:href="${'/wx/pub/msg/'+wxMsg.toUserName}">
-            <div class="weui-cell__hd">
-                <p th:text="${wxMsgStat.index+'.'}">1.</p>
+    <div class="page__bd">
+        <div class="weui-panel weui-panel_access" th:each="wxMsg,wxMsgStat : ${msgList}">
+            <!--<div class="weui-panel__hd" th:text="${(wxMsgStat.index+1)+'.'}">1. </div>-->
+            <div class="weui-panel__bd">
+                <div class="weui-media-box weui-media-box_text" th:switch="${wxMsg.msgType}">
+                    <h4 class="weui-media-box__title">
+                        <span th:text="${(wxMsgStat.index+1)+'. '}">1. </span>
+
+                        <span th:case="'text'">文本</span>
+                        <span th:case="'image'">图片</span>
+                        <span th:case="'voice'">语音</span>
+                        <span th:case="'video'">视频</span>
+                        <span th:case="'shortvideo'">小视频消息</span>
+                        <span th:case="'location'">地理位置消息</span>
+                        <span th:case="'link'">链接</span>
+                    </h4>
+
+                    <p class="weui-media-box__desc">
+                        <span th:case="'text'" th:text="${wxMsg.content}">[文本]</span>
+                        <span th:case="'image'">[图片]</span>
+                        <span th:case="'voice'" th:text="${'识别结果:'+wxMsg.content}">[语音]</span>
+                        <span th:case="'video'">[视频]</span>
+                        <span th:case="'shortvideo'">[小视频消息]</span>
+                        <span th:case="'location'"
+                              th:text="${'坐标：'+wxMsg.locationY+ ',' +wxMsg.locationX}">[地理位置消息]</span>
+                        <span th:case="'link'" th:text="${'链接:'+wxMsg.title}">[链接]</span>
+                    </p>
+
+                    <ul class="weui-media-box__info">
+                        <li class="weui-media-box__info__meta"
+                            th:text="${#dates.format(wxMsg.insertTime, 'yyyy-MM-dd HH:mm:ss')}">示例时间
+                        </li>
+                        <li class="weui-media-box__info__meta">时间</li>
+                        <li class="weui-media-box__info__meta weui-media-box__info__meta_extra">
+                            其它信息
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="weui-cell__bd" th:switch="${wxMsg.msgType}">
-                <p th:case="'text'" th:utext="${'文本:'+wxMsg.content}">[文本]</p>
-                <p th:case="'image'">[图片]</p>
-                <p th:case="'voice'" th:utext="${'语音:'+wxMsg.content}">[语音]</p>
-                <p th:case="'video'">[视频]</p>
-                <p th:case="'shortvideo'">[小视频]</p>
-                <p th:case="'location'" th:utext="${wxMsg.locationY+ '.' +wxMsg.locationX}">[地理位置]</p>
-                <p th:case="'link'" th:utext="${'链接:'+wxMsg.title}">[链接]</p>
+            <div class="weui-panel__ft">
+                <a th:href="${'/wx/pub/msg/'+wxMsg.toUserName}"
+                   class="weui-cell weui-cell_access weui-cell_link">
+                    <div class="weui-cell__bd">查看详情</div>
+                    <span class="weui-cell__ft"></span>
+                </a>
             </div>
-            <div class="weui-cell__ft">
-                <span th:text="${#dates.format(wxMsg.insertTime, 'yyyy-MM-dd HH:mm:ss')}">示例时间</span>
-            </div>
-        </a>
+        </div>
+    </div>
+
+
+    <div class="weui-msg__extra-area">
+        <div class="weui-footer">
+            <p class="weui-footer__links">
+                <a href="/" class="weui-footer__link">Sixlab·六楼实验室</a>
+            </p>
+            <p class="weui-footer__text">Copyright © 2017 Sixlab·六楼实验室</p>
+        </div>
     </div>
 </body>
 </html>
