@@ -1,8 +1,2 @@
 server:
   port: 8803
-
-wx:
-  token: 123
-  key: qwe
-  appId: asd
-  appSecret: zxc

@@ -14,7 +14,7 @@ package cn.sixlab.minesitex.plugin.wx.controller;
 
 import cn.sixlab.minesitex.bean.wx.entity.MsxWxMsg;
 import cn.sixlab.minesitex.lib.base.BaseController;
-import cn.sixlab.minesitex.lib.base.util.SecretUtil;
+import cn.sixlab.minesitex.lib.base.util.SecretService;
 import cn.sixlab.minesitex.plugin.wx.service.WxService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +35,9 @@ public class PubController extends BaseController{
     
     @Autowired
     private WxService wxService;
+    
+    @Autowired
+    private SecretService secretService;
     
     @RequestMapping("/push")
     public String push(HttpServletRequest request, HttpServletResponse response,
@@ -57,8 +60,6 @@ public class PubController extends BaseController{
     
         MsxWxMsg wxMsg = wxService.dealMsg(inputStream);
     
-        
-    
         String fromUserName = wxMsg.getFromUserName();
         String msgType = wxMsg.getMsgType();
     
@@ -80,7 +81,7 @@ public class PubController extends BaseController{
                     "<FromUserName><![CDATA[sixlab]]></FromUserName>" +
                     "<CreateTime>" + String.valueOf(new Date().getTime() / 1000) + "</CreateTime>" +
                     "<MsgType><![CDATA[text]]></MsgType>" +
-                    "<Content><![CDATA[消息已收到，请访问 https://sixlab.cn/wx/pub/msg/"+ SecretUtil.encrypt(wxMsg.getId())+" 查看消息。]]></Content>" +
+                    "<Content><![CDATA[消息已收到，请访问 https://sixlab.cn/wx/pub/msg/"+ secretService.encrypt(wxMsg.getId())+" 查看消息。]]></Content>" +
                     "</xml>";
         }
     

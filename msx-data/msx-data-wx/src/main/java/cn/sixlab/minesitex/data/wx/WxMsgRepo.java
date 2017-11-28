@@ -16,6 +16,10 @@ import cn.sixlab.minesitex.bean.wx.entity.MsxWxMsg;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface WxMsgRepo extends JpaRepository<MsxWxMsg, Integer> {
     MsxWxMsg findByMsgId(@Param("msgId") String msgId);
+    
+    List<MsxWxMsg> findByFromUserNameOrderById(@Param("fromUserName") String fromUserName);
 }

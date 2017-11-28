@@ -26,102 +26,113 @@
 </head>
 <body>
 
-    <header class="demos-header" style="text-align: center;">
-        <h1 class="demos-title">你的消息</h1>
-    </header>
+<header class="demos-header" style="text-align: center;">
+    <h1 class="demos-title">你的消息</h1>
+</header>
 
 
-    <div class="weui-cells">
+<div class="weui-cells">
 
-        <div class="weui-cell">
-            <div class="weui-cell__bd">
-                <p>消息类型</p>
-            </div>
-            <div class="weui-cell__ft" th:switch="${wxMsg.msgType}">
-                <span th:case="'text'">文本</span>
-                <span th:case="'image'">图片</span>
-                <span th:case="'voice'">语音</span>
-                <span th:case="'video'">视频</span>
-                <span th:case="'shortvideo'">小视频消息</span>
-                <span th:case="'location'">地理位置消息</span>
-                <span th:case="'link'">链接</span>
-            </div>
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <p>消息类型</p>
         </div>
-
-        <div class="weui-cell">
-            <div class="weui-cell__bd">
-                <p>接收时间</p>
-            </div>
-            <div class="weui-cell__ft">
-                <span th:text="${#dates.format(wxMsg.insertTime, 'yyyy-MM-dd HH:mm:ss')}">示例时间</span>
-            </div>
+        <div class="weui-cell__ft" th:switch="${wxMsg.msgType}">
+            <span th:case="'text'">文本</span>
+            <span th:case="'image'">图片</span>
+            <span th:case="'voice'">语音</span>
+            <span th:case="'video'">视频</span>
+            <span th:case="'shortvideo'">小视频消息</span>
+            <span th:case="'location'">地理位置消息</span>
+            <span th:case="'link'">链接</span>
         </div>
-
-        <div class="weui-cell" th:if="${wxMsg.msgType=='text'}">
-            <div class="weui-cell__bd">
-                <p>内容</p>
-            </div>
-            <div class="weui-cell__ft">
-                <span th:utext="${wxMsg.content}">示例内容</span>
-            </div>
-        </div>
-
-        <div class="weui-cell" th:if="${wxMsg.msgType=='voice'}">
-            <div class="weui-cell__bd">
-                <p>语音识别结果</p>
-            </div>
-            <div class="weui-cell__ft">
-                <span th:utext="${wxMsg.content}">示例内容</span>
-            </div>
-        </div>
-
-        <div class="weui-cell" th:if="${wxMsg.msgType=='location'}">
-            <div class="weui-cell__bd">
-                <p>坐标</p>
-            </div>
-            <div class="weui-cell__ft">
-                <span th:utext="${wxMsg.locationY+ '.' +wxMsg.locationX}">示例坐标</span>
-            </div>
-        </div>
-
-        <div class="weui-cell" th:if="${wxMsg.msgType=='link'}">
-            <div class="weui-cell__bd">
-                <p>链接标题</p>
-            </div>
-            <div class="weui-cell__ft">
-                <span th:utext="${wxMsg.title}"></span>
-            </div>
-        </div>
-
-        <div class="weui-cell" th:if="${wxMsg.msgType=='link'}">
-            <div class="weui-cell__bd">
-                <p>链接描述</p>
-            </div>
-            <div class="weui-cell__ft">
-                <span th:utext="${wxMsg.content}"></span>
-            </div>
-        </div>
-
-    </div>
-    <div class="weui-cells__tips" th:if="${wxMsg.msgType=='text'}">我又不是人工智能，不知道你说的是啥。</div>
-
-    <div class="weui-cells__tips" th:if="${wxMsg.msgType=='image'}">我又不是人工智能，看不懂图啊。给，你的图。</div>
-    <div th:if="${wxMsg.msgType=='image'}">
-        <img th:src="${wxMsg.url}" style="width: 100%;"/>
     </div>
 
-    <div class="weui-cells__tips" th:if="${wxMsg.msgType=='voice'}">微信识别的，我也不知道准不准确。</div>
-
-    <div class="weui-cells__tips" th:if="${wxMsg.msgType=='video' || wxMsg.msgType=='shortvideo'}">我又不是人工智能，看不懂视频啊。给你个缩略图</div>
-    <div th:if="${wxMsg.msgType=='video' || wxMsg.msgType=='shortvideo'}">
-        <img th:src="${wxMsg.url}" style="width: 100%;"/>
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <p>接收时间</p>
+        </div>
+        <div class="weui-cell__ft">
+            <span th:text="${#dates.format(wxMsg.insertTime, 'yyyy-MM-dd HH:mm:ss')}">示例时间</span>
+        </div>
     </div>
 
-    <div class="weui-cells__tips" th:if="${wxMsg.msgType=='location'}">给我坐标干嘛？不怕我半夜去敲门么？</div>
-
-    <div class="weui-cells__tips" th:if="${wxMsg.msgType=='link'}">给我链接让我看么？我又看不懂，给你的链接</div>
-    <div th:if="${wxMsg.msgType=='link'}">
-        <a class="weui-btn weui-btn_primary" th:href="${wxMsg.url}">点击查看</a>
+    <div class="weui-cell" th:if="${wxMsg.msgType=='text'}">
+        <div class="weui-cell__bd">
+            <p>内容</p>
+        </div>
+        <div class="weui-cell__ft">
+            <span th:utext="${wxMsg.content}">示例内容</span>
+        </div>
     </div>
+
+    <div class="weui-cell" th:if="${wxMsg.msgType=='voice'}">
+        <div class="weui-cell__bd">
+            <p>语音识别结果</p>
+        </div>
+        <div class="weui-cell__ft">
+            <span th:utext="${wxMsg.content}">示例内容</span>
+        </div>
+    </div>
+
+    <div class="weui-cell" th:if="${wxMsg.msgType=='location'}">
+        <div class="weui-cell__bd">
+            <p>坐标</p>
+        </div>
+        <div class="weui-cell__ft">
+            <span th:utext="${wxMsg.locationY+ '.' +wxMsg.locationX}">示例坐标</span>
+        </div>
+    </div>
+
+    <div class="weui-cell" th:if="${wxMsg.msgType=='link'}">
+        <div class="weui-cell__bd">
+            <p>链接标题</p>
+        </div>
+        <div class="weui-cell__ft">
+            <span th:utext="${wxMsg.title}"></span>
+        </div>
+    </div>
+
+    <div class="weui-cell" th:if="${wxMsg.msgType=='link'}">
+        <div class="weui-cell__bd">
+            <p>链接描述</p>
+        </div>
+        <div class="weui-cell__ft">
+            <span th:utext="${wxMsg.content}"></span>
+        </div>
+    </div>
+
+</div>
+<div class="weui-cells__tips" th:if="${wxMsg.msgType=='text'}">我又不是人工智能，不知道你说的是啥。</div>
+
+<div class="weui-cells__tips" th:if="${wxMsg.msgType=='image'}">我又不是人工智能，看不懂图啊。给，你的图。</div>
+<div th:if="${wxMsg.msgType=='image'}">
+    <img th:src="${wxMsg.url}" style="width: 100%;" />
+</div>
+
+<div class="weui-cells__tips" th:if="${wxMsg.msgType=='voice'}">微信识别的，我也不知道准不准确。</div>
+
+<div class="weui-cells__tips" th:if="${wxMsg.msgType=='video' || wxMsg.msgType=='shortvideo'}">
+    我又不是人工智能，看不懂视频啊。给你个缩略图
+</div>
+<div th:if="${wxMsg.msgType=='video' || wxMsg.msgType=='shortvideo'}">
+    <img th:src="${wxMsg.url}" style="width: 100%;" />
+</div>
+
+<div class="weui-cells__tips" th:if="${wxMsg.msgType=='location'}">给我坐标干嘛？不怕我半夜去敲门么？</div>
+
+<div class="weui-cells__tips" th:if="${wxMsg.msgType=='link'}">给我链接让我看么？我又看不懂，给你的链接</div>
+<div th:if="${wxMsg.msgType=='link'}">
+    <a class="weui-btn weui-btn_primary" th:href="${wxMsg.url}">点击查看</a>
+</div>
+<div class="weui-msg__extra-area">
+    <a class="weui-btn weui-btn_primary" style="color: #FFFFFF" th:href="${'/wx/pub/msgs/'+strId}">查看历史消息</a>
+    <div class="weui-footer">
+        <p class="weui-footer__links">
+            <a href="/" class="weui-footer__link">Sixlab·六楼实验室</a>
+        </p>
+        <p class="weui-footer__text">Copyright © 2017 Sixlab·六楼实验室</p>
+    </div>
+</div>
 </body>
 </html>

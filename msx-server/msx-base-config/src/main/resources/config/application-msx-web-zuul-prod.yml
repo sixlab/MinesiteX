@@ -35,10 +35,3 @@ spring:
     static-path-pattern: /static/**
 #  resources:
 #    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/
-
-
-jwt:
-  header: Authorization
-  secret: MinesiteX
-  expiration: 604800000
-  tokenHead: "Bearer "

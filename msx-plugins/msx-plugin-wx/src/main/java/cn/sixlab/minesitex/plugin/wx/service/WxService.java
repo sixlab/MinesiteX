@@ -44,16 +44,16 @@ import java.util.Map;
 public class WxService {
     private static Logger logger = LoggerFactory.getLogger(WxService.class);
     
-    @Value("${wx.token}")
+    @Value("${msx.wx.token}")
     private String wxToken;
     
-    @Value("${wx.token}")
+    @Value("${msx.wx.token}")
     private String wxkey;
     
-    @Value("${wx.appId}")
+    @Value("${msx.wx.appId}")
     private String wxAppId;
     
-    @Value("${wx.appSecret}")
+    @Value("${msx.wx.appSecret}")
     private String wxAppSecret;
     
     @Autowired
@@ -171,5 +171,11 @@ public class WxService {
         MsxWxMsg wxMsg = msgRepo.findOne(id);
     
         return new ModelJson<MsxWxMsg>().setData(wxMsg);
+    }
+    
+    public ModelJson<List<MsxWxMsg>> fetchMsgs(Integer id) {
+        MsxWxMsg wxMsg = msgRepo.findOne(id);
+        List<MsxWxMsg> msgList = msgRepo.findByFromUserNameOrderById(wxMsg.getFromUserName());
+        return new ModelJson<List<MsxWxMsg>>().setData(msgList);
     }
 }

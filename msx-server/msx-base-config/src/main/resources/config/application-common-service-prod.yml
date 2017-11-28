@@ -12,3 +12,19 @@ server:
     enabled: true
     mime-types: application/json,text/xml,application/xml
     min-response-size: 2048
+
+msx:
+  jwt:
+    header: Authorization
+    secret: MinesiteX
+    expiration: 604800000
+    tokenHead: "Bearer "
+
+  wx:
+    token: 123
+    key: qwe
+    appId: asd
+    appSecret: zxc
+
+  secret:
+    key: msx-key

@@ -64,14 +64,18 @@ spring:
 logging:
   level: debug
 
-jwt:
-  header: Authorization
-  secret: MinesiteX
-  expiration: 604800000
-  tokenHead: "Bearer "
+msx:
+  jwt:
+    header: Authorization
+    secret: Sixlab's MinesiteX
+    expiration: 604800000
+    tokenHead: "Bearer "
 
-wx:
-  token: 123
-  key: qwe
-  appId: asd
-  appSecret: zxc
+  wx:
+    token: abcdefg
+    key: N6PcZjJtS4xl6yBXsBhRZRu9LJKVK6HMMyhd3v3ZaRl
+    appId: wx0764cea5b27f8221
+    appSecret: 9f9b70f703d9b73b6e9fa4233dcab5fb
+
+  secret:
+    key: Sixlab's msx-key
