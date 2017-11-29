@@ -12,13 +12,11 @@
  */
 package cn.sixlab.minesitex.plugin.user.service;
 
-import cn.sixlab.minesitex.api.user.IUserService;
 import cn.sixlab.minesitex.bean.user.entity.MsxUser;
 import cn.sixlab.minesitex.bean.user.entity.MsxUserRole;
 import cn.sixlab.minesitex.bean.user.vo.UserAndRoleVo;
 import cn.sixlab.minesitex.data.user.UserRepo;
 import cn.sixlab.minesitex.data.user.UserRoleRepo;
-import cn.sixlab.minesitex.lib.base.model.ModelJson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,19 +35,17 @@ public class UserService{
     @Autowired
     private UserRoleRepo roleRepo;
     
-    public ModelJson<UserAndRoleVo> loadUserByUsername(String username) {
+    public UserAndRoleVo loadUserByUsername(String username) {
         MsxUser user = userRepo.findByUsername(username);
         return loadUserRole(user);
     }
     
-    public ModelJson<UserAndRoleVo> loadUserById(Integer userId) {
+    public UserAndRoleVo loadUserById(Integer userId) {
         MsxUser user = userRepo.findOne(userId);
         return loadUserRole(user);
     }
     
-    private ModelJson<UserAndRoleVo> loadUserRole(MsxUser user) {
-        ModelJson<UserAndRoleVo> json = new ModelJson<>();
-        
+    private UserAndRoleVo loadUserRole(MsxUser user) {
         UserAndRoleVo vo = new UserAndRoleVo();
         vo.setUser(user);
     
@@ -59,6 +55,6 @@ public class UserService{
         }
         vo.setRoleList(roleList);
     
-        return json.setData(vo);
+        return vo;
     }
 }

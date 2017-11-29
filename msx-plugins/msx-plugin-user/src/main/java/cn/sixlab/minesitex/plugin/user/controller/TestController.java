@@ -16,26 +16,24 @@ import cn.sixlab.minesitex.api.user.IUserService;
 import cn.sixlab.minesitex.bean.user.vo.UserAndRoleVo;
 import cn.sixlab.minesitex.lib.base.BaseController;
 import cn.sixlab.minesitex.lib.base.model.ModelJson;
-import cn.sixlab.minesitex.plugin.user.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UserController extends BaseController implements IUserService {
-    private static Logger logger = LoggerFactory.getLogger(UserController.class);
+@RequestMapping("/user/test/pub")
+public class TestController extends BaseController{
+    private static Logger logger = LoggerFactory.getLogger(TestController.class);
     
     @Autowired
-    private UserService service;
+    private IUserService service;
     
-    public ModelJson<UserAndRoleVo> loadUserByUsername(@PathVariable("username")String username) {
-        return new ModelJson<UserAndRoleVo>().setData(service.loadUserByUsername(username));
-    }
-    
-    public ModelJson<UserAndRoleVo> loadUserById(@PathVariable("userId")Integer userId) {
-        return new ModelJson<UserAndRoleVo>().setData(service.loadUserById(userId));
+    @RequestMapping("/username/{username}")
+    public ModelJson<UserAndRoleVo> loadUserByUsername(@PathVariable("username") String username) {
+        return service.loadUserByUsername(username);
     }
     
 }

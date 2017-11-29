@@ -13,27 +13,9 @@
 package cn.sixlab.minesitex.api.user.feign;
 
 import cn.sixlab.minesitex.api.user.IUserService;
-import cn.sixlab.minesitex.bean.user.vo.UserAndRoleVo;
-import cn.sixlab.minesitex.lib.base.model.ModelJson;
 import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient("msx-service-user")
 public interface UserServiceFeign extends IUserService {
-    
-    @GetMapping(
-            value = {"/user/username/{username}"},
-            consumes = {"application/json"},
-            produces = {"application/json"}
-    )
-    ModelJson<UserAndRoleVo> loadUserByUsername(@PathVariable("username") String username);
-    
-    @GetMapping(
-            value = {"/user/id/{userId}"},
-            consumes = {"application/json"},
-            produces = {"application/json"}
-    )
-    ModelJson<UserAndRoleVo> loadUserById(@RequestParam("userId") Integer userId);
+
 }

@@ -14,10 +14,16 @@ package cn.sixlab.minesitex.api.user;
 
 import cn.sixlab.minesitex.bean.user.vo.UserAndRoleVo;
 import cn.sixlab.minesitex.lib.base.model.ModelJson;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequestMapping("/user")
 public interface IUserService {
     
-    ModelJson<UserAndRoleVo> loadUserByUsername(String username);
+    @GetMapping(value = "/username/{username}")
+    ModelJson<UserAndRoleVo> loadUserByUsername(@PathVariable("username") String username);
     
-    ModelJson<UserAndRoleVo> loadUserById(Integer userId);
+    @GetMapping(value = "/id/{userId}")
+    ModelJson<UserAndRoleVo> loadUserById(@PathVariable("userId") Integer userId);
 }
