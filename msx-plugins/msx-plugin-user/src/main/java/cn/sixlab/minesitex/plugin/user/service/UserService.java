@@ -41,6 +41,9 @@ public class UserService{
     }
     
     public UserAndRoleVo loadUserById(Integer userId) {
+        if(null==userId){
+            return null;
+        }
         MsxUser user = userRepo.findOne(userId);
         return loadUserRole(user);
     }

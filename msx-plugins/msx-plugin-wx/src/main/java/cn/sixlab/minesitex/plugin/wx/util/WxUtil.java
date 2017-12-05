@@ -16,6 +16,7 @@ import cn.sixlab.minesitex.bean.wx.entity.MsxWxMsg;
 import cn.sixlab.minesitex.data.wx.WxMsgRepo;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
@@ -27,19 +28,20 @@ public class WxUtil {
     
         try {
             Document document = DocumentHelper.parseText(message);
+            Element rootElement = document.getRootElement();
+            
+            String msgType = rootElement.element("MsgType").getText();
         
-            String msgType = document.getRootElement().element("MsgType").getText();
-        
-            String toUserName = document.getRootElement().element("ToUserName").getText();
-            String fromUserName = document.getRootElement().element("FromUserName").getText();
-            String createTime = document.getRootElement().element("CreateTime").getText();
+            String toUserName = rootElement.element("ToUserName").getText();
+            String fromUserName = rootElement.element("FromUserName").getText();
+            String createTime = rootElement.element("CreateTime").getText();
         
             String msgId;
         
             if ("event".equals(msgType)) {
                 msgId = fromUserName + " " + createTime;
             } else {
-                msgId = document.getRootElement().element("MsgId").getText();
+                msgId = rootElement.element("MsgId").getText();
             }
         
             if (StringUtils.hasLength(msgId)) {
@@ -95,63 +97,65 @@ public class WxUtil {
                     // location   - Scale
                     // event      - Precision
                     String scale = null;
-                
+    
                     switch (msgType) {
                         case "text":
                             // 文本消息 text
-                            content = document.getRootElement().element("Content").getText();
+                            content = rootElement.element("Content").getText();
                         
                             break;
                         case "image":
                             // 图片消息 image
-                            mediaId = document.getRootElement().element("MediaId").getText();
-                            url = document.getRootElement().element("PicUrl").getText();
+                            mediaId = rootElement.element("MediaId").getText();
+                            url = rootElement.element("PicUrl").getText();
                         
                         
                             break;
                         case "voice":
                             // 语音消息 voice
-                            mediaId = document.getRootElement().element("MediaId").getText();
-                            content = document.getRootElement().element("Recognition").getText();
-                            format = document.getRootElement().element("Format").getText();
+                            mediaId = rootElement.element("MediaId").getText();
+                            content = rootElement.element("Recognition").getText();
+                            format = rootElement.element("Format").getText();
                         
                             break;
                         case "video":
                             // 视频消息 video
-                            mediaId = document.getRootElement().element("MediaId").getText();
-                            thumbMediaId = document.getRootElement().element("ThumbMediaId").getText();
+                            mediaId = rootElement.element("MediaId").getText();
+                            thumbMediaId = rootElement.element("ThumbMediaId").getText();
                         
                         
                             break;
                         case "shortvideo":
                             // 小视频消息 shortvideo
-                            mediaId = document.getRootElement().element("MediaId").getText();
-                            thumbMediaId = document.getRootElement().element("ThumbMediaId").getText();
+                            mediaId = rootElement.element("MediaId").getText();
+                            thumbMediaId = rootElement.element("ThumbMediaId").getText();
                         
                             break;
                         case "location":
                             // 地理位置消息 location
-                            locationX = document.getRootElement().element("Location_X").getText();
-                            locationY = document.getRootElement().element("Location_Y").getText();
-                            scale = document.getRootElement().element("Scale").getText();
-                            content = document.getRootElement().element("Label").getText();
+                            locationX = rootElement.element("Location_X").getText();
+                            locationY = rootElement.element("Location_Y").getText();
+                            scale = rootElement.element("Scale").getText();
+                            content = rootElement.element("Label").getText();
                         
                             break;
                         case "link":
                             // 链接消息 link
-                            title = document.getRootElement().element("Title").getText();
-                            content = document.getRootElement().element("Description").getText();
-                            url = document.getRootElement().element("Url").getText();
+                            title = rootElement.element("Title").getText();
+                            content = rootElement.element("Description").getText();
+                            url = rootElement.element("Url").getText();
                         
                             break;
                         case "event":
                             // 接收事件推送 event
-                            title = document.getRootElement().element("Event").getText();
-                            content = document.getRootElement().element("EventKey").getText();
-                            mediaId = document.getRootElement().element("Ticket").getText();
-                            locationX = document.getRootElement().element("Latitude").getText();
-                            locationY = document.getRootElement().element("Longitude").getText();
-                            scale = document.getRootElement().element("Precision").getText();
+                            title = rootElement.element("Event").getText();
+                            content = rootElement.element("EventKey").getText();
+                            
+                            locationX = rootElement.element("Latitude").getText();
+                            locationY = rootElement.element("Longitude").getText();
+                            scale = rootElement.element("Precision").getText();
+    
+                            //mediaId = rootElement.element("Ticket").getText();
                         
                             break;
                     }
