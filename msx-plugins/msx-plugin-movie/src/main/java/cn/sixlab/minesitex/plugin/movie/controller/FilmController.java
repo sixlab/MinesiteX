@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -45,11 +46,9 @@ public class FilmController extends BaseController{
     @PostMapping(value = "/film")
     public ModelJson add(@RequestBody MsxFilm film) {
         logger.debug("添加电影>>>");
-        ModelJson json = new ModelJson();
+        ModelJson<MsxFilm> json = new ModelJson<>();
     
-        service.addFilm(film);
-        
-        return json;
+        return json.setData(service.addFilm(film));
     }
     
     /**
@@ -63,12 +62,11 @@ public class FilmController extends BaseController{
     public ModelJson update(@PathVariable Integer id, @RequestBody MsxFilm film) {
         logger.debug("更新电影>>>", id);
         
-        ModelJson json = new ModelJson();
+        ModelJson<MsxFilm> json = new ModelJson<>();
         
         film.setId(id);
-        service.updateFilm(film);
         
-        return json;
+        return json.setData(service.updateFilm(film));
     }
     
     /**
@@ -112,7 +110,7 @@ public class FilmController extends BaseController{
      * @return
      */
     @GetMapping(value = "/film")
-    public ModelJson search(String keyword) {
+    public ModelJson search(@RequestParam String keyword) {
         logger.debug("搜索电影>>>", keyword);
         ModelJson<List<MsxFilm>> json = new ModelJson<>();
         

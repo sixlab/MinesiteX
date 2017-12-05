@@ -31,16 +31,16 @@ public class ShowService {
     private ShowRepo showRepo;
 
     public List<MsxShow> search(String keyword, String status) {
-        List<MsxShow> showList = null;
+        List<MsxShow> showList;
 
         if (StringUtils.isEmpty(keyword) && StringUtils.isEmpty(status)) {
             showList = showRepo.findAll();
         } else if(StringUtils.isEmpty(keyword)){
-            showList = showRepo.findByViewStatus(CONST.SHOW_V_STATUS_ING);
+            showList = showRepo.findByViewStatus(status);
         }else if(StringUtils.isEmpty(status)){
             showList = showRepo.findByKeyword(keyword);
         }else{
-            showList = showRepo.findByStatus(keyword, status);
+            showList = showRepo.findByStatus(status, keyword);
         }
 
         return showList;

@@ -37,8 +37,13 @@ public class ApiAutoConfig {
     private static class FeignRequestMappingHandlerMapping extends RequestMappingHandlerMapping {
         @Override
         protected boolean isHandler(Class<?> beanType) {
-            return super.isHandler(beanType) &&
-                    !beanType.isInterface();
+            Package p = beanType.getPackage();
+            boolean isHandler = true;
+            if (p != null && p.getName().startsWith("cn.sixlab.minesitex.api.")) {
+                isHandler = false;
+            }
+            
+            return super.isHandler(beanType) && isHandler;
         }
     }
 }

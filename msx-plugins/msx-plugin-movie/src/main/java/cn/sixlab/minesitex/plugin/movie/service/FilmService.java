@@ -22,7 +22,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Service
@@ -32,14 +31,14 @@ public class FilmService {
     @Autowired
     private FilmRepo filmRepo;
     
-    public void addFilm(MsxFilm film) {
+    public MsxFilm addFilm(MsxFilm film) {
         filmRepo.save(film);
         
-        //hisService.sawFilm(film);
+        return film;
     }
     
-    public void updateFilm(MsxFilm film) {
-        filmRepo.save(film);
+    public MsxFilm updateFilm(MsxFilm film) {
+        return filmRepo.save(film);
     }
     
     public void viewFilm(Integer id, String name) {

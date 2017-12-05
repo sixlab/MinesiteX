@@ -12,13 +12,8 @@
 package cn.sixlab.minesitex;
 
 import cn.sixlab.minesitex.api.user.IUserService;
-import cn.sixlab.minesitex.bean.user.vo.UserAndRoleVo;
-import cn.sixlab.minesitex.lib.base.model.ModelJson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MsxController {
@@ -26,10 +21,10 @@ public class MsxController {
     @Autowired
     private IUserService service;
     
-    @ResponseBody
-    @RequestMapping("/username/pub/{username}")
-    public ModelJson<UserAndRoleVo> loadUserByUsername(@PathVariable("username") String username) {
-        return service.loadUserByUsername(username);
-    }
+    //@ResponseBody
+    //@RequestMapping("/username/pub/{username}")
+    //public ModelJson<UserAndRoleVo> loadUserByUsername(@PathVariable("username") String username) {
+    //    return service.loadUserByUsername(username);
+    //}
     
 }

@@ -11,9 +11,7 @@
  */
 package cn.sixlab.minesitex.plugin.movie.controller;
 
-import cn.sixlab.minesitex.api.user.IUserService;
 import cn.sixlab.minesitex.bean.movie.entity.MsxShow;
-import cn.sixlab.minesitex.bean.user.vo.UserAndRoleVo;
 import cn.sixlab.minesitex.lib.base.BaseController;
 import cn.sixlab.minesitex.lib.base.model.ModelJson;
 import cn.sixlab.minesitex.plugin.movie.service.ShowService;
@@ -24,7 +22,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -37,25 +37,13 @@ public class ShowController extends BaseController{
     @Autowired
     private ShowService service;
     
-    @Autowired
-    private IUserService iUserService;
-    
-    @GetMapping(value = "/show/user")
-    public ModelJson searchTest() {
-        logger.debug("测试 api 调用>>>");
-        
-        ModelJson<UserAndRoleVo> userAndRoleVoModelJson = iUserService.loadUserByUsername("admin");
-        
-        return userAndRoleVoModelJson;
-    }
-    
     /**
      * @param keyword
      * @param showStatus
      * @return
      */
     @GetMapping(value = "/show")
-    public ModelJson search(String keyword,String showStatus) {
+    public ModelJson search(@RequestParam String keyword, @RequestParam String showStatus) {
         logger.debug("搜索电视剧>>>"+keyword);
         ModelJson<List<MsxShow>> json = new ModelJson<>();
     
@@ -73,7 +61,7 @@ public class ShowController extends BaseController{
      * @return
      */
     @PostMapping(value = "/show")
-    public ModelJson add(MsxShow show) {
+    public ModelJson add(@RequestBody MsxShow show) {
         logger.debug("添加剧集>>>");
         ModelJson<MsxShow> json = new ModelJson();
     
