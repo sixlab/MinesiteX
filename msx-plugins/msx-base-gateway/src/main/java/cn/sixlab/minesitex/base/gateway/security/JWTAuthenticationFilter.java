@@ -18,9 +18,11 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -51,49 +53,58 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
             FilterChain chain) throws IOException, ServletException {
-        //输出参数
-        String result = "\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>参数\n";
-        //try {
-            String method = request.getMethod();
-            result+= method;
-            
-            String inComeUrI = request.getRequestURI();
-            result += inComeUrI;
-            result += " | ";
-            //
-            //Enumeration<String> params = request.getParameterNames();
-            //String emptyStr = "";
-            //String paraStr = "";
-            //
-            //while (params.hasMoreElements()) {
-            //    String name = params.nextElement();
-            //    String[] values = request.getParameterValues(name);
-            //    for (String value : values) {
-            //        if (StringUtils.isEmpty(value)) {
-            //            emptyStr += "\n\t『" + name + "』";
-            //        } else {
-            //            if (value.length() > 50) {
-            //                paraStr += "\n\t『" + name + "』=『length>50，不输出』";
-            //            } else {
-            //
-            //                paraStr += "\n\t『" + name + "』=『" + value + "』";
-            //            }
-            //        }
-            //    }
-            //}
-            //result += ("".equals(paraStr) ? "" : ("\n\n参数值：" + paraStr));
-            //result += ("".equals(emptyStr) ? "" : ("\n\nEmpty值为：" + emptyStr));
-        //} catch (Exception e) {
-        //    result += "输出URL参数错误";
-        //}
-        result += "\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";
-    
-        logger.info(result);
+        ////输出参数
+        //String result = "\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>参数\n";
+        ////try {
+        //    String method = request.getMethod();
+        //    result+= method;
+        //
+        //    String inComeUrI = request.getRequestURI();
+        //    result += inComeUrI;
+        //    result += " | ";
+        //    //
+        //    //Enumeration<String> params = request.getParameterNames();
+        //    //String emptyStr = "";
+        //    //String paraStr = "";
+        //    //
+        //    //while (params.hasMoreElements()) {
+        //    //    String name = params.nextElement();
+        //    //    String[] values = request.getParameterValues(name);
+        //    //    for (String value : values) {
+        //    //        if (StringUtils.isEmpty(value)) {
+        //    //            emptyStr += "\n\t『" + name + "』";
+        //    //        } else {
+        //    //            if (value.length() > 50) {
+        //    //                paraStr += "\n\t『" + name + "』=『length>50，不输出』";
+        //    //            } else {
+        //    //
+        //    //                paraStr += "\n\t『" + name + "』=『" + value + "』";
+        //    //            }
+        //    //        }
+        //    //    }
+        //    //}
+        //    //result += ("".equals(paraStr) ? "" : ("\n\n参数值：" + paraStr));
+        //    //result += ("".equals(emptyStr) ? "" : ("\n\nEmpty值为：" + emptyStr));
+        ////} catch (Exception e) {
+        ////    result += "输出URL参数错误";
+        ////}
+        //result += "\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";
+        //
+        //logger.info(result);
         
         //验证
         String token = request.getHeader(jwtParam.getJwtHeader());
-        
-        if (token == null || !token.startsWith(jwtParam.getJwtTokenHead())) {
+    
+        if (StringUtils.isEmpty(token)) {
+            Cookie[] cookies = request.getCookies();
+            for (Cookie cookie : cookies) {
+                if (jwtParam.getJwtHeader().equals(cookie.getName())) {
+                    token = cookie.getValue();
+                }
+            }
+        }
+    
+        if (StringUtils.isEmpty(token) || !token.startsWith(jwtParam.getJwtTokenHead())) {
             chain.doFilter(request, response);
             return;
         }
