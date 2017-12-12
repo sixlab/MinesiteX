@@ -97,9 +97,11 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
     
         if (StringUtils.isEmpty(token)) {
             Cookie[] cookies = request.getCookies();
-            for (Cookie cookie : cookies) {
-                if (jwtParam.getJwtHeader().equals(cookie.getName())) {
-                    token = cookie.getValue();
+            if (null != cookies && cookies.length > 0) {
+                for (Cookie cookie : cookies) {
+                    if (jwtParam.getJwtHeader().equals(cookie.getName())) {
+                        token = cookie.getValue();
+                    }
                 }
             }
         }

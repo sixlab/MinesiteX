@@ -6,7 +6,7 @@
  * For more information, please see
  * https://sixlab.cn/
  *
- * @time: 2017/10/27 14:07
+ * @time: 2017/12/12 16:19
  * @author: Patrick <root@sixlab.cn>
  */
 package cn.sixlab.minesitex.plugin.wx.controller;
@@ -14,7 +14,7 @@ package cn.sixlab.minesitex.plugin.wx.controller;
 import cn.sixlab.minesitex.bean.wx.entity.MsxWxMsg;
 import cn.sixlab.minesitex.lib.base.BaseController;
 import cn.sixlab.minesitex.lib.base.util.SecretService;
-import cn.sixlab.minesitex.plugin.wx.service.WxService;
+import cn.sixlab.minesitex.plugin.wx.service.WxExpService;
 import cn.sixlab.minesitex.plugin.wx.util.WxUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,12 +28,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 
 @RestController
-@RequestMapping("/wx/pub")
-public class WxPubController extends BaseController {
-    private static Logger logger = LoggerFactory.getLogger(WxPubController.class);
+@RequestMapping("/wx/pub/exp")
+public class WxPubExpController extends BaseController {
+    private static Logger logger = LoggerFactory.getLogger(WxPubExpController.class);
     
     @Autowired
-    private WxService wxService;
+    private WxExpService wxService;
     
     @Autowired
     private SecretService secretService;
@@ -41,11 +41,11 @@ public class WxPubController extends BaseController {
     @RequestMapping("/push")
     public String push(HttpServletRequest request, HttpServletResponse response,
             String signature, String timestamp, String nonce, String echostr) throws Exception {
-        logger.info("微信来消息了。。。");
+        logger.info("微信来消息了。。。-exp");
         
         // 验签失败返回
         if (!wxService.checkToken(signature, timestamp, nonce)) {
-            logger.info("验签失败");
+            logger.info("验签失败-exp");
             return "fail";
         }
         
@@ -61,9 +61,9 @@ public class WxPubController extends BaseController {
         
         String fromUserName = wxMsg.getFromUserName();
         String msgType = wxMsg.getMsgType();
-    
+        
         String msgId = secretService.encrypt(wxMsg.getId());
-    
+        
         return WxUtil.returnMsg(msgType, fromUserName, wxMsg.getTitle(), msgId);
     }
 }

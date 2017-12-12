@@ -67,15 +67,24 @@ logging:
 msx:
   jwt:
     header: Authorization
-    secret: Sixlab's MinesiteX
+    secret: msx-jwt
     expiration: 604800000
     tokenHead: "Bearer "
 
   wx:
-    token: abcdefg
-    key: N6PcZjJtS4xl6yBXsBhRZRu9LJKVK6HMMyhd3v3ZaRl
-    appId: wx0764cea5b27f8221
-    appSecret: 9f9b70f703d9b73b6e9fa4233dcab5fb
+    appId: wx01
+    appSecret: wx01
+    token: wx01
+    key: wx01
+    openId: wx01
+
+  wxexp:
+    appId: wx02
+    appSecret: wx02
+    token: wx02
+    key: wx02
+    openId: wx02
+    tpl: wx02
 
   secret:
-    key: Sixlab's msx-key
+    key: msx-key

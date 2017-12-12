@@ -59,25 +59,10 @@
             <scope>runtime</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-        </dependency>
-
-        <!-- repo 依赖 -->
+        <!-- plugin -->
         <dependency>
             <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-data-wx</artifactId>
-        </dependency>
-
-        <!-- 内部库 依赖 -->
-        <dependency>
-            <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-lib-base</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-lib-redis</artifactId>
+            <artifactId>msx-plugin-wx</artifactId>
         </dependency>
     </dependencies>
 
