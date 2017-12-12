@@ -59,11 +59,11 @@ public class WxPubExpController extends BaseController {
         
         MsxWxMsg wxMsg = wxService.dealMsg(inputStream);
         
-        String fromUserName = wxMsg.getFromUserName();
+        String userOpenId = wxMsg.getFromUserName();
         String msgType = wxMsg.getMsgType();
         
         String msgId = secretService.encrypt(wxMsg.getId());
         
-        return WxUtil.returnMsg(msgType, fromUserName, wxMsg.getTitle(), msgId);
+        return WxUtil.returnMsg(msgType, userOpenId, "nianqinianyi", wxMsg.getTitle(), msgId);
     }
 }

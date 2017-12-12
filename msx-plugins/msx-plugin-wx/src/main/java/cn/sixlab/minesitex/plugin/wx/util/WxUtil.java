@@ -183,13 +183,13 @@ public class WxUtil {
         return wxMsg;
     }
     
-    public static String returnMsg(String msgType, String fromUserName, String event, String msgId){
+    public static String returnMsg(String msgType, String toUsername, String fromUsername, String event, String msgId){
         String msg = "";
         if ("event".equals(msgType)) {
             if ("subscribe".equals(event)) {
                 msg = "<xml>" +
-                        "<ToUserName><![CDATA[" + fromUserName + "]]></ToUserName>" +
-                        "<FromUserName><![CDATA[sixlab]]></FromUserName>" +
+                        "<ToUserName><![CDATA[" + toUsername + "]]></ToUserName>" +
+                        "<FromUserName><![CDATA[" + fromUsername + "]]></FromUserName>" +
                         "<CreateTime>" + String.valueOf(new Date().getTime() / 1000) + "</CreateTime>" +
                         "<MsgType><![CDATA[text]]></MsgType>" +
                         "<Content><![CDATA[感谢您的关注，更多功能敬请期待，现在您可以访问 sixlab.cn 发现更多精彩。也可以发消息和我互动哦。]]></Content>" +
@@ -197,8 +197,8 @@ public class WxUtil {
             }
         } else {
             msg = "<xml>" +
-                    "<ToUserName><![CDATA[" + fromUserName + "]]></ToUserName>" +
-                    "<FromUserName><![CDATA[sixlab]]></FromUserName>" +
+                    "<ToUserName><![CDATA[" + toUsername + "]]></ToUserName>" +
+                    "<FromUserName><![CDATA[" + fromUsername + "]]></FromUserName>" +
                     "<CreateTime>" + String.valueOf(new Date().getTime() / 1000) + "</CreateTime>" +
                     "<MsgType><![CDATA[text]]></MsgType>" +
                     "<Content><![CDATA[消息已收到，请访问 https://sixlab.cn/wx/pub/msg/" + msgId + " 查看消息。]]></Content>" +
