@@ -29,8 +29,8 @@ import java.util.Date;
 
 @RestController
 @RequestMapping("/wx/pub")
-public class PubController extends BaseController{
-    private static Logger logger = LoggerFactory.getLogger(PubController.class);
+public class WxPubController extends BaseController {
+    private static Logger logger = LoggerFactory.getLogger(WxPubController.class);
     
     @Autowired
     private WxService wxService;
@@ -42,26 +42,26 @@ public class PubController extends BaseController{
     public String push(HttpServletRequest request, HttpServletResponse response,
             String signature, String timestamp, String nonce, String echostr) throws Exception {
         logger.info("微信来消息了。。。");
-    
+        
         // 验签失败返回
         if (!wxService.checkToken(signature, timestamp, nonce)) {
             logger.info("验签失败");
             return "fail";
         }
-    
+        
         // 如果 echostr
         if (!StringUtils.isEmpty(echostr)) {
             return echostr;
         }
-    
+        
         //如果不是 echostr
         InputStream inputStream = request.getInputStream();
-    
+        
         MsxWxMsg wxMsg = wxService.dealMsg(inputStream);
-    
+        
         String fromUserName = wxMsg.getFromUserName();
         String msgType = wxMsg.getMsgType();
-    
+        
         String msg = "";
         if ("event".equals(msgType)) {
             String event = wxMsg.getTitle();
@@ -80,10 +80,10 @@ public class PubController extends BaseController{
                     "<FromUserName><![CDATA[sixlab]]></FromUserName>" +
                     "<CreateTime>" + String.valueOf(new Date().getTime() / 1000) + "</CreateTime>" +
                     "<MsgType><![CDATA[text]]></MsgType>" +
-                    "<Content><![CDATA[消息已收到，请访问 https://sixlab.cn/wx/pub/msg/"+ secretService.encrypt(wxMsg.getId())+" 查看消息。]]></Content>" +
+                    "<Content><![CDATA[消息已收到，请访问 https://sixlab.cn/wx/pub/msg/" + secretService.encrypt(wxMsg.getId()) + " 查看消息。]]></Content>" +
                     "</xml>";
         }
-    
+        
         return msg;
     }
 }
