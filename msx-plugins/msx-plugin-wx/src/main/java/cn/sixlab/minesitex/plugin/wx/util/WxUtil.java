@@ -151,6 +151,12 @@ public class WxUtil {
                         case "event":
                             // 接收事件推送 event
                             title = rootElement.element("Event").getText();
+    
+                            if ("TEMPLATESENDJOBFINISH".equals(title)) {
+                                logger.info("TEMPLATESENDJOBFINISH>>>\n" + message);
+                                return null;
+                            }
+                            
                             content = rootElement.element("EventKey").getText();
                             
                             locationX = rootElement.element("Latitude").getText();

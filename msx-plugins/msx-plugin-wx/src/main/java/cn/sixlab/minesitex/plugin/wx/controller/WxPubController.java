@@ -58,13 +58,17 @@ public class WxPubController extends BaseController {
         InputStream inputStream = request.getInputStream();
         
         MsxWxMsg wxMsg = wxService.dealMsg(inputStream);
+    
+        if (null != wxMsg) {
+            String userOpenId = wxMsg.getFromUserName();
+            String devUserId = wxMsg.getToUserName();
+            String msgType = wxMsg.getMsgType();
         
-        String userOpenId = wxMsg.getFromUserName();
-        String devUserId = wxMsg.getToUserName();
-        String msgType = wxMsg.getMsgType();
-    
-        String msgId = secretService.encrypt(wxMsg.getId());
-    
-        return WxUtil.returnMsg(msgType, userOpenId, devUserId, wxMsg.getTitle(), msgId);
+            String msgId = secretService.encrypt(wxMsg.getId());
+        
+            return WxUtil.returnMsg(msgType, userOpenId, devUserId, wxMsg.getTitle(), msgId);
+        } else {
+            return "success";
+        }
     }
 }
