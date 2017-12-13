@@ -38,10 +38,18 @@ public class CacheManage {
     }
     
     public void put(String key, Object val) {
-        template.opsForValue().set(key, JsonUtl.toJson(val));
+        this.put(key, JsonUtl.toJson(val));
     }
     
     public void put(String key, Object val, long sec) {
-        template.opsForValue().set(key, JsonUtl.toJson(val), sec, TimeUnit.SECONDS);
+        this.put(key, JsonUtl.toJson(val), sec);
+    }
+    
+    public void put(String key, String val) {
+        template.opsForValue().set(key, JsonUtl.toJson(val));
+    }
+    
+    public void put(String key, String val, long sec) {
+        template.opsForValue().set(key, val, sec, TimeUnit.SECONDS);
     }
 }

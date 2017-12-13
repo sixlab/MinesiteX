@@ -16,11 +16,14 @@ import cn.sixlab.minesitex.data.wx.WxMsgRepo;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
 
 public class WxUtil {
+    private static Logger logger = LoggerFactory.getLogger(WxUtil.class);
     
     public static MsxWxMsg saveMsg(String message, WxMsgRepo msgRepo){
         MsxWxMsg wxMsg = null;
@@ -177,6 +180,7 @@ public class WxUtil {
             }
         
         } catch (Exception e) {
+            logger.info("报错消息>>>\n"+message);
             e.printStackTrace();
         }
     

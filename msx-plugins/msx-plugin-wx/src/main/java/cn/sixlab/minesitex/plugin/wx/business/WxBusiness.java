@@ -14,10 +14,10 @@ package cn.sixlab.minesitex.plugin.wx.business;
 import cn.sixlab.minesitex.lib.base.util.HttpUtil;
 import cn.sixlab.minesitex.lib.base.util.JsonUtl;
 import cn.sixlab.minesitex.lib.base.util.Sha1Utils;
+import cn.sixlab.minesitex.lib.redis.CacheManage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -31,7 +31,7 @@ public class WxBusiness {
     private static Logger logger = LoggerFactory.getLogger(WxBusiness.class);
     
     @Autowired
-    private StringRedisTemplate template;
+    private CacheManage cacheManage;
     
     public boolean checkToken(String signature, String timestamp, String nonce, String wxToken) {
         String[] tmpArr = new String[]{wxToken, timestamp, nonce};
@@ -59,7 +59,7 @@ public class WxBusiness {
     }
     
     public String accessToken(String appId, String appSecret) {
-        String wxAccessToken = template.opsForValue().get(appId);
+        String wxAccessToken = cacheManage.get(appId);
         
         if (StringUtils.isEmpty(wxAccessToken)) {
             String url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="
@@ -73,7 +73,7 @@ public class WxBusiness {
             String expiresIn = String.valueOf(map.get("expires_in"));
             long expires = Long.parseLong(expiresIn);
     
-            template.opsForValue().set(appId, wxAccessToken, expires - 1200);
+            cacheManage.put(appId, wxAccessToken, expires - 1200);
         }
         return wxAccessToken;
     }

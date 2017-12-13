@@ -42,12 +42,13 @@ public class HttpUtil {
             Request request = new Request.Builder().url(url).post(requestBody).build();
             Response response = defaultClient.newCall(request).execute();
             
-            System.out.println("微信推送信息返回code：" + response.code());
-            System.out.println("微信推送信息返回resp：" + response.body().string());
+            logger.info("postJson返回code：" + response.code());
             result = response.body().string();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        logger.info("请求结果>>>\n" + result);
         return result;
     }
     
@@ -57,10 +58,14 @@ public class HttpUtil {
         try {
             Request request = new Request.Builder().url(url).build();
             Response response = defaultClient.newCall(request).execute();
+            
+            logger.info("reqJson返回code：" + response.code());
             result = response.body().string();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    
+        logger.info("请求结果>>>\n" + result);
         return result;
     }
 }
