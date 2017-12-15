@@ -10,26 +10,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.sixlab.minesitex</groupId>
-    <artifactId>msx-plugin-movie</artifactId>
+    <artifactId>msx-plugin-assignment</artifactId>
     <version>msx.0.2.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>msx-plugin-movie</name>
-    <description>Plugin movie for Minesitex</description>
+    <name>msx-plugin-assignment</name>
+    <description>Plugin assignment for Minesitex</description>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
         </dependency>
 
         <!-- 开发依赖 -->
@@ -44,16 +35,14 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- api 依赖 -->
+
         <!-- bean 依赖 -->
-        <dependency>
-            <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-bean-movie</artifactId>
-        </dependency>
 
         <!-- repo 依赖 -->
         <dependency>
             <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-data-movie</artifactId>
+            <artifactId>msx-data-assignment</artifactId>
         </dependency>
 
         <!-- 内部库 依赖 -->

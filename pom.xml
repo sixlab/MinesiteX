@@ -138,22 +138,22 @@
 
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
-                <artifactId>msx-bean-award</artifactId>
+                <artifactId>msx-bean-assignment</artifactId>
                 <version>${msx.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
-                <artifactId>msx-data-award</artifactId>
+                <artifactId>msx-data-assignment</artifactId>
                 <version>${msx.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
-                <artifactId>msx-plugin-award</artifactId>
+                <artifactId>msx-plugin-assignment</artifactId>
                 <version>${msx.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.sixlab.minesitex</groupId>
-                <artifactId>msx-service-award</artifactId>
+                <artifactId>msx-service-assignment</artifactId>
                 <version>${msx.version}</version>
             </dependency>
         </dependencies>

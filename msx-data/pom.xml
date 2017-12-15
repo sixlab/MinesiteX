@@ -21,7 +21,7 @@
         <module>msx-data-movie</module>
         <module>msx-data-user</module>
         <module>msx-data-wx</module>
-        <module>msx-data-award</module>
+        <module>msx-data-assignment</module>
     </modules>
 
 </project>

@@ -27,7 +27,7 @@
 
         <module>msx-web-aio</module>
         <module>msx-web-zuul</module>
-        <module>msx-service-award</module>
+        <module>msx-service-assignment</module>
     </modules>
 
 </project>

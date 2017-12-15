@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>msx-server</artifactId>
         <groupId>cn.sixlab.minesitex</groupId>
@@ -65,10 +67,10 @@
         </dependency>
         <dependency>
             <groupId>cn.sixlab.minesitex</groupId>
-            <artifactId>msx-plugin-award</artifactId>
+            <artifactId>msx-plugin-assignment</artifactId>
             <version>${msx.version}</version>
         </dependency>
-    <dependency><groupId>cn.sixlab.minesitex</groupId><artifactId>msx-plugin-award</artifactId><version>${msx.version}</version></dependency></dependencies>
+    </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>

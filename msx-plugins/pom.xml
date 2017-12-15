@@ -23,7 +23,7 @@
         <module>msx-plugin-movie</module>
         <module>msx-plugin-user</module>
         <module>msx-plugin-wx</module>
-        <module>msx-plugin-award</module>
+        <module>msx-plugin-assignment</module>
     </modules>
 
 </project>

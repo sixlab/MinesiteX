@@ -15,7 +15,7 @@
     <packaging>jar</packaging>
 
     <name>msx-plugin-wx</name>
-    <description>Wei-xin plugin for Minesitex</description>
+    <description>Plugin wechat for Minesitex</description>
 
     <dependencies>
         <!-- Spring 依赖 -->
