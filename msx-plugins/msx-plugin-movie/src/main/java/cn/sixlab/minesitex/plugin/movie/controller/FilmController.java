@@ -38,6 +38,20 @@ public class FilmController extends BaseController{
     private FilmService service;
     
     /**
+     * 获取电影院
+     *
+     * @param film
+     * @return
+     */
+    @GetMapping(value = "/film/cinema")
+    public ModelJson cinema() {
+        logger.debug("获取电影列表");
+        ModelJson<List<String>> json = new ModelJson<>();
+        
+        return json.setData(service.fetchCinema());
+    }
+    
+    /**
      * 添加一部新观看的电影
      *
      * @param film
@@ -121,21 +135,21 @@ public class FilmController extends BaseController{
         return json;
     }
     
-    /**
-     * 观看了 id 电影，名字是 name
-     *
-     * @param id
-     * @param name
-     * @return
-     */
-    @PostMapping(value = "/film/{id}/view/{name}")
-    public ModelJson viewFilm(@PathVariable Integer id, @PathVariable String name) {
-        logger.debug("重看电影>>>", id);
-        logger.debug("重看电影>>>", name);
-        ModelJson json = new ModelJson();
-        
-        service.viewFilm(id, name);
-        
-        return json;
-    }
+    ///**
+    // * 观看了 id 电影，名字是 name
+    // *
+    // * @param id
+    // * @param name
+    // * @return
+    // //*/
+    //@PostMapping(value = "/film/{id}/view/{name}")
+    //public ModelJson viewFilm(@PathVariable Integer id, @PathVariable String name) {
+    //    logger.debug("重看电影>>>", id);
+    //    logger.debug("重看电影>>>", name);
+    //    ModelJson json = new ModelJson();
+    //
+    //    service.viewFilm(id, name);
+    //
+    //    return json;
+    //}
 }

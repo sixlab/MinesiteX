@@ -32,18 +32,30 @@ public class FilmService {
     private FilmRepo filmRepo;
     
     public MsxFilm addFilm(MsxFilm film) {
+        if(film.getRemark().contains("@@")){
+            String[] remark = film.getRemark().split("@@");
+            film.setRemark(remark[0]);
+            film.setCinema(remark[1]);
+        }
+        
         filmRepo.save(film);
         
         return film;
     }
     
     public MsxFilm updateFilm(MsxFilm film) {
+        if (film.getRemark().contains("@@")) {
+            String[] remark = film.getRemark().split("@@");
+            film.setRemark(remark[0]);
+            film.setCinema(remark[1]);
+        }
+        
         return filmRepo.save(film);
     }
     
-    public void viewFilm(Integer id, String name) {
-        //hisService.sawFilm(id, name, new Date());
-    }
+    //public void viewFilm(Integer id, String name) {
+    //    //hisService.sawFilm(id, name, new Date());
+    //}
     
     public List<MsxFilm> searchFilm(String keyword) {
         List<MsxFilm> filmList;
@@ -62,7 +74,7 @@ public class FilmService {
     }
     
     public List<MsxFilm> fetchRecentFilm(Integer num) {
-        List<MsxFilm> filmList = null;
+        List<MsxFilm> filmList;
         
         if (num == null) {
             num = 10;
@@ -74,5 +86,10 @@ public class FilmService {
         filmList = filmPage.getContent();
     
         return filmList;
+    }
+    
+    public List<String> fetchCinema() {
+        List<String> cinemaList = filmRepo.queryCinemas();
+        return cinemaList;
     }
 }

@@ -21,14 +21,25 @@ import java.util.List;
 public interface FilmRepo extends JpaRepository<MsxFilm, Integer>{
     
     @Query(
-            " select u from MsxFilm u where" +
-                    " u.movieName like concat('%',?1,'%') " +
+            " select u from MsxFilm u where " +
+                    "    u.movieName   like concat('%',?1,'%') " +
                     " OR u.produceYear like concat('%',?1,'%') " +
-                    " OR u.director like concat('%',?1,'%') " +
-                    " OR u.remark like concat('%',?1,'%') " +
+                    " OR u.director    like concat('%',?1,'%') " +
+                    " OR u.remark      like concat('%',?1,'%') " +
                     " OR u.doubanScore like concat('%',?1,'%') " +
-                    " OR u.doubanKey like concat('%',?1,'%') " +
-                    " OR u.doubanInfo like concat('%',?1,'%') "
+                    " OR u.doubanKey   like concat('%',?1,'%') " +
+                    " OR u.doubanInfo  like concat('%',?1,'%') " +
+                    " OR u.cinema      like concat('%',?1,'%') "
     )
     List<MsxFilm> queryByKeyword(@Param("keyword") String keyword);
+    
+    @Query(
+            " select u.cinema from MsxFilm u " +
+                    "where " +
+                    "    u.cinema is not null " +
+                    "and u.cinema <> '' " +
+                    "group by u.cinema " +
+                    "order by u.cinema "
+    )
+    List<String> queryCinemas();
 }

@@ -32,6 +32,7 @@ public class MsxFilm implements Serializable{
     private Double doubanScore;
     private String doubanInfo;
     private String infoStatus;
+    private String cinema;
     
     public Integer getId() {
         return id;
@@ -111,5 +112,13 @@ public class MsxFilm implements Serializable{
     
     public void setInfoStatus(String infoStatus) {
         this.infoStatus = infoStatus;
+    }
+    
+    public String getCinema() {
+        return cinema;
+    }
+    
+    public void setCinema(String cinema) {
+        this.cinema = cinema;
     }
 }
