@@ -39,7 +39,6 @@ public class ModuleGenerator {
         Element beans = dependencies.addElement("dependency");
         beans.addElement("groupId").setText("cn.sixlab.minesitex");
         beans.addElement("artifactId").setText("msx-plugin-" + pluginName);
-        beans.addElement("version").setText("${msx.version}");
     
         XMLUtil.writeXML(pom, doc);
     }

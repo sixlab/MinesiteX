@@ -49,6 +49,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- 模块依赖 -->
         <dependency>
             <groupId>cn.sixlab.minesitex.base</groupId>
             <artifactId>msx-base-gateway</artifactId>
@@ -68,7 +69,6 @@
         <dependency>
             <groupId>cn.sixlab.minesitex</groupId>
             <artifactId>msx-plugin-assignment</artifactId>
-            <version>${msx.version}</version>
         </dependency>
     </dependencies>
 

@@ -15,6 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -32,6 +33,8 @@ public class MsxShow implements Serializable{
     private String doubanKey;
     private Date beginDate;
     private Date updateDate;
+    
+    private Timestamp insertTime;
     
     public Integer getId() {
         return id;
@@ -111,5 +114,13 @@ public class MsxShow implements Serializable{
     
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+    
+    public Timestamp getInsertTime() {
+        return insertTime;
+    }
+    
+    public void setInsertTime(Timestamp insertTime) {
+        this.insertTime = insertTime;
     }
 }

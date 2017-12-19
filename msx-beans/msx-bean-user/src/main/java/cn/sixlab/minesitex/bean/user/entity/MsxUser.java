@@ -15,6 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -28,6 +29,8 @@ public class MsxUser implements Serializable{
     private String userStatus;
     private String userType;
     private Date lastPasswordResetDate;
+    
+    private Timestamp insertTime;
     
     public Integer getId() {
         return id;
@@ -75,5 +78,13 @@ public class MsxUser implements Serializable{
     
     public void setLastPasswordResetDate(Date lastPasswordResetDate) {
         this.lastPasswordResetDate = lastPasswordResetDate;
+    }
+    
+    public Timestamp getInsertTime() {
+        return insertTime;
+    }
+    
+    public void setInsertTime(Timestamp insertTime) {
+        this.insertTime = insertTime;
     }
 }

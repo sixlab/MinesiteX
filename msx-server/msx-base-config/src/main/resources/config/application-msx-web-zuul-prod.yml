@@ -7,7 +7,6 @@ zuul:
       path: /wx/**
       serviceId: msx-service-wx
       stripPrefix: false
-
     msx-user:
       path: /user/**
       serviceId: msx-service-user
@@ -15,6 +14,10 @@ zuul:
     msx-movie:
       path: /movie/**
       serviceId: msx-service-movie
+      stripPrefix: false
+    msx-movie:
+      path: /assignment/**
+      serviceId: msx-service-assignment
       stripPrefix: false
 
 #    msx-users:

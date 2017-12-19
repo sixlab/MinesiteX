@@ -6,26 +6,27 @@
  * For more information, please see
  * https://sixlab.cn/
  *
- * @time: 2017/10/26 17:29
+ * @time: 2017/12/15 17:55
  * @author: Patrick <root@sixlab.cn>
  */
-package cn.sixlab.minesitex.bean.user.entity;
+package cn.sixlab.minesitex.bean.assignment.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity
-public class MsxUserRole implements Serializable{
-    
+public class MsxAssignmentRule {
     @Id
     @GeneratedValue
     private Integer id;
-    private Integer userId;
-    private String role;
-    private String roleName;
+    private String ruleName;
+    private String ruleRemark;
+    
+    private Date beginDate;
+    private Date endDate;
     
     private Timestamp insertTime;
     
@@ -37,28 +38,36 @@ public class MsxUserRole implements Serializable{
         this.id = id;
     }
     
-    public Integer getUserId() {
-        return userId;
+    public String getRuleName() {
+        return ruleName;
     }
     
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setRuleName(String ruleName) {
+        this.ruleName = ruleName;
     }
     
-    public String getRole() {
-        return role;
+    public String getRuleRemark() {
+        return ruleRemark;
     }
     
-    public void setRole(String role) {
-        this.role = role;
+    public void setRuleRemark(String ruleRemark) {
+        this.ruleRemark = ruleRemark;
     }
     
-    public String getRoleName() {
-        return roleName;
+    public Date getBeginDate() {
+        return beginDate;
     }
     
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setBeginDate(Date beginDate) {
+        this.beginDate = beginDate;
+    }
+    
+    public Date getEndDate() {
+        return endDate;
+    }
+    
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
     
     public Timestamp getInsertTime() {

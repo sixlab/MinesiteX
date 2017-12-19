@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.7.RELEASE</version>
+        <version>1.5.9.RELEASE</version>
     </parent>
 
     <properties>
@@ -51,6 +51,11 @@
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
                 <version>3.8.1</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.jpush.api</groupId>
+                <artifactId>jpush-client</artifactId>
+                <version>3.3.3</version>
             </dependency>
 
             <!-- msx-api -->

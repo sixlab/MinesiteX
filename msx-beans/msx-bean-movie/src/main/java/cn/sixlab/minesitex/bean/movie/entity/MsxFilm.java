@@ -15,6 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -33,6 +34,8 @@ public class MsxFilm implements Serializable{
     private String doubanInfo;
     private String infoStatus;
     private String cinema;
+    
+    private Timestamp insertTime;
     
     public Integer getId() {
         return id;
@@ -120,5 +123,13 @@ public class MsxFilm implements Serializable{
     
     public void setCinema(String cinema) {
         this.cinema = cinema;
+    }
+    
+    public Timestamp getInsertTime() {
+        return insertTime;
+    }
+    
+    public void setInsertTime(Timestamp insertTime) {
+        this.insertTime = insertTime;
     }
 }

@@ -88,3 +88,7 @@ msx:
 
   secret:
     key: msx-key
+
+  jpush:
+    secret: jpush01
+    key: jpush01

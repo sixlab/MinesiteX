@@ -44,15 +44,6 @@ public class PubMsgController {
     @Autowired
     SecretService secretService;
     
-    @Autowired
-    private MsxWxExpVal wxVal;
-    
-    @Autowired
-    private WxBusiness wxBusiness;
-    
-    @Autowired
-    private CacheManage cacheManage;
-    
     @RequestMapping("/msg/{strId}")
     public String msg(@PathVariable String strId, Model model) throws Exception {
         Integer id = secretService.decryptInt(strId);
@@ -80,54 +71,5 @@ public class PubMsgController {
         model.addAttribute("msgList", msgList);
         
         return "wx/pub/msg/msgs";
-    }
-    
-    @ResponseBody
-    @RequestMapping("/test")
-    public String test() {
-        logger.info("testSendTpl。。。");
-        
-        Map<String, Map<String, String>> data = new HashMap<>();
-        
-        Map<String, String> first = new HashMap<>();
-        first.put("value", "早睡早起，怡神爽气。\n");
-        data.put("first", first);
-        
-        Map<String, String> keyword1 = new HashMap<>();
-        keyword1.put("value", "晚安");
-        data.put("keyword1", keyword1);
-        
-        Map<String, String> keyword2 = new HashMap<>();
-        keyword2.put("value", "早睡早起，怡神爽气。");
-        data.put("keyword2", keyword2);
-        
-        Map<String, String> remark = new HashMap<>();
-        remark.put("value", "早睡早起，怡神爽气。");
-        remark.put("color", "#FF4500");
-        data.put("remark", remark);
-        
-        String accessToken = wxBusiness.accessToken(wxVal.getWxAppId(), wxVal.getWxAppSecret());
-        WxMsgUtil.sendTplMsg(accessToken, wxVal.getWxOpenId(), wxVal.getWxTpl(),
-                "https://sixlab.cn", data);
-        
-        return "";
-    }
-    
-    @ResponseBody
-    @RequestMapping("/get")
-    public String get() {
-        logger.info("get。。。");
-        
-        return "<"+cacheManage.get(wxVal.getWxAppId())+">";
-    }
-    
-    @ResponseBody
-    @RequestMapping("/clear")
-    public String clear() {
-        logger.info("clear。。。");
-    
-        cacheManage.del(wxVal.getWxAppId());
-        
-        return "ok";
     }
 }

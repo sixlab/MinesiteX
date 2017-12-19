@@ -40,7 +40,6 @@ public class FilmController extends BaseController{
     /**
      * 获取电影院
      *
-     * @param film
      * @return
      */
     @GetMapping(value = "/film/cinema")
