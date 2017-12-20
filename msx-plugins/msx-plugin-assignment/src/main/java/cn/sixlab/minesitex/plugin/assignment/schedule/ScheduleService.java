@@ -38,6 +38,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -134,6 +135,11 @@ public class ScheduleService {
         int weekOfYear = DateTimeUtil.weekOfYear(now);
         int weekOfMonthLast = DateTimeUtil.weekOfMonthLast(now);
         int weekOfYearLast = DateTimeUtil.weekOfYearLast(now);
+    
+        int weekdayOfMonth = now.get(ChronoField.ALIGNED_WEEK_OF_MONTH);
+        int weekdayOfMonthLast = DateTimeUtil.weekdayOfMonthLast(now);
+        int weekdayOfYear = now.get(ChronoField.ALIGNED_WEEK_OF_YEAR);
+        int weekdayOfYearLast = DateTimeUtil.weekdayOfYearLast(now);
         
         Map<Integer, List<MsxAssignmentRule>> assignmentMap = new HashMap<>();
         
@@ -177,7 +183,7 @@ public class ScheduleService {
                                 } else { // week
                                     if (null == dayNum) { // 不存在的 每 weekNum 周
                                         markError(detail, "[不存在]每 weekNum 周");
-                                    } else { // day 每隔 weekNum 周的周 dayNum
+                                    } else { //  day 每隔 weekNum 周的周 dayNum
                                         if (dayOfWeek == dayNum) {
                                             if (betweenWeek % weekNum == 0) {
                                                 ruleMatch = true;
@@ -201,11 +207,12 @@ public class ScheduleService {
                                     // week
                                     if (null == dayNum) { // 不存在 每 monthNum 月 weekNum 周
                                         markError(detail, "[不存在]每 monthNum 月 weekNum 周");
-                                    } else { // day 每 monthNum 月 weekNum 周的周 dayNum
+                                    } else { // day 每 monthNum 月第 weekNum 个周 dayNum
                                         // 周几对的上
+                                        //TODO 如果是每月第5个周日，不一定每个月都有
                                         if (dayNum == dayOfWeek) {
                                             // 周对的上
-                                            if (weekNum == weekOfMonth || weekNum == weekOfMonthLast) {
+                                            if (weekNum == weekdayOfMonth || weekNum == weekdayOfMonthLast) {
                                                 if (betweenMonth % monthNum == 0) {
                                                     ruleMatch = true;
                                                 }
@@ -229,6 +236,8 @@ public class ScheduleService {
                                         markError(detail, "[不存在]每 yearNum 年");
                                     } else { // day 每 yearNum 年第 dayNum 天
                                         // 天对的上
+                                        //TODO 每年366天，每隔四年才出一次
+                                        //TODO 加上倒数第几天
                                         if (now.getDayOfYear() == dayNum) {
                                             ruleMatch = true;
                                         }
@@ -236,9 +245,10 @@ public class ScheduleService {
                                 } else { // week
                                     if (null == dayNum) { // 不存在  每 yearNum 年第 weekNum 周
                                         markError(detail, "[不存在]每 yearNum 年第 weekNum 周");
-                                    } else { // day 每 yearNum 年第 weekNum 周的周 dayNum
+                                    } else { // day 每 yearNum 年第 weekNum 个周 dayNum
+                                        //TODO 如果是每月第5个周日，不一定每个月都有
                                         if (dayNum == dayOfWeek) {
-                                            if (weekNum == weekOfYear && weekNum == weekOfYearLast) {
+                                            if (weekNum == weekdayOfYear || weekNum == weekdayOfYearLast) {
                                                 ruleMatch = true;
                                             }
                                         }
@@ -250,6 +260,7 @@ public class ScheduleService {
                                     if (null == dayNum) { // 不存在  每 yearNum 年第 monthNum 月
                                         markError(detail, "[不存在]每 yearNum 年第 monthNum 月");
                                     } else { // day 每 yearNum 年第 monthNum 月 dayNum 号
+                                        //TODO 加上倒数
                                         if (monthNum == monthOfYear && dayNum == dayOfMonth) {
                                             ruleMatch = true;
                                         }
@@ -257,9 +268,10 @@ public class ScheduleService {
                                 } else { // week
                                     if (null == dayNum) { // 不存在  每 yearNum 年第 monthNum 月 weekNum 周
                                         markError(detail, "[不存在]每 yearNum 年第 monthNum 月 weekNum 周");
-                                    } else {// day 每 yearNum 年第 monthNum 月 weekNum 周的周 dayNum
+                                    } else {// day 每 yearNum 年第 monthNum 月第 weekNum 个周 dayNum
+                                        //加上倒数
                                         if (monthNum == monthOfYear
-                                                && weekNum == weekOfMonth
+                                                && (weekNum == weekdayOfMonth || weekNum == weekdayOfMonthLast)
                                                 && dayNum == dayOfWeek) {
                                             ruleMatch = true;
                                         }

@@ -33,7 +33,7 @@ public class WxMsgUtil {
         String url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=" + accessToken;
         
         String content = HttpUtil.postJson(url, json);
-        System.out.println("微信推送公告返回：" + content);
+        System.out.println("微信推送消息返回：" + content);
         
         return content;
     }
