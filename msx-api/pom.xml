@@ -20,6 +20,8 @@
     <modules>
         <module>msx-api-user</module>
         <module>msx-api-user-feign</module>
+        <module>msx-api-wx</module>
+        <module>msx-api-wx-feign</module>
     </modules>
 
 </project>

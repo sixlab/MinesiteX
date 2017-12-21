@@ -14,11 +14,7 @@ package cn.sixlab.minesitex.plugin.wx.controller;
 import cn.sixlab.minesitex.bean.wx.entity.MsxWxMsg;
 import cn.sixlab.minesitex.lib.base.model.ModelJson;
 import cn.sixlab.minesitex.lib.base.util.SecretService;
-import cn.sixlab.minesitex.lib.redis.CacheManage;
-import cn.sixlab.minesitex.plugin.wx.business.WxBusiness;
 import cn.sixlab.minesitex.plugin.wx.service.WxService;
-import cn.sixlab.minesitex.plugin.wx.util.MsxWxExpVal;
-import cn.sixlab.minesitex.plugin.wx.util.WxMsgUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,16 +23,13 @@ import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/wx/pub")
-public class PubMsgController {
-    private static Logger logger = LoggerFactory.getLogger(PubMsgController.class);
+public class WxPubMsgController {
+    private static Logger logger = LoggerFactory.getLogger(WxPubMsgController.class);
     
     @Autowired
     WxService wxService;

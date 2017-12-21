@@ -49,6 +49,12 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- api 依赖 -->
+        <dependency>
+            <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-api-wx</artifactId>
+        </dependency>
+
         <!-- repo 依赖 -->
         <dependency>
             <groupId>cn.sixlab.minesitex</groupId>

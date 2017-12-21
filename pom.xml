@@ -69,6 +69,16 @@
                 <artifactId>msx-api-user-feign</artifactId>
                 <version>${msx.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-api-wx</artifactId>
+                <version>${msx.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.sixlab.minesitex</groupId>
+                <artifactId>msx-api-wx-feign</artifactId>
+                <version>${msx.version}</version>
+            </dependency>
 
             <!-- msx-beans -->
             <dependency>

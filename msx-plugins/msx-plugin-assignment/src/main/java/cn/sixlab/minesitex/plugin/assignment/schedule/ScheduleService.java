@@ -11,20 +11,17 @@
  */
 package cn.sixlab.minesitex.plugin.assignment.schedule;
 
-import cn.jiguang.common.ClientConfig;
-import cn.jiguang.common.resp.APIConnectionException;
-import cn.jiguang.common.resp.APIRequestException;
 import cn.jpush.api.JPushClient;
-import cn.jpush.api.push.PushResult;
 import cn.jpush.api.push.model.PushPayload;
+import cn.sixlab.minesitex.api.wx.IWxMsgService;
 import cn.sixlab.minesitex.bean.assignment.entity.MsxAssignment;
 import cn.sixlab.minesitex.bean.assignment.entity.MsxAssignmentRule;
 import cn.sixlab.minesitex.bean.assignment.entity.MsxAssignmentRuleDetail;
+import cn.sixlab.minesitex.bean.wx.vo.SendMsgVo;
 import cn.sixlab.minesitex.data.assignment.AssignmentRepo;
 import cn.sixlab.minesitex.data.assignment.RuleDetailRepo;
 import cn.sixlab.minesitex.data.assignment.RuleRepo;
 import cn.sixlab.minesitex.lib.base.util.DateTimeUtil;
-import cn.sixlab.minesitex.lib.base.util.JsonUtl;
 import cn.sixlab.minesitex.plugin.assignment.util.MsxJpush;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,43 +62,77 @@ public class ScheduleService {
     @Autowired
     private AssignmentRepo assignmentRepo;
     
+    @Autowired
+    IWxMsgService wxMsgService;
+    
     @Scheduled(cron = "0 0 6 * * ?")
     public void morning() throws InterruptedException {
         logger.info("good morning");
         
         Map<Integer, List<MsxAssignmentRule>> assignmentMap = getToadyAssignment();
         
-        initDb(assignmentMap);
+        int count = initDb(assignmentMap);
         
         LocalDate localDate = LocalDate.now();
-        String url = "https://sixlab.cn/assignment/" + localDate.getYear() + "/" + localDate.getMonthValue() + "/" + localDate.getDayOfMonth();
+        String date = localDate.getYear() + "/" + localDate.getMonthValue() + "/" + localDate.getDayOfMonth();
+        String url = "https://sixlab.cn/assignment/" + date;
+    
+        Map<String, Map<String, String>> data = new HashMap<>();
+    
+        Map<String, String> first = new HashMap<>();
+        first.put("value", "一年之计在于春，一日之计在于晨。\n");
+        data.put("first", first);
+    
+        Map<String, String> keyword1 = new HashMap<>();
+        keyword1.put("value", "任务数量");
+        data.put("keyword1", keyword1);
+    
+        Map<String, String> keyword2 = new HashMap<>();
+        keyword2.put("value", "共 " + count + " 个");
+        data.put("keyword2", keyword2);
+    
+        String msg = "今天是第 "+localDate.getDayOfYear()+" 天\n第"
+                + DateTimeUtil.weekOfYear(localDate) + "周\n今年还剩下  "
+                + DateTimeUtil.yearLeftDays(localDate) + "  天\n";
         
-        if (null == jPushClient) {
-            jPushClient = new JPushClient(jpush.getJpushSecret(), jpush.getJpushKey(), null, ClientConfig.getInstance());
-        }
+        Map<String, String> remark = new HashMap<>();
+        remark.put("value", msg);
+        remark.put("color", "#FF4500");
+        data.put("remark", remark);
         
-        // For push, all you need do is to build PushPayload object.
-        PushPayload payload = buildMsg(url);
+        SendMsgVo vo = new SendMsgVo();
+        vo.setData(data);
+        vo.setUrl(url);
         
-        try {
-            PushResult result = jPushClient.sendPush(payload);
-            
-            System.out.println("-----------");
-            System.out.println(JsonUtl.toJson(result));
-            System.out.println("-----------");
-        } catch (APIConnectionException e) {
-            e.printStackTrace();
-        } catch (APIRequestException e) {
-            e.printStackTrace();
-        }
+        wxMsgService.sendMsg(vo);
+        
+        //if (null == jPushClient) {
+        //    jPushClient = new JPushClient(jpush.getJpushSecret(), jpush.getJpushKey(), null, ClientConfig.getInstance());
+        //}
+        //
+        //// For push, all you need do is to build PushPayload object.
+        //PushPayload payload = buildMsg(url);
+        //
+        //try {
+        //    PushResult result = jPushClient.sendPush(payload);
+        //
+        //    System.out.println("-----------");
+        //    System.out.println(JsonUtl.toJson(result));
+        //    System.out.println("-----------");
+        //} catch (APIConnectionException e) {
+        //    e.printStackTrace();
+        //} catch (APIRequestException e) {
+        //    e.printStackTrace();
+        //}
         
         logger.info("结束。");
     }
     
-    private void initDb(Map<Integer, List<MsxAssignmentRule>> assignmentMap) {
+    private int initDb(Map<Integer, List<MsxAssignmentRule>> assignmentMap) {
         Date assignmentDate = Date.valueOf(LocalDate.now());
         Timestamp insertTime = Timestamp.valueOf(LocalDateTime.now());
         
+        int count = 0;
         for (Integer hour : assignmentMap.keySet()) {
             List<MsxAssignmentRule> ruleList = assignmentMap.get(hour);
             
@@ -116,8 +147,11 @@ public class ScheduleService {
                 assignment.setRuleId(rule.getId());
                 
                 assignmentRepo.save(assignment);
+                count++;
             }
         }
+        
+        return count;
     }
     
     private PushPayload buildMsg(String url) {

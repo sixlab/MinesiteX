@@ -33,35 +33,35 @@ public class WxScheduleService {
     @Autowired
     private WxBusiness wxBusiness;
     
-    @Scheduled(cron = "0 0 6 * * ?")
-    public void morning() {
-        logger.info("good morning");
-    
-        Map<String, Map<String, String>> data = new HashMap<>();
-    
-        Map<String, String> first = new HashMap<>();
-        first.put("value", "一天之计在于晨\n");
-        data.put("first", first);
-    
-        Map<String, String> keyword1 = new HashMap<>();
-        keyword1.put("value", "早上好");
-        data.put("keyword1", keyword1);
-    
-        Map<String, String> keyword2 = new HashMap<>();
-        keyword2.put("value", "一天之计在于晨");
-        data.put("keyword2", keyword2);
-    
-        Map<String, String> remark = new HashMap<>();
-        remark.put("value", "一天之计在于晨");
-        remark.put("color", "#FF4500");
-        data.put("remark", remark);
-    
-        String accessToken = wxBusiness.accessToken(wxVal.getWxAppId(), wxVal.getWxAppSecret());
-        WxMsgUtil.sendTplMsg(accessToken, wxVal.getWxOpenId(), wxVal.getWxTpl(),
-                "https://sixlab.cn", data);
-        
-        logger.info("结束。");
-    }
+    //@Scheduled(cron = "0 0 6 * * ?")
+    //public void morning() {
+    //    logger.info("good morning");
+    //
+    //    Map<String, Map<String, String>> data = new HashMap<>();
+    //
+    //    Map<String, String> first = new HashMap<>();
+    //    first.put("value", "一天之计在于晨\n");
+    //    data.put("first", first);
+    //
+    //    Map<String, String> keyword1 = new HashMap<>();
+    //    keyword1.put("value", "早上好");
+    //    data.put("keyword1", keyword1);
+    //
+    //    Map<String, String> keyword2 = new HashMap<>();
+    //    keyword2.put("value", "一天之计在于晨");
+    //    data.put("keyword2", keyword2);
+    //
+    //    Map<String, String> remark = new HashMap<>();
+    //    remark.put("value", "一天之计在于晨");
+    //    remark.put("color", "#FF4500");
+    //    data.put("remark", remark);
+    //
+    //    String accessToken = wxBusiness.accessToken(wxVal.getWxAppId(), wxVal.getWxAppSecret());
+    //    WxMsgUtil.sendTplMsg(accessToken, wxVal.getWxOpenId(), wxVal.getWxTpl(),
+    //            "https://sixlab.cn", data);
+    //
+    //    logger.info("结束。");
+    //}
     
     @Scheduled(cron = "0 0 20 * * ? ")
     public void tips() {

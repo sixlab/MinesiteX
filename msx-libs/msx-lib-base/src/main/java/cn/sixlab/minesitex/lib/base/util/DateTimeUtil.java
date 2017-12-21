@@ -136,13 +136,23 @@ public class DateTimeUtil {
         }
     }
     
-    public static void main(String[] args) {
-        LocalDate localDate = LocalDate.now().with(TemporalAdjusters.firstDayOfMonth());
+    /**
+     * 今年还剩多少天
+     * @param localDate
+     * @return
+     */
+    public static int yearLeftDays(LocalDate localDate) {
+        int days = localDate.getDayOfYear();
         
-        for (int i = 1; i <= localDate.getMonth().maxLength(); i++) {
-            LocalDate date = localDate.withDayOfMonth(i);
-            System.out.println(i + "\t:\t" + weekdayOfYearLast(date));
-        }
+        days = 365 - days;
+        
+        return localDate.isLeapYear() ? days + 1 : days;
+    }
+    
+    public static void main(String[] args) {
+        LocalDate localDate = LocalDate.now().withDayOfMonth(1).withMonth(2).withYear(2016);
+    
+        System.out.println(yearLeftDays(localDate));
     }
     
     public static LocalDate date2Local(Date date) {

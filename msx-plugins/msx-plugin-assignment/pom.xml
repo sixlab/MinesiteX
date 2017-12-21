@@ -41,6 +41,10 @@
         </dependency>
 
         <!-- api 依赖 -->
+        <dependency>
+            <groupId>cn.sixlab.minesitex</groupId>
+            <artifactId>msx-api-wx</artifactId>
+        </dependency>
 
         <!-- bean 依赖 -->
 
