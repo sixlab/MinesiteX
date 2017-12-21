@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalAdjusters;
 
 public class DateTimeUtil {
     
@@ -62,7 +63,7 @@ public class DateTimeUtil {
      */
     public static int weekOfMonthLast(LocalDate date) {
         int weekOfMonth = weekOfMonth(date);
-        int weekOfMonthLast = weekOfMonth(date.withDayOfMonth(1).plusMonths(1).minusDays(1));
+        int weekOfMonthLast = weekOfMonth(date.with(TemporalAdjusters.lastDayOfMonth()));
         return weekOfMonth - weekOfMonthLast - 1;
     }
     
@@ -74,7 +75,7 @@ public class DateTimeUtil {
      */
     public static int weekOfYearLast(LocalDate date) {
         int weekOfYear = weekOfYear(date);
-        int weekOfYearLast = weekOfYear(date.withDayOfMonth(1).withMonth(1).plusYears(1).minusDays(1));
+        int weekOfYearLast = weekOfYear(date.with(TemporalAdjusters.lastDayOfYear()));
         return weekOfYear - weekOfYearLast - 1;
     }
     
@@ -88,8 +89,8 @@ public class DateTimeUtil {
         int dayOfWeek = date.getDayOfWeek().getValue();
         int alignedWeekOfMonth = date.get(ChronoField.ALIGNED_WEEK_OF_MONTH);
         
-        LocalDate first = date.withDayOfMonth(1);
-        LocalDate last = first.plusMonths(1).minusDays(1);
+        LocalDate first = date.with(TemporalAdjusters.firstDayOfMonth());
+        LocalDate last = date.with(TemporalAdjusters.lastDayOfMonth());
         
         int firstDayOfWeek = first.getDayOfWeek().getValue();
         int lastDayOfWeek = last.getDayOfWeek().getValue();
@@ -108,8 +109,8 @@ public class DateTimeUtil {
         int dayOfWeek = date.getDayOfWeek().getValue();
         int alignedWeekOfYear = date.get(ChronoField.ALIGNED_WEEK_OF_YEAR);
         
-        LocalDate first = date.withDayOfMonth(1).withMonth(1);
-        LocalDate last = first.plusYears(1).minusDays(1);
+        LocalDate first = date.with(TemporalAdjusters.firstDayOfYear());
+        LocalDate last = date.with(TemporalAdjusters.lastDayOfYear());
         
         int firstDayOfWeek = first.getDayOfWeek().getValue();
         int lastDayOfWeek = last.getDayOfWeek().getValue();
@@ -136,7 +137,7 @@ public class DateTimeUtil {
     }
     
     public static void main(String[] args) {
-        LocalDate localDate = LocalDate.now().withDayOfMonth(1);
+        LocalDate localDate = LocalDate.now().with(TemporalAdjusters.firstDayOfMonth());
         
         for (int i = 1; i <= localDate.getMonth().maxLength(); i++) {
             LocalDate date = localDate.withDayOfMonth(i);

@@ -35,11 +35,13 @@ import org.springframework.util.CollectionUtils;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.DayOfWeek;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -153,7 +155,8 @@ public class ScheduleService {
                 
                 long betweenDay = ChronoUnit.DAYS.between(beginDate, now);
                 long betweenWeek = ChronoUnit.DAYS.between(beginDate, now) / 7;
-                long betweenMonth = ChronoUnit.MONTHS.between(beginDate.withDayOfMonth(1), now.withDayOfMonth(1));
+                long betweenMonth = ChronoUnit.MONTHS.between(beginDate.with(TemporalAdjusters.firstDayOfMonth())
+                        , now.with(TemporalAdjusters.firstDayOfMonth()));
                 
                 //找出所有任务规则
                 List<MsxAssignmentRuleDetail> detailList = ruleDetailRepo.findByRuleId(rule.getId());
@@ -212,9 +215,20 @@ public class ScheduleService {
                                         //TODO 如果是每月第5个周日，不一定每个月都有
                                         if (dayNum == dayOfWeek) {
                                             // 周对的上
-                                            if (weekNum == weekdayOfMonth || weekNum == weekdayOfMonthLast) {
-                                                if (betweenMonth % monthNum == 0) {
+                                            if (detail.getWeekType() == null) {
+                                                if (weekNum == weekdayOfMonth || weekNum == weekdayOfMonthLast) {
+                                                    if (betweenMonth % monthNum == 0) {
+                                                        ruleMatch = true;
+                                                    }
+                                                }
+                                            } else {
+                                                if (dayOfWeek == 1 && weekdayOfMonth == weekNum) {
                                                     ruleMatch = true;
+                                                } else {
+                                                    LocalDate lastMonday = now.with(TemporalAdjusters.previous(DayOfWeek.MONDAY));
+                                                    if (lastMonday.get(ChronoField.ALIGNED_WEEK_OF_MONTH) == weekNum) {
+                                                        ruleMatch = true;
+                                                    }
                                                 }
                                             }
                                         }

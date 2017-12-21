@@ -42,6 +42,12 @@ public class MsxAssignmentRuleDetail {
     private Integer monthNum;
     
     /**
+     * 周类型：
+     *
+     */
+    private Integer weekType;
+    
+    /**
      * 数字：第几周，负数是倒数第几周
      * 空：不需要
      */
@@ -101,6 +107,14 @@ public class MsxAssignmentRuleDetail {
     
     public void setMonthNum(Integer monthNum) {
         this.monthNum = monthNum;
+    }
+    
+    public Integer getWeekType() {
+        return weekType;
+    }
+    
+    public void setWeekType(Integer weekType) {
+        this.weekType = weekType;
     }
     
     public Integer getWeekNum() {
