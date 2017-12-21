@@ -28,6 +28,7 @@ public class MsxAssignmentRule {
     private Date beginDate;
     private Date endDate;
     
+    private Integer ruleOrder;
     private Timestamp insertTime;
     
     public Integer getId() {
@@ -68,6 +69,14 @@ public class MsxAssignmentRule {
     
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+    
+    public Integer getRuleOrder() {
+        return ruleOrder;
+    }
+    
+    public void setRuleOrder(Integer ruleOrder) {
+        this.ruleOrder = ruleOrder;
     }
     
     public Timestamp getInsertTime() {
