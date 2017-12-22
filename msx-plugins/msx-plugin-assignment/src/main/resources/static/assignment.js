@@ -9,9 +9,7 @@ $(function () {
             url: "/assignment/pub/finish/" + itemId + "/" + status,
             type: "PUT",
             success: function (data) {
-                if(data.success){
-                    location.reload();
-                }else{
+                if(!data.success){
                     alert(data.message);
                 }
             }
