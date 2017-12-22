@@ -48,4 +48,14 @@ public class AssignmentService {
         
         return list;
     }
+    
+    public MsxAssignment changeStatus(Integer assignmentId, boolean status) {
+        MsxAssignment assignment = assignmentRepo.findOne(assignmentId);
+    
+        assignment.setFinishCheck(status);
+    
+        assignmentRepo.save(assignment);
+    
+        return assignment;
+    }
 }

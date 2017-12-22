@@ -75,7 +75,7 @@ public class ScheduleService {
         
         LocalDate localDate = LocalDate.now();
         String date = localDate.getYear() + "/" + localDate.getMonthValue() + "/" + localDate.getDayOfMonth();
-        String url = "https://sixlab.cn/assignment/" + date;
+        String url = "https://sixlab.cn/assignment/pub/" + date;
     
         Map<String, Map<String, String>> data = new HashMap<>();
     

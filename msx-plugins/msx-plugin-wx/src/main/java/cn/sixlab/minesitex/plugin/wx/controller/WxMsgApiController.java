@@ -19,6 +19,7 @@ import cn.sixlab.minesitex.plugin.wx.business.WxBusiness;
 import cn.sixlab.minesitex.plugin.wx.util.MsxWxExpVal;
 import cn.sixlab.minesitex.plugin.wx.util.WxMsgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -31,7 +32,7 @@ public class WxMsgApiController extends BaseController implements IWxMsgService 
     private WxBusiness wxBusiness;
     
     @Override
-    public ModelJson<String> sendMsg(SendMsgVo vo) {
+    public ModelJson<String> sendMsg(@RequestBody SendMsgVo vo) {
     
         String accessToken = wxBusiness.accessToken(wxVal.getWxAppId(), wxVal.getWxAppSecret());
         String result = WxMsgUtil.sendTplMsg(accessToken, wxVal.getWxOpenId(), wxVal.getWxTpl(),

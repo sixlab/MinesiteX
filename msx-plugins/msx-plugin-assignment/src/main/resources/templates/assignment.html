@@ -11,10 +11,11 @@
     <title>Sixlab·六楼实验室 | 六楼的雨</title>
 
     <link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css" rel="stylesheet" />
-    <!--<link href="https://cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css" rel="stylesheet" />-->
+    <!--<link href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css" rel="stylesheet">-->
 
-    <!--<script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>-->
-    <!--<script src="https://cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>-->
+    <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/static/assignment.js"></script>
+    <!--<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>-->
     <!--<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>-->
     <!--<script src="https://cdn.bootcss.com/hogan.js/3.0.2/hogan.min.js"></script>-->
     <!--<script src="/static/wx/pub/msg/msg.js"></script>-->
@@ -34,18 +35,41 @@
             1点的任务列表
         </div>
 
-        <div class="weui-cells">
-            <div class="weui-cell" th:each="item, itemStat : ${tempList}">
+        <div class="weui-cells weui-cells_checkbox">
+            <label class="weui-cell weui-check__label" th:each="item, itemStat : ${tempList}" th:attr="for=${'s'+item.id}">
+                <div class="weui-cell__hd">
+                    <input th:if="${item.finishCheck}" checked="checked" type="checkbox" name="checkbox1" class="weui-check msx-item" th:attr="id=${'s'+item.id},itemId=${item.id}" th:value="${item.finishCheck}" />
+                    <input th:if="${!item.finishCheck}" type="checkbox" name="checkbox1" class="weui-check msx-item" th:attr="id=${'s'+item.id},itemId=${item.id}" th:value="${item.finishCheck}" />
+                    <i class="weui-icon-checked"></i>
+                </div>
                 <div class="weui-cell__bd">
-                    <p th:text="${item.assignmentName}">name</p>
+                    <p th:text="${item.assignmentName}">standard is dealicient for u.</p>
+                </div>
+                <div class="weui-cell__ft" th:text="${item.remark}">备注</div>
+            </label>
+        </div>
+
+        <div class="weui-cells" th:if="${assignmentList.size()==0}">
+            <div class="weui-cell weui-cell_swiped" th:each="item, itemStat : ${tempList}">
+                <div class="weui-cell__bd">
+                    <div class="weui-cell">
+                        <div class="weui-cell__bd">
+                            <p th:text="${item.assignmentName}">左滑列表</p>
+                        </div>
+                        <div class="weui-cell__ft" th:text="${item.remark}">向左滑动试试</div>
+                    </div>
                 </div>
                 <div class="weui-cell__ft">
-                    <span th:text="${item.remark}">remark</span>
+                    <a class="weui-swiped-btn weui-swiped-btn_warn finish-swipeout"
+                       href="javascript:" th:if="${!item.finishCheck}">完成</a>
+                    <a class="weui-swiped-btn weui-swiped-btn_warn undo-swipeout"
+                       href="javascript:" th:if="${item.finishCheck}">撤回</a>
+                    <a class="weui-swiped-btn weui-swiped-btn_default close-swipeout"
+                       href="javascript:">关闭</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 </body>
 </html>

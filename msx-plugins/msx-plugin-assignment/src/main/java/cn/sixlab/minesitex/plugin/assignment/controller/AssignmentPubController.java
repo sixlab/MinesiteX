@@ -11,7 +11,9 @@
  */
 package cn.sixlab.minesitex.plugin.assignment.controller;
 
+import cn.sixlab.minesitex.bean.assignment.entity.MsxAssignment;
 import cn.sixlab.minesitex.lib.base.BaseController;
+import cn.sixlab.minesitex.lib.base.model.ModelJson;
 import cn.sixlab.minesitex.lib.base.util.DateTimeUtil;
 import cn.sixlab.minesitex.plugin.assignment.service.AssignmentService;
 import org.slf4j.Logger;
@@ -21,7 +23,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -55,5 +59,17 @@ public class AssignmentPubController extends BaseController {
         modelMap.put("assignmentList", assignmentService.getAssignment(Date.valueOf(localDate)));
         
         return "assignment";
+    }
+    
+    @ResponseBody
+    @PutMapping("/finish/{assignmentId}/{status}")
+    public ModelJson<MsxAssignment> finish(@PathVariable Integer assignmentId, @PathVariable boolean status) {
+        logger.debug("finish");
+        
+        ModelJson<MsxAssignment> result = new ModelJson<>();
+        
+        MsxAssignment assignment = assignmentService.changeStatus(assignmentId, status);
+        
+        return result.setData(assignment);
     }
 }

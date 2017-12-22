@@ -29,11 +29,11 @@ public class UserController extends BaseController implements IUserService {
     @Autowired
     private UserService service;
     
-    public ModelJson<UserAndRoleVo> loadUserByUsername(@PathVariable("username")String username) {
+    public ModelJson<UserAndRoleVo> loadUserByUsername(@PathVariable String username) {
         return new ModelJson<UserAndRoleVo>().setData(service.loadUserByUsername(username));
     }
     
-    public ModelJson<UserAndRoleVo> loadUserById(@PathVariable("userId")Integer userId) {
+    public ModelJson<UserAndRoleVo> loadUserById(@PathVariable Integer userId) {
         return new ModelJson<UserAndRoleVo>().setData(service.loadUserById(userId));
     }
     
