@@ -125,14 +125,15 @@
 <div th:if="${wxMsg.msgType=='link'}">
     <a class="weui-btn weui-btn_primary" th:href="${wxMsg.url}">点击查看</a>
 </div>
-<div class="weui-msg__extra-area">
+
+<div class="weui-footer">
+    <br />
     <a class="weui-btn weui-btn_primary" style="color: #FFFFFF" th:href="${'/wx/pub/msgs/'+strId}">查看历史消息</a>
-    <div class="weui-footer">
-        <p class="weui-footer__links">
-            <a href="/" class="weui-footer__link">Sixlab·六楼实验室</a>
-        </p>
-        <p class="weui-footer__text">Copyright © 2017 Sixlab·六楼实验室</p>
-    </div>
+    <br />
+    <p class="weui-footer__links">
+        <a href="/" class="weui-footer__link">Sixlab·六楼实验室</a>
+    </p>
+    <p class="weui-footer__text">Copyright © 2017 Sixlab·六楼实验室</p>
 </div>
 </body>
 </html>

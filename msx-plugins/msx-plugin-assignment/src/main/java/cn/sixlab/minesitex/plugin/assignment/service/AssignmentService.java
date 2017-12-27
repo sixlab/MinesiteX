@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,5 +58,11 @@ public class AssignmentService {
         assignmentRepo.save(assignment);
     
         return assignment;
+    }
+    
+    public List<MsxAssignment> getAssignments() {
+        Date date = Date.valueOf(LocalDate.now());
+        List<MsxAssignment> assignmentList = assignmentRepo.findByAssignmentDateOrderByAssignmentHourAscId(date);
+        return assignmentList;
     }
 }

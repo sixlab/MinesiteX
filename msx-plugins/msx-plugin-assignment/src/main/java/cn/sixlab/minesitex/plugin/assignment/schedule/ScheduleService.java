@@ -11,8 +11,6 @@
  */
 package cn.sixlab.minesitex.plugin.assignment.schedule;
 
-import cn.jpush.api.JPushClient;
-import cn.jpush.api.push.model.PushPayload;
 import cn.sixlab.minesitex.api.wx.IWxMsgService;
 import cn.sixlab.minesitex.bean.assignment.entity.MsxAssignment;
 import cn.sixlab.minesitex.bean.assignment.entity.MsxAssignmentRule;
@@ -22,7 +20,6 @@ import cn.sixlab.minesitex.data.assignment.AssignmentRepo;
 import cn.sixlab.minesitex.data.assignment.RuleDetailRepo;
 import cn.sixlab.minesitex.data.assignment.RuleRepo;
 import cn.sixlab.minesitex.lib.base.util.DateTimeUtil;
-import cn.sixlab.minesitex.plugin.assignment.util.MsxJpush;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,10 +45,10 @@ import java.util.Map;
 public class ScheduleService {
     private static Logger logger = LoggerFactory.getLogger(ScheduleService.class);
     
-    @Autowired
-    private MsxJpush jpush;
-    
-    private JPushClient jPushClient;
+    //@Autowired
+    //private MsxJpush jpush;
+    //
+    //private JPushClient jPushClient;
     
     @Autowired
     private RuleRepo ruleRepo;
@@ -154,9 +151,9 @@ public class ScheduleService {
         return count;
     }
     
-    private PushPayload buildMsg(String url) {
-        return PushPayload.alertAll("今日任务：" + url);
-    }
+    //private PushPayload buildMsg(String url) {
+    //    return PushPayload.alertAll("今日任务：" + url);
+    //}
     
     private Map<Integer, List<MsxAssignmentRule>> getToadyAssignment() {
         LocalDate now = LocalDate.now();

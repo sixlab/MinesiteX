@@ -1,0 +1,43 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <title>Sixlab·六楼实验室 | 六楼的雨</title>
+
+    <link href="https://cdn.bootcss.com/weui/1.1.2/style/weui.min.css" rel="stylesheet" />
+    <!--<link href="https://cdn.bootcss.com/jquery-weui/1.2.0/css/jquery-weui.min.css" rel="stylesheet">-->
+
+    <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/static/assignment.js"></script>
+    <!--<script src="https://cdn.bootcss.com/jquery-weui/1.2.0/js/jquery-weui.min.js"></script>-->
+    <!--<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>-->
+    <!--<script src="https://cdn.bootcss.com/hogan.js/3.0.2/hogan.min.js"></script>-->
+    <!--<script src="/static/wx/pub/msg/msg.js"></script>-->
+
+</head>
+<body>
+
+<header class="demos-header" style="text-align: center;">
+    <h1 class="demos-title" th:text="${'任务列表 （'+assignmentList.size()+'）'}">任务列表</h1>
+</header>
+
+<div class="bd">
+    <div class="page__bd">
+        <div class="weui-cells">
+            <div class="weui-cell" th:each="item, itemStat : ${assignmentList}">
+                <div class="weui-cell__bd">
+                    <p th:text="${item.assignmentName}">任务名称</p>
+                </div>
+                <div class="weui-cell__ft" th:text="${item.remark}">备注</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

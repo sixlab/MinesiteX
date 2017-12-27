@@ -61,6 +61,15 @@ public class AssignmentPubController extends BaseController {
         return "assignment";
     }
     
+    @GetMapping(value = "/assignments")
+    public String assignments(ModelMap modelMap) {
+        logger.debug("assignments");
+
+        modelMap.put("assignmentList", assignmentService.getAssignments());
+        
+        return "assignments";
+    }
+    
     @ResponseBody
     @PutMapping("/finish/{assignmentId}/{status}")
     public ModelJson<MsxAssignment> finish(@PathVariable Integer assignmentId, @PathVariable boolean status) {
