@@ -24,17 +24,17 @@
 <body>
 
 <header class="demos-header" style="text-align: center;">
-    <h1 class="demos-title" th:text="${'任务列表 （'+assignmentList.size()+'）'}">任务列表</h1>
+    <h1 class="demos-title" th:text="${'任务列表 （'+ruleList.size()+'）'}">任务列表</h1>
 </header>
 
 <div class="bd">
     <div class="page__bd">
         <div class="weui-cells">
-            <div class="weui-cell" th:each="item, itemStat : ${assignmentList}">
+            <div class="weui-cell" th:each="item, itemStat : ${ruleList}">
                 <div class="weui-cell__bd">
-                    <p th:text="${item.assignmentName}">任务名称</p>
+                    <p th:text="${(itemStat.index+1)+'.'+item.ruleName}">任务名称</p>
                 </div>
-                <div class="weui-cell__ft" th:text="${item.remark}">备注</div>
+                <div class="weui-cell__ft" th:text="${item.ruleRemark}">备注</div>
             </div>
         </div>
     </div>

@@ -12,7 +12,9 @@
 package cn.sixlab.minesitex.plugin.assignment.service;
 
 import cn.sixlab.minesitex.bean.assignment.entity.MsxAssignment;
+import cn.sixlab.minesitex.bean.assignment.entity.MsxAssignmentRule;
 import cn.sixlab.minesitex.data.assignment.AssignmentRepo;
+import cn.sixlab.minesitex.data.assignment.RuleRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class AssignmentService {
     
     @Autowired
     private AssignmentRepo assignmentRepo;
+    
+    @Autowired
+    private RuleRepo ruleRepo;
     
     public List<List<MsxAssignment>> getAssignment(Date date) {
         List<MsxAssignment> assignmentList = assignmentRepo.findByAssignmentDateOrderByAssignmentHourAscId(date);
@@ -60,9 +65,9 @@ public class AssignmentService {
         return assignment;
     }
     
-    public List<MsxAssignment> getAssignments() {
+    public List<MsxAssignmentRule> getAssignments() {
         Date date = Date.valueOf(LocalDate.now());
-        List<MsxAssignment> assignmentList = assignmentRepo.findByAssignmentDateOrderByAssignmentHourAscId(date);
-        return assignmentList;
+        List<MsxAssignmentRule> ruleList = ruleRepo.queryActiveRule(date);
+        return ruleList;
     }
 }

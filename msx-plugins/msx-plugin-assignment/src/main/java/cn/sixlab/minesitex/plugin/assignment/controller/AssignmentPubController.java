@@ -61,13 +61,13 @@ public class AssignmentPubController extends BaseController {
         return "assignment";
     }
     
-    @GetMapping(value = "/assignments")
+    @GetMapping(value = "/rules")
     public String assignments(ModelMap modelMap) {
-        logger.debug("assignments");
+        logger.debug("rules");
 
-        modelMap.put("assignmentList", assignmentService.getAssignments());
+        modelMap.put("ruleList", assignmentService.getAssignments());
         
-        return "assignments";
+        return "rules";
     }
     
     @ResponseBody
