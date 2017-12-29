@@ -11,6 +11,7 @@
  */
 package cn.sixlab.minesitex.base.gateway.security;
 
+import cn.sixlab.minesitex.lib.base.util.WebUtil;
 import io.jsonwebtoken.Jwts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +23,6 @@ import org.springframework.util.StringUtils;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -33,7 +33,7 @@ import java.util.ArrayList;
  * 该类继承自BasicAuthenticationFilter，在doFilterInternal方法中，
  * 从http头的Authorization 项读取token数据，然后用Jwts包提供的方法校验token的合法性。
  * 如果校验通过，就认为这是一个取得授权的合法请求
- *
+ * <p>
  * http://blog.csdn.net/sxdtzhaoxinguo/article/details/77965226
  */
 public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
@@ -53,14 +53,16 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
             FilterChain chain) throws IOException, ServletException {
-        ////输出参数
-        //String result = "\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>参数\n";
-        ////try {
-        //    String method = request.getMethod();
-        //    result+= method;
-        //
-        //    String inComeUrI = request.getRequestURI();
-        //    result += inComeUrI;
+        //输出参数
+        String result = "\n>>>>>\n";
+        //try {
+        String method = request.getMethod();
+        result += method;
+        
+        result += " | ";
+        
+        String inComeUrI = request.getRequestURI();
+        result += inComeUrI;
         //    result += " | ";
         //    //
         //    //Enumeration<String> params = request.getParameterNames();
@@ -88,35 +90,25 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
         ////} catch (Exception e) {
         ////    result += "输出URL参数错误";
         ////}
-        //result += "\n<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n";
-        //
-        //logger.info(result);
+        result += "\n<<<<<\n";
+
+        logger.info(result);
         
         //验证
-        String token = request.getHeader(jwtParam.getJwtHeader());
-    
-        if (StringUtils.isEmpty(token)) {
-            Cookie[] cookies = request.getCookies();
-            if (null != cookies && cookies.length > 0) {
-                for (Cookie cookie : cookies) {
-                    if (jwtParam.getJwtHeader().equals(cookie.getName())) {
-                        token = cookie.getValue();
-                    }
-                }
-            }
-        }
+        String token = WebUtil.readToken(request, jwtParam.getJwtHeader());
     
         if (StringUtils.isEmpty(token) || !token.startsWith(jwtParam.getJwtTokenHead())) {
             chain.doFilter(request, response);
+            logger.info("登录失败，token：" + token);
             return;
         }
         
         try {
             UsernamePasswordAuthenticationToken authentication = getAuthentication(token);
-    
+            
             SecurityContextHolder.getContext().setAuthentication(authentication);
             chain.doFilter(request, response);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             chain.doFilter(request, response);
         }
@@ -129,7 +121,7 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
                 .parseClaimsJws(token.replace(jwtParam.getJwtTokenHead(), ""))
                 .getBody()
                 .getSubject();
-    
+        
         if (user != null) {
             return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
         }

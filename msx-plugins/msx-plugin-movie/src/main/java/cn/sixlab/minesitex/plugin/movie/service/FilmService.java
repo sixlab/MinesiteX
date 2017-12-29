@@ -22,6 +22,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -32,12 +34,7 @@ public class FilmService {
     private FilmRepo filmRepo;
     
     public MsxFilm addFilm(MsxFilm film) {
-        if(film.getRemark().contains("@@")){
-            String[] remark = film.getRemark().split("@@");
-            film.setRemark(remark[0]);
-            film.setCinema(remark[1]);
-        }
-        
+        film.setInsertTime(Timestamp.from(Instant.now()));
         filmRepo.save(film);
         
         return film;
