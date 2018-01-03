@@ -42,4 +42,6 @@ public interface FilmRepo extends JpaRepository<MsxFilm, Integer>{
                     "order by u.cinema "
     )
     List<String> queryCinemas();
+    
+    List<MsxFilm> queryTop10ByDoubanKeyIsNullOrderByIdDesc();
 }

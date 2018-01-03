@@ -1,6 +1,7 @@
 package cn.sixlab.minesitex.data.movie;
 
 import cn.sixlab.minesitex.bean.movie.entity.MsxFilm;
+import cn.sixlab.minesitex.lib.base.util.JsonUtl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,19 @@ public class FilmRepoTest {
             System.out.println(s);
         }
         
+        System.out.println("2----------------------");
+    }
+    
+    @Test
+    public void queryByDoubanKeyIsNotNullOrderById(){
+        List<MsxFilm> filmList = filmRepo.queryTop10ByDoubanKeyIsNullOrderByIdDesc();
+    
+        System.out.println("2----------------------");
+        System.out.println(filmList.size());
+        for (MsxFilm film : filmList) {
+            System.out.println(JsonUtl.toJson(film));
+        }
+    
         System.out.println("2----------------------");
     }
 }

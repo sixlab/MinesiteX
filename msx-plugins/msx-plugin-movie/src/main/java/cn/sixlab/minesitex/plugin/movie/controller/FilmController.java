@@ -51,6 +51,19 @@ public class FilmController extends BaseController{
     }
     
     /**
+     * 获取未拉取豆瓣列表
+     *
+     * @return
+     */
+    @GetMapping(value = "/film/db")
+    public ModelJson db() {
+        logger.debug("获取未拉取豆瓣列表");
+        ModelJson<List<MsxFilm>> json = new ModelJson<>();
+        
+        return json.setData(service.fetchDb());
+    }
+    
+    /**
      * 添加一部新观看的电影
      *
      * @param film
