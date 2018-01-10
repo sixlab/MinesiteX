@@ -57,6 +57,6 @@ public class MsxController {
         data.put("token", token);
         data.put("expiration", expiration);
         
-        return json;
+        return json.setData(data);
     }
 }
