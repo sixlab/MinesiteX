@@ -98,11 +98,11 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
         //验证
         String token = WebUtil.readToken(request, jwtParam.getJwtHeader(), jwtParam.getJwtSecret());
     
-        if(WebUtil.checkToken(token, jwtParam.getJwtTokenHead(), jwtParam.getJwtSecret(), request.getRequestURI())){
-            chain.doFilter(request, response);
-            logger.info("登录失败，token：" + token);
-            return;
-        }
+        //if(WebUtil.checkToken(token, jwtParam.getJwtTokenHead(), jwtParam.getJwtSecret(), request.getRequestURI())){
+        //    chain.doFilter(request, response);
+        //    logger.info("登录失败，token：" + token);
+        //    return;
+        //}
         
         if(StringUtils.isEmpty(token)){
             chain.doFilter(request, response);
