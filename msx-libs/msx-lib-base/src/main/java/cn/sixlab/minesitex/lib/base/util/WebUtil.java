@@ -19,9 +19,21 @@ import javax.servlet.http.HttpServletRequest;
 
 public class WebUtil {
     
-    public static String readToken(HttpServletRequest request, String jwtHeader) {
+    public static String readToken(HttpServletRequest request, String jwtHeader, String jwtSecret) {
+        //先读取 Header
         String token = request.getHeader(jwtHeader);
+    
+        //如果没有，再读取 url 参数
+        if (StringUtils.isEmpty(token)) {
+            String auth = request.getParameter(jwtHeader);
+            if(!StringUtils.isEmpty(auth)){
+                String uri = request.getRequestURI();
+                
+                token = DigestUtil.fakeMD5(uri, jwtSecret);
+            }
+        }
         
+        //如果没有，再读取 cookie
         if (StringUtils.isEmpty(token)) {
             Cookie[] cookies = request.getCookies();
             if (null != cookies && cookies.length > 0) {
@@ -35,4 +47,5 @@ public class WebUtil {
         
         return token;
     }
+
 }

@@ -45,9 +45,9 @@ public class AssignmentPubController extends BaseController {
             @PathVariable("month") Integer month,
             @PathVariable("day") Integer day, ModelMap modelMap) {
         logger.debug("send");
-    
+        
         LocalDate localDate = LocalDate.of(year, month, day);
-    
+        
         modelMap.put("year", year);
         modelMap.put("month", month);
         modelMap.put("day", day);
@@ -61,8 +61,24 @@ public class AssignmentPubController extends BaseController {
         return "assignment";
     }
     
+    @GetMapping(value = "/apps/{year}/{month}/{day}")
+    public String apps(@PathVariable("year") Integer year,
+            @PathVariable("month") Integer month,
+            @PathVariable("day") Integer day, ModelMap modelMap) {
+        logger.debug("send");
+        
+        String scheme = "mineapps://www.sixlab.com/assignment?year="+month+"&month="+month+"&day="+day;
+        
+        modelMap.put("year", year);
+        modelMap.put("month", month);
+        modelMap.put("day", day);
+        modelMap.put("scheme", scheme);
+        
+        return "apps";
+    }
+    
     @GetMapping(value = "/rules")
-    public String assignments(ModelMap modelMap) {
+    public String rules(ModelMap modelMap) {
         logger.debug("rules");
 
         modelMap.put("ruleList", assignmentService.getAssignments());

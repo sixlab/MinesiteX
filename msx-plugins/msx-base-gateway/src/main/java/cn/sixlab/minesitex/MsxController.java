@@ -35,28 +35,29 @@ public class MsxController {
     @ResponseBody
     @GetMapping("/login/refresh")
     public ModelJson<Map> refresh(HttpServletRequest request) {
-        String token = WebUtil.readToken(request, jwtParam.getJwtHeader());
+        String token = WebUtil.readToken(request, jwtParam.getJwtHeader(), jwtParam.getJwtSecret());
     
-        String username = Jwts.parser()
-                .setSigningKey(jwtParam.getJwtSecret())
-                .parseClaimsJws(token.replace(jwtParam.getJwtTokenHead(), ""))
-                .getBody()
-                .getSubject();
-        long expiration = System.currentTimeMillis() + jwtParam.getJwtExpiration();
-    
-        token = Jwts.builder()
-                .setSubject(username)
-                .setExpiration(new Date(expiration))
-                .signWith(SignatureAlgorithm.HS512, jwtParam.getJwtSecret())
-                .compact();
-    
-        token = jwtParam.getJwtTokenHead() + token;
-        
-        ModelJson<Map> json = new ModelJson<>();
         Map data = new HashMap();
-        data.put("token", token);
-        data.put("expiration", expiration);
-        
-        return json.setData(data);
+        if(token.startsWith(jwtParam.getJwtTokenHead())){
+            String username = Jwts.parser()
+                    .setSigningKey(jwtParam.getJwtSecret())
+                    .parseClaimsJws(token.replace(jwtParam.getJwtTokenHead(), ""))
+                    .getBody()
+                    .getSubject();
+            long expiration = System.currentTimeMillis() + jwtParam.getJwtExpiration();
+    
+            token = Jwts.builder()
+                    .setSubject(username)
+                    .setExpiration(new Date(expiration))
+                    .signWith(SignatureAlgorithm.HS512, jwtParam.getJwtSecret())
+                    .compact();
+    
+            token = jwtParam.getJwtTokenHead() + token;
+    
+            data.put("token", token);
+            data.put("expiration", expiration);
+        }
+    
+        return new ModelJson<Map>().setData(data);
     }
 }

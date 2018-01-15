@@ -92,3 +92,8 @@ msx:
   jpush:
     secret: jpush01
     key: jpush01
+
+  mail:
+    host: smtp.domain
+    username: username@domain
+    password: pwd

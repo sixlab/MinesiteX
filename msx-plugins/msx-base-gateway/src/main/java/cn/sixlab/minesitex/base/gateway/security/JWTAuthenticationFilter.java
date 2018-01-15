@@ -11,6 +11,7 @@
  */
 package cn.sixlab.minesitex.base.gateway.security;
 
+import cn.sixlab.minesitex.lib.base.util.DigestUtil;
 import cn.sixlab.minesitex.lib.base.util.WebUtil;
 import io.jsonwebtoken.Jwts;
 import org.slf4j.Logger;
@@ -95,23 +96,44 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
         logger.info(result);
         
         //验证
-        String token = WebUtil.readToken(request, jwtParam.getJwtHeader());
+        String token = WebUtil.readToken(request, jwtParam.getJwtHeader(), jwtParam.getJwtSecret());
     
-        if (StringUtils.isEmpty(token) || !token.startsWith(jwtParam.getJwtTokenHead())) {
+        if(WebUtil.checkToken(token, jwtParam.getJwtTokenHead(), jwtParam.getJwtSecret(), request.getRequestURI())){
             chain.doFilter(request, response);
             logger.info("登录失败，token：" + token);
             return;
         }
         
-        try {
-            UsernamePasswordAuthenticationToken authentication = getAuthentication(token);
-            
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+        if(StringUtils.isEmpty(token)){
             chain.doFilter(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-            chain.doFilter(request, response);
+            logger.info("登录失败，token：" + token);
+            return;
         }
+        
+        if(token.startsWith(jwtParam.getJwtTokenHead())){
+    
+            try {
+                UsernamePasswordAuthenticationToken authentication = getAuthentication(token);
+        
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+                chain.doFilter(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+                chain.doFilter(request, response);
+            }
+        }
+    
+        String fakeMD5 = DigestUtil.fakeMD5(request.getRequestURI(), jwtParam.getJwtSecret());
+        if (fakeMD5.equals(token)) {
+            String username = request.getParameter("username");
+            if(StringUtils.hasLength(username)){
+                UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(username, null, new ArrayList<>());
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+                chain.doFilter(request, response);
+            }
+        }
+        
+        return;
     }
     
     private UsernamePasswordAuthenticationToken getAuthentication(String token) {

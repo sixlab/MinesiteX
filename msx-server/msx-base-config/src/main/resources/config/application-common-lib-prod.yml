@@ -1,3 +1,6 @@
+logging:
+  level: debug
+
 spring:
 
   # spring data redis 配置
@@ -37,5 +40,8 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/minesitex
 
-logging:
-  level: debug
+  # Spring mail 配置
+  mail:
+    host: smtp.domain
+    username: username@domain
+    password: pwd

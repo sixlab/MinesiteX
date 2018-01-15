@@ -11,11 +11,9 @@
  */
 package cn.sixlab.minesitex.plugin.assignment.schedule;
 
-import cn.sixlab.minesitex.api.wx.IWxMsgService;
 import cn.sixlab.minesitex.bean.assignment.entity.MsxAssignment;
 import cn.sixlab.minesitex.bean.assignment.entity.MsxAssignmentRule;
 import cn.sixlab.minesitex.bean.assignment.entity.MsxAssignmentRuleDetail;
-import cn.sixlab.minesitex.bean.wx.vo.SendMsgVo;
 import cn.sixlab.minesitex.data.assignment.AssignmentRepo;
 import cn.sixlab.minesitex.data.assignment.RuleDetailRepo;
 import cn.sixlab.minesitex.data.assignment.RuleRepo;
@@ -23,10 +21,14 @@ import cn.sixlab.minesitex.lib.base.util.DateTimeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.DayOfWeek;
@@ -59,8 +61,11 @@ public class ScheduleService {
     @Autowired
     private AssignmentRepo assignmentRepo;
     
+    //@Autowired
+    //IWxMsgService wxMsgService;
+    
     @Autowired
-    IWxMsgService wxMsgService;
+    private JavaMailSender mailSender;
     
     @Scheduled(cron = "0 0 6 * * ?")
     public void morning() throws InterruptedException {
@@ -72,36 +77,49 @@ public class ScheduleService {
         
         LocalDate localDate = LocalDate.now();
         String date = localDate.getYear() + "/" + localDate.getMonthValue() + "/" + localDate.getDayOfMonth();
-        String url = "https://sixlab.cn/assignment/pub/" + date;
+        //String url = "https://sixlab.cn/assignment/pub/" + date;
+        String url = "https://sixlab.cn/assignment/pub/apps/" + date;
     
-        Map<String, Map<String, String>> data = new HashMap<>();
+        MimeMessage message = mailSender.createMimeMessage();
     
-        Map<String, String> first = new HashMap<>();
-        first.put("value", "一年之计在于春，一日之计在于晨。\n");
-        data.put("first", first);
+        try {
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setFrom("root@sixlab.cn");
+            helper.setTo("nianqinianyi@163.com");
+            helper.setSubject("今日任务：" + 1 + " 个。一年之计在于春，一日之计在于晨。" +  date);
+            helper.setText("<a href='" + url + "'>打开页面</a>", true);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     
-        Map<String, String> keyword1 = new HashMap<>();
-        keyword1.put("value", "任务数量");
-        data.put("keyword1", keyword1);
-    
-        Map<String, String> keyword2 = new HashMap<>();
-        keyword2.put("value", "共 " + count + " 个");
-        data.put("keyword2", keyword2);
-    
-        String msg = "今天是第 "+localDate.getDayOfYear()+" 天\n第"
-                + DateTimeUtil.weekOfYear(localDate) + "周\n今年还剩下  "
-                + DateTimeUtil.yearLeftDays(localDate) + "  天\n";
-        
-        Map<String, String> remark = new HashMap<>();
-        remark.put("value", msg);
-        remark.put("color", "#FF4500");
-        data.put("remark", remark);
-        
-        SendMsgVo vo = new SendMsgVo();
-        vo.setData(data);
-        vo.setUrl(url);
-        
-        wxMsgService.sendMsg(vo);
+        //Map<String, Map<String, String>> data = new HashMap<>();
+        //
+        //Map<String, String> first = new HashMap<>();
+        //first.put("value", "一年之计在于春，一日之计在于晨。\n");
+        //data.put("first", first);
+        //
+        //Map<String, String> keyword1 = new HashMap<>();
+        //keyword1.put("value", "任务数量");
+        //data.put("keyword1", keyword1);
+        //
+        //Map<String, String> keyword2 = new HashMap<>();
+        //keyword2.put("value", "共 " + count + " 个");
+        //data.put("keyword2", keyword2);
+        //
+        //String msg = "今天是第 "+localDate.getDayOfYear()+" 天\n第"
+        //        + DateTimeUtil.weekOfYear(localDate) + "周\n今年还剩下  "
+        //        + DateTimeUtil.yearLeftDays(localDate) + "  天\n";
+        //
+        //Map<String, String> remark = new HashMap<>();
+        //remark.put("value", msg);
+        //remark.put("color", "#FF4500");
+        //data.put("remark", remark);
+        //
+        //SendMsgVo vo = new SendMsgVo();
+        //vo.setData(data);
+        //vo.setUrl(url);
+        //
+        //wxMsgService.sendMsg(vo);
         
         //if (null == jPushClient) {
         //    jPushClient = new JPushClient(jpush.getJpushSecret(), jpush.getJpushKey(), null, ClientConfig.getInstance());
