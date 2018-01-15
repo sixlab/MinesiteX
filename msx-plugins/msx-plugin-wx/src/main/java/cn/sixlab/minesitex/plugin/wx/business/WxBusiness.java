@@ -11,9 +11,9 @@
  */
 package cn.sixlab.minesitex.plugin.wx.business;
 
+import cn.sixlab.minesitex.lib.base.util.DigestUtil;
 import cn.sixlab.minesitex.lib.base.util.HttpUtil;
 import cn.sixlab.minesitex.lib.base.util.JsonUtl;
-import cn.sixlab.minesitex.lib.base.util.Sha1Utils;
 import cn.sixlab.minesitex.lib.redis.CacheManage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,7 +41,7 @@ public class WxBusiness {
         for (int i = 0; i < tmpArr.length; i++) {
             tmpStr += tmpArr[i];
         }
-        tmpStr = Sha1Utils.shaHex(tmpStr);
+        tmpStr = DigestUtil.encodeSHA1(tmpStr);
         
         logger.info("tmpStrSHA=" + tmpStr);
         logger.info("signature=" + signature);
