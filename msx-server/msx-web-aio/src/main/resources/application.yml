@@ -1,3 +1,6 @@
+logging:
+  level: debug
+
 server:
   port: 8800
   compression:
@@ -61,9 +64,12 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/minesitex
 
-logging:
-  level: debug
+  mail:
+    host: smtp.domain
+    username: username@domain
+    password: pwd
 
+# 自定义参数
 msx:
   jwt:
     header: Authorization
@@ -92,8 +98,3 @@ msx:
   jpush:
     secret: jpush01
     key: jpush01
-
-  mail:
-    host: smtp.domain
-    username: username@domain
-    password: pwd
