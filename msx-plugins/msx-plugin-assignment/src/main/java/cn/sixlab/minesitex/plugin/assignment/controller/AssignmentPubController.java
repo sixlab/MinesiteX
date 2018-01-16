@@ -67,7 +67,7 @@ public class AssignmentPubController extends BaseController {
             @PathVariable("day") Integer day, ModelMap modelMap) {
         logger.debug("send");
         
-        String scheme = "mineapps://www.sixlab.com/assignment?year="+month+"&month="+month+"&day="+day;
+        String scheme = "mineapps://www.sixlab.com/assignment?year="+year+"&month="+month+"&day="+day;
         
         modelMap.put("year", year);
         modelMap.put("month", month);
