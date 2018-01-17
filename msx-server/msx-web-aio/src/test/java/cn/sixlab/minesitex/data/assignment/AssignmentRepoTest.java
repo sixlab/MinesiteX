@@ -22,12 +22,28 @@ public class AssignmentRepoTest {
     @Test
     public void findByAssignmentDateOrderByAssignmentHour() {
         List<MsxAssignment> assignmentList = repo.findByAssignmentDateOrderByAssignmentHourAscId(Date.valueOf(LocalDate.now()));
-    
+        
         System.out.println("----------------");
         System.out.println(assignmentList.size());
         for (MsxAssignment msxAssignment : assignmentList) {
             System.out.println(JsonUtl.toJson(msxAssignment));
         }
+        System.out.println("----------------");
+    }
+    
+    @Test
+    public void countAllByAssignmentDate() {
+        MsxAssignment assignment = repo.findOne(59);
+        
+        assignment.setId(null);
+        assignment.setAssignmentDate(Date.valueOf(LocalDate.now()));
+        
+        repo.save(assignment);
+    
+        int count = repo.countAllByAssignmentDate(Date.valueOf(LocalDate.now()));
+        
+        System.out.println("----------------");
+        System.out.println(count);
         System.out.println("----------------");
     }
 }

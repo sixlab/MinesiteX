@@ -19,4 +19,5 @@ import java.util.List;
 
 public interface AssignmentRepo extends JpaRepository<MsxAssignment, Integer> {
     List<MsxAssignment> findByAssignmentDateOrderByAssignmentHourAscId(Date date);
+    int countAllByAssignmentDate(Date date);
 }

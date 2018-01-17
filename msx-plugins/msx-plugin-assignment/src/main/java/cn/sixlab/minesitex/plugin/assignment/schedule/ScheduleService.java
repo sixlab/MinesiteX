@@ -68,29 +68,38 @@ public class ScheduleService {
     private JavaMailSender mailSender;
     
     @Scheduled(cron = "0 0 6 * * ?")
+    public void sendMail(){
+        logger.info("good morning 2");
+        try {
+            LocalDate localDate = LocalDate.now();
+            
+            String date = localDate.getYear() + "/" + localDate.getMonthValue() + "/" + localDate.getDayOfMonth();
+            //String url = "https://sixlab.cn/assignment/pub/" + date;
+            String url = "https://sixlab.cn/assignment/pub/apps/" + date;
+            
+            int count = assignmentRepo.countAllByAssignmentDate(Date.valueOf(localDate));
+            
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setFrom("root@sixlab.cn");
+            helper.setTo("nianqinianyi@163.com");
+            helper.setSubject("今日任务：" + count + " 个。一年之计在于春，一日之计在于晨。" + date);
+            helper.setText("<a href='" + url + "'>打开页面</a>", true);
+            
+            mailSender.send(message);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+        logger.info("结束。");
+    }
+    
+    @Scheduled(cron = "0 0 5 * * ?")
     public void morning() throws InterruptedException {
         logger.info("good morning");
         
         Map<Integer, List<MsxAssignmentRule>> assignmentMap = getToadyAssignment();
         
         int count = initDb(assignmentMap);
-        
-        LocalDate localDate = LocalDate.now();
-        String date = localDate.getYear() + "/" + localDate.getMonthValue() + "/" + localDate.getDayOfMonth();
-        //String url = "https://sixlab.cn/assignment/pub/" + date;
-        String url = "https://sixlab.cn/assignment/pub/apps/" + date;
-    
-        MimeMessage message = mailSender.createMimeMessage();
-    
-        try {
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setFrom("root@sixlab.cn");
-            helper.setTo("nianqinianyi@163.com");
-            helper.setSubject("今日任务：" + 1 + " 个。一年之计在于春，一日之计在于晨。" +  date);
-            helper.setText("<a href='" + url + "'>打开页面</a>", true);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
     
         //Map<String, Map<String, String>> data = new HashMap<>();
         //
