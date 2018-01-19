@@ -42,6 +42,19 @@ spring:
 
   # Spring mail 配置
   mail:
+    default-encoding: utf-8
     host: smtp.domain
     username: username@domain
     password: pwd
+    protocol: smtps
+    port: 465
+    properties:
+      mail:
+        debug: false
+        smpt:
+          timeout: 30000
+          starttls:
+            enable: false
+          auth: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
