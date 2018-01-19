@@ -13,9 +13,13 @@ package cn.sixlab.minesitex.lib.base.util;
 
 
 import org.springframework.util.StringUtils;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class WebUtil {
     
@@ -47,5 +51,46 @@ public class WebUtil {
         
         return token;
     }
-
+    
+    public static ServletRequestAttributes getRequestAttributes() {
+        try {
+            RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+            
+            if (null != requestAttributes) {
+                return (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public static HttpServletRequest getRequest() {
+        try {
+            ServletRequestAttributes requestAttributes = getRequestAttributes();
+            
+            if (null != requestAttributes) {
+                return requestAttributes.getRequest();
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public static HttpServletResponse getResponse() {
+        try {
+            ServletRequestAttributes requestAttributes = getRequestAttributes();
+            
+            if (null != requestAttributes) {
+                return requestAttributes.getResponse();
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

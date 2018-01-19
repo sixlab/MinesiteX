@@ -106,12 +106,10 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
         
         if(StringUtils.isEmpty(token)){
             chain.doFilter(request, response);
-            logger.info("登录失败，token：" + token);
             return;
         }
         
         if(token.startsWith(jwtParam.getJwtTokenHead())){
-    
             try {
                 UsernamePasswordAuthenticationToken authentication = getAuthentication(token);
         
