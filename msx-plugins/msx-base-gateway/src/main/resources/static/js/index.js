@@ -210,16 +210,10 @@ $(function () {
 
         //设置字体填充颜色
         ctx.fillStyle = "#45BCF9";
-
         //设置字体样式
-        ctx.font = "12px Courier New";
+        ctx.font = "70px Courier New";
         //从坐标点(50,50)开始绘制文字
-        ctx.fillText("鼠标点击网格并拖拽", 445, 10);
-
-        //设置字体样式
-        ctx.font = "50px Courier New";
-        //从坐标点(50,50)开始绘制文字
-        ctx.fillText("六楼实验室", 375, 180);
+        ctx.fillText("六楼实验室", 325, 180);
 
         cloth.update();
         cloth.draw();
@@ -261,7 +255,7 @@ $(function () {
         boundsx = canvas.width - 1;
         boundsy = canvas.height - 1;
 
-        ctx.strokeStyle = '#45BCF9';
+        ctx.strokeStyle = 'coral';
 
         cloth = new Cloth();
 

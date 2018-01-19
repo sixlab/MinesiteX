@@ -1,5 +1,6 @@
 body {
     margin: 0 auto;
+    background: #2d9b95;
 }
 
 * {
@@ -16,10 +17,22 @@ body {
     margin: 50px 0px;
 }
 
-#clothes {
-    background: #F8F8F8;
+#bio{
     display: block;
-    margin: 20px auto 17px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+}
+
+#clothes {
+    display: block;
+    /*margin: 20px auto 17px;*/
+    position: fixed;
+    top: 120px;
+    left: 50%;
+    margin-left: -500px;
+    z-index: 2000;
 }
 
 .pure-button {
@@ -64,5 +77,5 @@ body {
     line-height: 12px;
     font-size: 10px;
     width: 100%;
-    color: #999999;
+    color: white;
 }
