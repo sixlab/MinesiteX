@@ -1,107 +1,68 @@
-
 body {
     margin: 0 auto;
-    overflow: hidden;
 }
 
-/*=============第一页=============*/
-.header {
-    margin: 0 auto;
-    width: 100%;
-    height: 640px;
-    background-color: #000;
-    position: relative;
+* {
+    margin: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
-.header canvas {
-    width: 100%;
-    height: auto /*默认全屏显示 可自己设置高度640px*/;
-    display: inline-block;
-    vertical-align: baseline
-    position: absolute;
-    z-index: -1;
+#btns {
+    text-align: center;
+    margin: 50px 0px;
 }
 
-.header .canvaszz { /*用来解决视频右键菜单，用于视频上面的遮罩层*/
-    width: 100%;
-    background-image: url(../img/in_top_bj.jpg);
-    height: 640px;
-    position: absolute;
-    z-index: 10;
-    filter: alpha(opacity=40);
-    -moz-opacity: 0.4;
-    -khtml-opacity: 0.4;
-    opacity: 0.4;
-}
-
-.audio {
-    /*设置音乐显示位置*/
-    width: 45px;
-    position: fixed;
-    top: 65px;
-    left: 94%;
-    z-index: 100;
-    filter: alpha(opacity=30);
-    -moz-opacity: 0.3;
-    -khtml-opacity: 0.3;
-    opacity: 0.3;
-}
-
-.header .top_logo {
-    /*background-image: url(../img/top_logo.png);*/
-    margin: 0 auto;
-    width: 750px;
-    height: 200px;
-    position: absolute;
-    z-index: 30;
-    top: 10px;
-    left: 50%;
-    margin-left: -390px;
-}
-
-.header .nav {
-    width: 804px;
-    height: auto;
-    position: absolute;
-    z-index: 30;
-    top: 420px;
-    left: 50%;
-    margin-left: -400px;
-}
-
-.header .nav a.gv {
-    text-decoration: none;
-    background: url(../img/nav_gv.png) repeat 0px 0px;
-    width: 130px;
-    height: 43px;
+#clothes {
+    background: #F8F8F8;
     display: block;
-    text-align: center; /*水平居中*/
-    line-height: 43px; /*上下居中*/
+    margin: 20px auto 17px;
+}
+
+.pure-button {
+    width: 100px;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 100%;
+    padding: .5em 1em;
+    color: white;
+    border: 1px solid #999;
+    border: transparent;
+    text-decoration: none;
+    border-radius: 2px;
+    background: #45BCF9; /* this is a green */
+    zoom: 1;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
     cursor: pointer;
-    float: left; /*左浮动*/
-    margin: 8px 2px 8px 2px;
-    font: 18px/43px 'microsoft yahei';
-    color: #066197;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
 }
 
-.header .nav a.gv span {
-    display: none;
-
+.pure-button:focus, .pure-button:hover {
+    filter: alpha(opacity=90);
+    background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, .05) 40%, rgba(0, 0, 0, .1));
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, .05) 40%, rgba(0, 0, 0, .1))
 }
 
-.header .nav a.gv:hover {
-    background: url(../img/nav_gv.png) repeat 0px -43px;
-    color: #1d7eb8;
-    -webkit-box-shadow: 0 0 6px #1d7eb8;
-    transition-duration: 0.5s;
+.pure-button:active {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .15) inset, 0 0 6px rgba(0, 0, 0, .2) inset;
+    border-color: #000 \9
 }
 
-.header .topcn {
-    width: 980px;
-    top: 200px;
-    left: 50%;
-    margin-left: -490px;
-    position: absolute;
-    z-index: 20;
-
+#foots{
+    text-align: center;
+    position: fixed;
+    bottom: 5px;
+    line-height: 12px;
+    font-size: 10px;
+    width: 100%;
+    color: #999999;
 }
