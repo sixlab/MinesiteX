@@ -19,6 +19,10 @@ zuul:
       path: /assignment/**
       serviceId: msx-service-assignment
       stripPrefix: false
+    msx-movie:
+      path: /admin/**
+      serviceId: msx-service-admin
+      stripPrefix: false
 
 #    msx-users:
 #      path: /users/**
