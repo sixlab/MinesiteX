@@ -24,6 +24,7 @@
         <module>msx-plugin-user</module>
         <module>msx-plugin-wx</module>
         <module>msx-plugin-assignment</module>
+        <module>msx-plugin-admin</module>
     </modules>
 
 </project>
