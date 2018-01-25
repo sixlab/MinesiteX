@@ -21,6 +21,6 @@
         <module>msx-data-wx</module>
         <module>msx-data-assignment</module>
         <module>msx-data-admin</module>
-    </modules>
+    <module>msx-data-spider</module></modules>
 
 </project>

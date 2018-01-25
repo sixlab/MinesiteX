@@ -32,7 +32,7 @@ public class ConfigGenerator {
     
         if (!bs.exists()) {
             String bsText = "server:\n" +
-                    "  port: 8802\n";
+                    "  port: 18888\n";
     
             bs.createNewFile();
             FileWriter writer = new FileWriter(bs);

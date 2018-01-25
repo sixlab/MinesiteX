@@ -27,6 +27,6 @@
         <module>msx-web-zuul</module>
         <module>msx-service-assignment</module>
         <module>msx-service-admin</module>
-    </modules>
+    <module>msx-service-spider</module></modules>
 
 </project>

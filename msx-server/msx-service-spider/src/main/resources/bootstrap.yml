@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: msx-service-spider
+  profiles:
+    active: msx-service-spider
+  cloud:
+    config:
+      uri: http://localhost:8500/
+      name: application-msx-service-spider,application-common-lib,application-common-service
+      profile: prod

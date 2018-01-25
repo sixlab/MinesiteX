@@ -21,6 +21,6 @@
         <module>msx-bean-wx</module>
         <module>msx-bean-assignment</module>
         <module>msx-bean-admin</module>
-    </modules>
+    <module>msx-bean-spider</module></modules>
 
 </project>
