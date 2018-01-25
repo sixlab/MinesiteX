@@ -11,13 +11,13 @@
  */
 package cn.sixlab.minesitex.tools.generator.module;
 
+import cn.sixlab.minesitex.tools.generator.FileUtil;
 import cn.sixlab.minesitex.tools.generator.XMLUtil;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class PluginGenerator {
@@ -46,17 +46,21 @@ public class PluginGenerator {
     }
     
     private static void generatorSrc(String pluginPath, String pluginName) throws IOException {
-        String entityPath = pluginPath + "src/main/java/cn/sixlab/minesitex/plugin/" + pluginName + "/controller/";
-        new File(entityPath).mkdirs();
-        new File(entityPath + "README.md").createNewFile();
+        String conPath = pluginPath + "src/main/java/cn/sixlab/minesitex/plugin/" + pluginName + "/controller/";
+        new File(conPath).mkdirs();
+        new File(conPath + "README.md").createNewFile();
     
-        String voPath = pluginPath + "src/main/java/cn/sixlab/minesitex/plugin/" + pluginName + "/service/";
-        new File(voPath).mkdirs();
-        new File(voPath + "README.md").createNewFile();
+        String bizPath = pluginPath + "src/main/java/cn/sixlab/minesitex/plugin/" + pluginName + "/business/";
+        new File(bizPath).mkdirs();
+        new File(bizPath + "README.md").createNewFile();
     
-        String staticPath = pluginPath + "src/main/resources/static/";
-        new File(staticPath).mkdirs();
-        new File(staticPath + "README.md").createNewFile();
+        String serPath = pluginPath + "src/main/java/cn/sixlab/minesitex/plugin/" + pluginName + "/service/";
+        new File(serPath).mkdirs();
+        new File(serPath + "README.md").createNewFile();
+    
+        String staPath = pluginPath + "src/main/resources/static/";
+        new File(staPath).mkdirs();
+        new File(staPath + "README.md").createNewFile();
     
         String tplPath = pluginPath + "src/main/resources/templates/";
         new File(tplPath).mkdirs();
@@ -140,14 +144,8 @@ public class PluginGenerator {
                 "    </build>\n" +
                 "\n" +
                 "</project>\n";
-        
-        if (!pom.exists()) {
-            pom.createNewFile();
-            FileWriter writer = new FileWriter(pom);
-            writer.write(pomText);
-            writer.flush();
-            writer.close();
-        }
+    
+        FileUtil.writeFile(pom, pomText);
     }
     
     private static String pluginPath(String path, String pluginName) {

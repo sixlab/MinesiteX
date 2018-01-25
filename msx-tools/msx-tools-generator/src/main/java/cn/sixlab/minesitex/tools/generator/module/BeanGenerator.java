@@ -11,13 +11,13 @@
  */
 package cn.sixlab.minesitex.tools.generator.module;
 
+import cn.sixlab.minesitex.tools.generator.FileUtil;
 import cn.sixlab.minesitex.tools.generator.XMLUtil;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class BeanGenerator {
@@ -93,14 +93,8 @@ public class BeanGenerator {
                 "    </build>\n" +
                 "\n" +
                 "</project>";
-        
-        if (!pom.exists()) {
-            pom.createNewFile();
-            FileWriter writer = new FileWriter(pom);
-            writer.write(pomText);
-            writer.flush();
-            writer.close();
-        }
+    
+        FileUtil.writeFile(pom, pomText);
     }
     
     private static String pluginPath(String path, String pluginName) {
