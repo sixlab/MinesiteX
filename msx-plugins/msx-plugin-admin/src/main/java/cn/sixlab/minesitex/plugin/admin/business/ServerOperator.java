@@ -35,10 +35,14 @@ public class ServerOperator {
         }else{
             Runtime.getRuntime().exec(command, envp, new File(dir));
         }
-        BufferedReader br = new BufferedReader(new InputStreamReader(proc.getInputStream()));
-        String line;
-        while ((line = br.readLine()) != null) {
-            System.out.println(line);
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        }catch (Exception e){
+            System.out.println("读取输出错误");
         }
     }
 }

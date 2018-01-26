@@ -69,6 +69,8 @@ public class GitHookService {
                         logger.info("操作命令："+text);
                         switch (text){
                             case "nginx":
+                                ServerOperator.exec("git pull", "/var/www/configs/");
+                                
                                 ServerOperator.exec("service nginx reload", null);
                                 break;
                             case "msx":
