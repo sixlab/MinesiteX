@@ -14,6 +14,9 @@ package cn.sixlab.minesitex.lib.base.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class DigestUtil {
     private static final char[] HEX_CHARS = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
@@ -49,6 +52,15 @@ public class DigestUtil {
     
     public static String encodeSHA1(String data) {
         return encode(data, Digest.SHA1);
+    }
+    
+    public static String encodeSHA1(String data, String key) {
+        List<String> list = new ArrayList<String>();
+        list.add(data);
+        list.add(key);
+        Collections.sort(list);
+        
+        return encode(list.get(0)+list.get(1), Digest.SHA1);
     }
     
     public static String fakeMD5(String data) {

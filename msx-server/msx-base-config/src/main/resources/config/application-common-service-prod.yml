@@ -41,3 +41,7 @@ msx:
   jpush:
     secret: jpush01
     key: jpush01
+
+  webhooks:
+    gitee: g
+    github: g
