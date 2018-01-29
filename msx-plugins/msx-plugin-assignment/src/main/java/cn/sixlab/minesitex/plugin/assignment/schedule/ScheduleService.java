@@ -140,9 +140,9 @@ public class ScheduleService {
         //try {
         //    PushResult result = jPushClient.sendPush(payload);
         //
-        //    System.out.println("-----------");
-        //    System.out.println(JsonUtl.toJson(result));
-        //    System.out.println("-----------");
+        //    logger.info("-----------");
+        //    logger.info(JsonUtl.toJson(result));
+        //    logger.info("-----------");
         //} catch (APIConnectionException e) {
         //    e.printStackTrace();
         //} catch (APIRequestException e) {
@@ -357,10 +357,10 @@ public class ScheduleService {
                         }
                     }
                     
-                    System.out.println("内部 for 循环结束");
+                    logger.info("内部 for 循环结束");
                 }
             }
-            System.out.println("外部 for 循环结束");
+            logger.info("外部 for 循环结束");
         }
         
         return assignmentMap;

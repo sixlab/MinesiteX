@@ -40,10 +40,10 @@ public class GitHookService {
     
         String sha1 = "sha1=" + DigestUtil.encodeSHA1(data, webhooksParam.getGithubHeader());
         
+        logger.info("length:"+ data.length());
         logger.info("signature:"+signature);
         logger.info("sha1sha1 :"+ sha1);
-    
-        // signature = 'sha1=' + OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha1'), ENV['SECRET_TOKEN'], payload_body)
+        
         if(sha1.equals(signature)){
             if ("PatrickRoot/PatrickRoot.github.io".equals(((Map) (obj.get("repository"))).get("full_name"))) {
                 ServerOperator.exec("git pull", "/var/www/blogs/");
@@ -71,7 +71,7 @@ public class GitHookService {
                             case "nginx":
                                 ServerOperator.exec("git pull", "/var/www/configs/");
                                 
-                                ServerOperator.exec("service nginx reload", null);
+                                ServerOperator.exec("service nginx reload", "/usr/sbin/");
                                 break;
                             case "msx":
                                 //ServerOperator.msxRestart();

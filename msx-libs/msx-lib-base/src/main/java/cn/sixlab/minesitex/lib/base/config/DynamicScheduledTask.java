@@ -20,6 +20,7 @@
 //import java.util.Date;
 //
 //public class DynamicScheduledTask implements SchedulingConfigurer {
+//    private static Logger logger = LoggerFactory.getLogger(DynamicScheduledTask.class);
 //    public static String cron = "0/5 * * * * *";
 //
 //    @Override
@@ -28,7 +29,7 @@
 //            @Override
 //            public void run() {
 //                //任务逻辑代码部分.
-//                System.out.println("TaskCronChange task is running ... " + new Date());
+//                logger.info("TaskCronChange task is running ... " + new Date());
 //            }
 //        };
 //

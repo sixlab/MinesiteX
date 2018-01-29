@@ -4,6 +4,8 @@ import cn.sixlab.minesitex.bean.movie.entity.MsxFilm;
 import cn.sixlab.minesitex.lib.base.util.JsonUtl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -13,6 +15,7 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 public class FilmRepoTest {
+    private static Logger logger = LoggerFactory.getLogger(FilmRepoTest.class);
     
     @Autowired
     private FilmRepo filmRepo;
@@ -21,38 +24,38 @@ public class FilmRepoTest {
     public void queryByKeyword() {
         List<MsxFilm> filmList = filmRepo.queryByKeyword("电影院");
         
-        System.out.println("1----------------------");
-        System.out.println(filmList.size());
+        logger.info("1----------------------");
+        logger.info(filmList.size() + "");
         for (MsxFilm s : filmList) {
-            System.out.println(s.getId() + ":" + s.getMovieName());
+            logger.info(s.getId() + ":" + s.getMovieName());
         }
         
-        System.out.println("1----------------------");
+        logger.info("1----------------------");
     }
     
     @Test
     public void queryCinemas() {
         List<String> cinemaList = filmRepo.queryCinemas();
         
-        System.out.println("2----------------------");
-        System.out.println(cinemaList.size());
+        logger.info("2----------------------");
+        logger.info(cinemaList.size() + "");
         for (String s : cinemaList) {
-            System.out.println(s);
+            logger.info(s);
         }
         
-        System.out.println("2----------------------");
+        logger.info("2----------------------");
     }
     
     @Test
-    public void queryByDoubanKeyIsNotNullOrderById(){
+    public void queryByDoubanKeyIsNotNullOrderById() {
         List<MsxFilm> filmList = filmRepo.queryTop10ByDoubanKeyIsNullOrderByIdDesc();
-    
-        System.out.println("2----------------------");
-        System.out.println(filmList.size());
+        
+        logger.info("2----------------------");
+        logger.info(filmList.size() + "");
         for (MsxFilm film : filmList) {
-            System.out.println(JsonUtl.toJson(film));
+            logger.info(JsonUtl.toJson(film));
         }
-    
-        System.out.println("2----------------------");
+        
+        logger.info("2----------------------");
     }
 }

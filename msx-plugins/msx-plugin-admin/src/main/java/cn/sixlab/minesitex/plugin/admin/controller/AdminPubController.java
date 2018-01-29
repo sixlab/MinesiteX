@@ -20,6 +20,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,13 +36,11 @@ public class AdminPubController extends BaseController {
     private GitHookService gitHookService;
     
     @PostMapping(value = "/github/webhooks/{repo}")
-    public String github(@RequestBody String data, HttpServletRequest request,
+    public String github(@RequestBody String data, @RequestHeader("X-Hub-Signature") String signature,
             @PathVariable String repo) throws IOException {
         logger.info("来自：" + repo);
-        System.out.println(data);
+        logger.info(data);
         if (StringUtils.hasLength(data)) {
-            String signature = request.getHeader("X-Hub-Signature");
-            System.out.println(signature);
             gitHookService.github(data, signature);
         }
         return "ok";
@@ -51,7 +50,7 @@ public class AdminPubController extends BaseController {
     public String gitee(@RequestBody String data, HttpServletRequest request,
             @PathVariable String repo) throws IOException {
         logger.info("gitee来自：" + repo);
-        System.out.println(data);
+        logger.info(data);
         if (StringUtils.hasLength(data)) {
             gitHookService.gitee(data);
         }

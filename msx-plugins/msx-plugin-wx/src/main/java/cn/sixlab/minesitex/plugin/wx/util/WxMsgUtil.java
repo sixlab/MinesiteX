@@ -13,11 +13,14 @@ package cn.sixlab.minesitex.plugin.wx.util;
 
 import cn.sixlab.minesitex.lib.base.util.HttpUtil;
 import cn.sixlab.minesitex.lib.base.util.JsonUtl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class WxMsgUtil {
+    private static Logger logger = LoggerFactory.getLogger(WxMsgUtil.class);
     
     public static String sendTplMsg(String accessToken,
             String openId, String templateId, String link,
@@ -33,7 +36,7 @@ public class WxMsgUtil {
         String url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=" + accessToken;
         
         String content = HttpUtil.postJson(url, json);
-        System.out.println("微信推送消息返回：" + content);
+        logger.info("微信推送消息返回：" + content);
         
         return content;
     }

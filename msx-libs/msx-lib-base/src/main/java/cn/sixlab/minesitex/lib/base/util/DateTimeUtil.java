@@ -11,6 +11,9 @@
  */
 package cn.sixlab.minesitex.lib.base.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Date;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -20,6 +23,7 @@ import java.time.temporal.ChronoField;
 import java.time.temporal.TemporalAdjusters;
 
 public class DateTimeUtil {
+    private static Logger logger = LoggerFactory.getLogger(DateTimeUtil.class);
     
     /**
      * 当前周是本月第几周
@@ -152,7 +156,7 @@ public class DateTimeUtil {
     public static void main(String[] args) {
         LocalDate localDate = LocalDate.now().withDayOfMonth(1).withMonth(2).withYear(2016);
     
-        System.out.println(yearLeftDays(localDate));
+        logger.info(yearLeftDays(localDate)+"");
     }
     
     public static LocalDate date2Local(Date date) {

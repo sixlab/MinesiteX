@@ -12,17 +12,19 @@
 package cn.sixlab.minesitex.lib.base.util;
 
 
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class DigestUtil {
     private static final char[] HEX_CHARS = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
     
     private static char[] encodeHex(byte[] bytes) {
-        char[] chars = new char[32];
+        char[] chars = new char[bytes.length*2];
         
         for (int i = 0; i < chars.length; i += 2) {
             byte b = bytes[i / 2];
@@ -50,17 +52,25 @@ public class DigestUtil {
         return encode(data, Digest.MD5);
     }
     
-    public static String encodeSHA1(String data) {
-        return encode(data, Digest.SHA1);
+    public static String encodeSHA1(String data, String key) {
+        try {
+            SecretKeySpec keySpec = new SecretKeySpec(key.getBytes("utf-8"), "HmacSHA1");
+        
+            Mac mac = Mac.getInstance("HmacSHA1");
+            mac.init(keySpec);
+            byte[] result = mac.doFinal(data.getBytes("utf-8"));
+        
+            return DatatypeConverter.printHexBinary(result).toLowerCase();
+        } catch (NoSuchAlgorithmException | InvalidKeyException e) {
+            throw new IllegalStateException("cannot compute x-hub token", e);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
     
-    public static String encodeSHA1(String data, String key) {
-        List<String> list = new ArrayList<String>();
-        list.add(data);
-        list.add(key);
-        Collections.sort(list);
-        
-        return encode(list.get(0)+list.get(1), Digest.SHA1);
+    public static String encodeSHA1(String data) {
+        return encode(data, Digest.SHA1);
     }
     
     public static String fakeMD5(String data) {
