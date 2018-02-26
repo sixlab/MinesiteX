@@ -18,6 +18,7 @@ import cn.sixlab.minesitex.plugin.movie.service.FilmService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -140,6 +141,7 @@ public class FilmController extends BaseController{
         logger.debug("搜索电影>>>", keyword);
         ModelJson<List<MsxFilm>> json = new ModelJson<>();
         
+        keyword = StringUtils.trimWhitespace(keyword);
         List<MsxFilm> movieList = service.searchFilm(keyword);
     
         json.setData(movieList);

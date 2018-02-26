@@ -73,7 +73,7 @@ public class FilmService {
         List<MsxFilm> filmList;
         
         if (num == null) {
-            num = 10;
+            num = 20;
         }
         
         Page<MsxFilm> filmPage = filmRepo.findAll(new PageRequest(0, num,
