@@ -77,7 +77,7 @@ public class FilmService {
         }
         
         Page<MsxFilm> filmPage = filmRepo.findAll(new PageRequest(0, num,
-                new Sort(Sort.Direction.DESC, "viewDate")));
+                new Sort(Sort.Direction.DESC,  "viewDate", "id")));
     
         filmList = filmPage.getContent();
     
